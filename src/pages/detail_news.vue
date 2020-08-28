@@ -1,7 +1,7 @@
 <template>
     <q-page class="news">
         <q-scroll-area
-      style="height:93vh; max-width: 100%;"
+      style="height:90vh; max-width: 100%;"
       :thumb-style="thumbStyle"
     >
      <div class="wrapper">

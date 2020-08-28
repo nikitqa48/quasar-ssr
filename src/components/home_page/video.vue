@@ -21,7 +21,7 @@
         </div>
         <video loop muted autoplay class="fullscreen-bg__video">
          
-          <source src="video/video_background.mp4" media="(min-width: 800px)" type="video/mp4" />
+          <source src="video/video_background.mp4" media="(min-width: 800px)" type="video/mp4" >
         </video>
       </div>
        <div class="presentation"> <span>Презентация <br> <b>Липецкой области</b> </span><button class="open" @click="open"> Открыть</button></div>
@@ -34,7 +34,7 @@
     display: none!important;
   }
   .risk_container{
-    background: url("/statics/image/mobile_video.png");
+    background: url("/image/mobile_video.png");
     background-size: cover;
     background-repeat: no-repeat;
   }

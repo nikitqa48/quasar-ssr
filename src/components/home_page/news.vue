@@ -165,6 +165,7 @@
 }
 
 .news{
+  background:url('/image/OEZ.png');
   height: 100vh;
   color:white;
 }

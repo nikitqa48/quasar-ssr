@@ -1,7 +1,7 @@
 <template>
 <q-page class="wrapper">
 <q-scroll-area
-      style="height:93vh; max-width: 100%;"
+      style="height:90vh; max-width: 100%;"
       :thumb-style="thumbStyle"
     >
     
@@ -365,7 +365,6 @@ body a{
 .wrapper{
   display:flex;
   margin-right: 10%;
- 
  
   flex-direction: column;
 }

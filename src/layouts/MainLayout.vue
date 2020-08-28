@@ -1,6 +1,6 @@
 <template>
 <q-layout view="lhh LpR lff"> 
-  <q-header elevated>
+  <q-header elevated class="deckstop" reveal>
  <header-vue/>
   </q-header>
   <q-page-container>
@@ -77,5 +77,12 @@ export default {
 <style scoped>
 * {
   font-family: "Montserrat";
+}
+
+.deckstop{
+  color:white;
+  background: #262626;
+  min-height:5vh;
+  font-size: 1em;
 }
 </style>

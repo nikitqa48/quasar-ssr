@@ -1,6 +1,6 @@
 <template>
   <div class="slider">
-    <q-img src='image/indesit.png' class='absolute'> </q-img>
+    <q-img src='image/indesit.png' class='absolute' style="z-index:-1;"> </q-img>
     <div class = "history">
       <div class="number">  </div>
       <h4> Истории успеха </h4>
@@ -111,8 +111,10 @@
            </div>
            <div class="right">
              <div class="image">
+
                               <picture>
-              <source media="(max-width: 799px)" srcset="statics/image/angel_mobile.png" />
+                                
+              <source media="(max-width: 799px)" srcset="/image/angel_mobile.png" />
               <source media="(min-width: 800px)" srcset="/image/angel1.png" />
               <img src="elva-800w.jpg" alt="angel" />
             </picture>
@@ -138,6 +140,12 @@
   width:100%;
   display:flex;
   flex-direction: column!important;
+   }
+   .absolute{
+     height:100vh;
+   }
+   .history{
+     margin-top: 20%;
    }
   .right{
     /* height: auto!important; */
@@ -254,6 +262,7 @@
 .buttons{
   display: flex;
   width:83%;
+  z-index:1;
   justify-content: space-between;
   flex-direction: row;
 }
@@ -317,6 +326,7 @@
 }
 .slider {
   height: 100%;
+  background: url('/image/indesit.png');
   width: 100%;
 }
 .border_indesit {

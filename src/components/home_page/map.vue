@@ -1,5 +1,6 @@
 <template>
   <div class="background">
+     <q-responsive :ratio="1/1" style="width: 100%; max-width: 100%;" class="mobile">
     <q-carousel
       height="100vh"
       infinite
@@ -87,11 +88,14 @@
             leave-active-class="animated bounceOutLeft slow"
           >
             <!-- <img src="statics/image/newmap.png"> -->
-            <picture>
+            <!-- <picture>
               <source media="(max-width: 799px)" srcset="/image/newmap.png" />
               <source media="(min-width: 800px)" srcset="/image/newmap.png" />
               <img src="elva-800w.jpg" alt="lipetsk map" />
-            </picture>
+            </picture> -->
+            <div class='img' >
+            <q-img  src="elva-800w.jpg" alt="Авиа пути, Липецк"  srcset="/image/newmap.png " style='width:95%; height:95%;'/>
+            </div>
           </transition>
         </div>
       </q-carousel-slide>
@@ -113,12 +117,21 @@
             enter-active-class="animated bounceInLeft"
             leave-active-class="animated bounceOutLeft slow"
           >
-            <img src="/image/road.png" />
+            <!-- <img src="/image/road.png" /> -->
+            <div class='img'>
+            <q-img srcset='image/road.png 800w,
+             image/mobile_js.png 799w'
+             sizes='(max-width:799px) 799w, (min-width:800px) 800w'
+             src='image/road.png'
+             style='width:95%; height:95%;'
+             />
+             </div>
             <!-- <picture>
-  <source media="(max-width: 799px)" srcset="statics/image/mobile_jd.png">
-  <source media="(min-width: 800px)" srcset="statics/image/road.png.png">
+              
+  <source media="(max-width: 799px)" srcset="image/mobile_jd.png">
+  <source media="(min-width: 800px)" srcset="image/road.png">
   <img src="elva-800w.jpg" alt="lipetsk map">
-            </picture>-->
+            </picture> -->
           </transition>
         </div>
       </q-carousel-slide>
@@ -149,7 +162,9 @@
             enter-active-class="animated bounceInLeft"
             leave-active-class="animated bounceOutLeft slow"
           >
-            <img src="/image/auto.png" />
+          <div class='img'>
+            <q-img src="/image/auto.png"  style="width:95%; height:95%;"/>
+          </div>
           </transition>
         </div>
       </q-carousel-slide>
@@ -160,22 +175,40 @@
             enter-active-class="animated bounceInLeft"
             leave-active-class="animated bounceOutLeft slow"
           >
-           <picture>
+          <div class='img'>
+               <q-img srcset='image/avia.png 800w,
+             image/mobile_avia.png 799w'
+             sizes='(max-width:799px) 799w, (min-width:800px) 800w'
+             src='image/avia.png'
+             style='width:95%; height:95%;'
+             />
+             </div>
+           <!-- <picture>
               <source media="(max-width: 799px)" srcset="/image/mobile_avia.png" />
               <source media="(min-width: 800px)" srcset="/image/avia.png" />
-              <img src="elva-800w.jpg" alt="lipetsk map" />
-            </picture>
+              <img src="elva-800w.jpg"/>
+            </picture> -->
             <!-- <img src="statics/image/avia.png.png" /> -->
           </transition>
         </div>
       </q-carousel-slide>
     </q-carousel>
+    </q-responsive>
   </div>
 </template>
 <style scoped>
 @media screen and (max-width: 800px) {
   .slide_container {
+    margin:auto;
+    display: flex;
+    align-self: center!important;
     width: 100% !important;
+  }
+  .slide_container2{
+    display:flex;
+  }
+  .dots_wrap{
+    margin-top:0!important;
   }
   .blue_round{
      width: 4vw!important;
@@ -187,13 +220,24 @@
     height: 110vh!important;
   }
 .background{
+  display:flex;
   height: 110vh!important;
+}
+.img{
+  align-self: center;
+  height:50%!important;
+  width: 100%!important;
+}
+.mobile{
+  height:100%;
+  align-self: center!important;
 }
   .green_round p{
 
     font-size: 3.5vw!important;
   }
   .slide_container2 {
+    margin:auto;
     width: 100% !important;
   }
 
@@ -285,7 +329,9 @@
   background-size: cover;
   background-repeat: repeat;
 }
-
+.img{
+  height:100%;
+}
 .dots_industry {
   width: 50%;
 }

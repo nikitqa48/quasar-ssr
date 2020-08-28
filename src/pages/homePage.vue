@@ -1,9 +1,9 @@
 <template>
-      <q-page>
+     <div>
     <div data-anchor="investinlipetsk">
     <video-vue/>
     </div>
-    
+    <q-no-ssr>
       <full-page @after-load="afterLoad" ref="fullpage" :options="opts" id="fullpage" >  
 
         <div class="section" >
@@ -23,8 +23,8 @@
                 </div>
                     
       </full-page>
-  
-  </q-page>
+    </q-no-ssr>
+  </div>
 </template>
 <script>
 import gubernatorVue from 'components/home_page/gubernator.vue'
@@ -48,6 +48,7 @@ export default {
         return{
 opts:{
 start: 0,
+responsiveWidth: 800,
         beforeChange: function(prev, next) {},
         afterChange: function(prev, next) {},
         lazyLoading: true,
@@ -82,11 +83,16 @@ start: 0,
 }
 </script>
 <style scoped>
-@font-face {
+@media screen and (max-width: 800px) {
+    .section:nth-child(5){
+        display:none!important;
+    }
+}
+/* @font-face {
   font-family: "Montserrat";
   src: url("../css/fonts/Montserrat/Montserrat-Regular.woff") format("woff");
 }
 *{
   font-family: 'Montserrat'!important;
-}
+} */
 </style>

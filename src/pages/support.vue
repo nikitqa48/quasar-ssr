@@ -3,9 +3,13 @@
  
     <div class="container">
   
-      
+      <div class="wrap_container" style="display:flex; flex-direction:row; justify-content:space-between; align-items:flex-end; width:90%;">
       <h4>Государственная поддержка</h4>
-
+      <div class="presentation" style="display:flex;align-items:center; width:30%; justify-content:space-between; border:1px solid #2CCCD8; padding:1%; ">
+      Презентация <br> «поддержка промышленности<br>Липецкой области» 
+      <button class="open" @click="open"> Открыть</button>
+      </div>
+</div>
       <q-form @submit="onSubmit" class="blue_container">
         <div class="perekrestok">
           <div class="mobile">
@@ -154,12 +158,25 @@
 <script>
 </script>
 <style scoped>
-@media screen and (max-width: 900px) {
+.open{
+  border:none;
+  background: #2CCCD8;
+  color:white;
+  padding-left: 2%;
+  padding-right: 2%;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+@media screen and (max-width: 800px) {
   .mobile {
     width: 95%;
     display: flex;
     flex-direction: column;
     margin: auto;
+  }
+  .presentation{
+    display:none!important;
   }
   .grey {
     font-size: 3vw !important;
@@ -520,6 +537,9 @@ export default {
     };
   },
   methods: {
+    open(){
+      window.open('/files/podderzhka.pdf')
+    },
     onSubmit() {
       let backendurl = "https://backendinvest.admlr.lipetsk.ru/support/?format=json";
       let url = backendurl;

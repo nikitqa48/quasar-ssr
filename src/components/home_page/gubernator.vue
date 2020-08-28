@@ -28,9 +28,10 @@
           width: 100%;
       }
       .wrapper a{
-          padding-bottom: 2vh;
+          padding-bottom: 10vh;
       }
       .text{
+          margin-top:0!important;
           opacity: 1!important;
           padding:3%!important;
           align-self: center;

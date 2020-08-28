@@ -939,7 +939,7 @@
   font-weight: 600;
   margin-top: 4vh;
   font-size: 1.85vw;
-  margin-bottom: 4vh;
+
 }
 .greenfield_image {
   width: 20%;
@@ -1079,7 +1079,7 @@
   color: #cecece;
 }
 .right_map {
-  width: 50%;
+  width: 45%;
   height: 100%;
   color: #fff;
   position: relative;
@@ -1087,9 +1087,9 @@
 .left_map {
   position: relative;
   text-align: center;
+  margin-left:8%;
   display: flex;
   width: 100%;
-  margin-left: 5%;
 }
 .wrapp_container {
   width: 95%;
@@ -1144,7 +1144,7 @@
   margin-top: 9vh;
 }
 .infinity {
-  width: 50%;
+  width: 47%;
 }
 .div {
   background: url("/image/space.png");

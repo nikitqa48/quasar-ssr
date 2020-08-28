@@ -1,7 +1,7 @@
 <template>
 <div class="wrap_header">
 
-        <q-toolbar class="header"  >
+        <q-toolbar class='deckstop'  >
       <!-- <q-btn align="between" flat class="btn-fixed-width" color="white" label="Главная страница"  no-wrap  no-caps icon= 'img:statics/icons/logo.png'  to="/"/>
       <q-space />
     
@@ -33,7 +33,7 @@
     no-caps icon= 'img:statics/icons/logo.png'  to="/example/head">
   <span> Инвестиционный портал Липецкой области </span>
   </q-btn> -->
-  <router-link to = '/' style="align-self:flex-end;">
+  <router-link to = '/' style="align-self:center;">
   <button class="btn" > 
     <div class="img">
     <img src="logo.png">
@@ -45,6 +45,7 @@
       <q-space/>
 
       <q-route-tab
+      flat dense
     label="Регион"
     class="route"
     no-caps
@@ -86,7 +87,6 @@
     to="/documents"
     exact
   />
-
   <q-route-tab
 class="route"
     label="Контакты"
@@ -122,9 +122,7 @@ class="route"
             <q-item   clickable v-ripple to ='/square' stretch flat >Площадки </q-item>
            
               <q-item   clickable v-ripple="{color:'blue-6'}" to ='/support'   >Господдержка </q-item>
-            
-           
-            
+    
              <q-item  clickable v-ripple to ='/project' stretch flat >Проекты </q-item>
            
             <q-item  clickable v-ripple to ='/news' stretch flat >Новости </q-item>
@@ -155,6 +153,9 @@ export default {
 .header{
   display: none!important;
 }
+.deckstop{
+  display:none;
+}
 .mobile{
   height: 100%;
   width: 100%;
@@ -179,16 +180,7 @@ export default {
   justify-content: space-between;
 }
    }
-.header{
-  font-size: 1em;
-  position: relative;
-  width:100%;
-  height:5vh;
-  color:white;
-  display: flex;
-  z-index: 1;
-  background: #262626;
-}
+
 .img{
   padding-right: 0.2vw;
   margin-right: 0.2vw;
@@ -246,9 +238,14 @@ body a{
  text-decoration: none;
 }
 .route{
-  padding:0;
+  padding-right:0.1vw;
+  padding-bottom:0;
   margin:0;
 }
+/* .deckstop{
+  width:80%;
+  margin:auto;
+} */
 @font-face {
   font-family: "Montserrat";
   src: url("../css/fonts/Montserrat/Montserrat-Regular.woff") format("woff");
@@ -256,6 +253,8 @@ body a{
 *{
   font-family: 'Montserrat'!important;
 }
+
+
 /* .q-router-link--active{
   color: #52A4DF;
   border-bottom: 2px solid #52A4DF;
