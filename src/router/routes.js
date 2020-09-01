@@ -74,6 +74,11 @@ const routes = [
 
         ]
       },
+      {
+        path:'/event',
+        component:() =>import('pages/event.vue'),
+        name:'event'
+      }
     ]
   },
   // Always leave this as last one,
