@@ -117,7 +117,7 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Инвест Липецк',
+        name: 'Инвестиционный портал Липецкой области',
         short_name: 'Инвестиционный портал Липецкой области',
         description: 'Инвестируй в Липецкую область',
         display: 'standalone',

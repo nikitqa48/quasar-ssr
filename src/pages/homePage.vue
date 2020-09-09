@@ -1,6 +1,6 @@
 <template>
      <div>
-    <div data-anchor="investinlipetsk">
+    <div data-anchor="investinlipetsk" >
     <video-vue/>
     </div>
     <q-no-ssr>
@@ -15,6 +15,10 @@
    
         <div class="section">
             <history-vue/>
+            <logo-vue/>
+        </div>
+        <div class="section">
+            <industry-vue/>
         </div>
         <div class="section">
             <news-vue :visible='visible'   @disableLoading='disableLoading' />
@@ -31,6 +35,8 @@ import gubernatorVue from 'components/home_page/gubernator.vue'
 import videoVue from 'components/home_page/video.vue'
 import mapVue from 'components/home_page/map.vue'
 import historyVue from 'components/home_page/history.vue'
+import logoVue from 'components/home_page/logo.vue'
+import industryVue from 'components/home_page/industry.vue'
 import newsVue from 'components/home_page/news.vue'
 import axios from 'axios'
 
@@ -40,6 +46,8 @@ export default {
         // videoVue: ()=> import ('components/home_page/video.vue'),
         videoVue,
         gubernatorVue,
+        industryVue,
+        logoVue,
         mapVue,
         historyVue,
         newsVue

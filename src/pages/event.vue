@@ -1,8 +1,28 @@
 <template>
   <q-page padding class="background">
-  
+  <q-card-section class ='description'>
+    <p class="text-white" style="font-size:2em; font-weight:600; "> Уважаемые коллеги и партнеры</p>
+    <p class="text-white"> Агенство инвестиционного развития Липецкой области и компания Knight Frank приглашают Вас принять участие в первой логистической конференции "Липецкая область- верное направление!"</p>
+    <p class='text-white'> Спикерами и участниками мероприятия станут представители власти, ведущие производители товаров, логистические операторы, крупнейшие девелоперы, ритейлеры и дитрибьюторы, которые в режиме живого диалога обсудят точки роста и возможности развития рынка</p>
+    <p class= 'small text-white' style='font-size:0.7em;'>Место проведения:Липецкая область <br> территория особой экономической зоны  "Липецк" административно-деловой центр </p>
+  </q-card-section>
+    <q-card-section class ='description'>
+    <p class="text-h3 text-white" style="font-size:2em; font-weight:600;"> Программа </p>
+    <p class="text-white"> 11 <sup> 30 </sup>- 11 <sup> 00 </sup> <span class='span'> Регистрация на мероприятие. Приветственный кофе </span></p>
+     <p class="text-white"> 11 <sup> 00 </sup>- 11 <sup> 15 </sup> <span class='span'> Визитная карточка Липецкой области  </span></p>
+          <p class="text-white"> 11 <sup> 15 </sup>- 11 <sup> 30 </sup> <span class='span'> Приветственное слово  </span></p>
+             <p class="text-white"> 11 <sup> 30 </sup>- 11 <sup> 45 </sup> <span class='span'>Векторы развития логистического потенциала региона  </span> </p>
+                 <p class="text-white"> 11 <sup> 45 </sup>- 11 <sup> 55 </sup> <span class='span'>Инвестиционная карта Липецкой области   </span></p>
+                            <p class="text-white"> 11 <sup> 55 </sup>- 12 <sup> 05 </sup> <span class='span'>Действующие инструменты развития и поддержки бизнеса  </span></p>
+         <p class="text-white"> 12 <sup> 05 </sup>- 12 <sup> 15 </sup> <span class='span'>Время для дискуссии</span></p>
+            <p class="text-white"> 12 <sup> 15 </sup>- 12 <sup> 45 </sup> <span class='span'>Кофе-брейк</span></p>
+              <p class="text-white"> 12 <sup> 45 </sup>- 13 <sup> 30 </sup> <span class='span'>Практикум. Оценка потребности в складской недвижимости со стороны бизнеса:<br></span></p>
+                <p class="text-white" ><span style='opacity:0'> 12 <sup> 45 </sup>- 13 <sup> 30 </sup></span> <span class='span'>Компания «ИнтерГрупп» успешный опыт строительства складских площадей в Липецкой области</span></p>
+      <p class="text-white" ><span style='opacity:0'> 12 <sup> 45 </sup>- 13 <sup> 30 </sup></span> <span class='span'> АО Фирма "Август" ключевые аргументы в пользу выбора площадки</span></p>
+      <p class="text-white"> 13 <sup> 00 </sup>- 13 <sup> 30 </sup> <span class='span'>Время для дискуссии</span></p>
+  </q-card-section>
         <q-card-section class="form_container">
-
+    <p class="text-h3 text-white" style="font-size:2em; font-weight:600;  align-self:center;"> Регистрация </p>
   <q-card-section class="q-pt-none">
     
          <q-form class='form'>
@@ -57,7 +77,7 @@
       v-model="role"
       filled
 
-      
+
     />
             </div>
             <div class="column" style="justify-content:flex-end;">
@@ -70,7 +90,7 @@
           
          </q-form>
                 <q-card-actions align="center" class="text-white">
-          <q-btn label="Отправить" rounded type ='submit'v-close-popup  no-caps color="cyan-6" @click="onSubmit" style="width:20%; margin-top:3%;"  />
+          <q-btn label="Регистрация" rounded type ='submit'v-close-popup  no-caps color="cyan-6" @click="onSubmit" style="width:20%; margin-top:3%;"  />
         </q-card-actions>
  
         </q-card-section>
@@ -159,7 +179,9 @@ export default {
   width:48%;
   font-size: 0.7vw;
 }
-
+.span{
+  margin-left:2%;
+}
 .wrap{
     display: flex;
   flex-direction: row;
@@ -178,6 +200,10 @@ export default {
 }
 .column{
   width:48%;
+}
+.description{
+  width:68%;
+  margin:auto;
 }
 .fixed{
   right: 0;
@@ -258,7 +284,7 @@ export default {
 }
 .form_container{
   height: 90%;
-  width:97%;
+  width:70%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

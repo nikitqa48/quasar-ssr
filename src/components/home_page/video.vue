@@ -1,5 +1,5 @@
 <template>
-<div>
+<div >
           <div class="risk">
         <div class="overlay">
           <div class="risk_container">
@@ -12,18 +12,20 @@
                
             </p>
             
-                     <div class="arrow_slide">
-  <img src="icons/mouse.png">
-</div>
+
 
           </div>
   
         </div>
-        <video loop muted autoplay class="fullscreen-bg__video">
+        <video loop muted autoplay class="fullscreen-bg__video" src="video/video_background1.webm" type="video/webm" media="(min-width:800px)" >
          
-          <source src="video/video_background.mp4" media="(min-width: 800px)" type="video/mp4" >
+          <!-- <source src="video/video_background1.webm" media="(min-width: 800px)" type="video/webm"> -->
         </video>
       </div>
+      <form-vue/>
+         <!-- <div class="arrow_slide">
+                       <q-btn  label="Стать инвестором" color="primary" no-caps square style="padding-left:3vw; padding-right:3vw; font-size:1.4em;"   	/>
+</div> -->
        <div class="presentation"> <span>Презентация <br> <b>Липецкой области</b> </span><button class="open" @click="open"> Открыть</button></div>
 </div>
      
@@ -50,6 +52,7 @@ display: none!important;
   font-weight: 600;
   text-align: center;
   color: white;
+  padding-bottom: 5%;
   font-size: 15vw!important;
 }
 }
@@ -57,8 +60,8 @@ display: none!important;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   z-index: -1;
+  overflow: hidden;
   position: relative;
   height: 100vh;
   width: 100%;
@@ -87,7 +90,7 @@ margin-left: 1.3vw;
   display: flex;
   top:0;
   margin-left: 5vw;
-  margin-top: 10vh;
+  margin-top: 15vh;
   left:0;
 }
 .hmm{
@@ -96,9 +99,10 @@ margin-left: 1.3vw;
 }
 .arrow_slide{
   position: absolute;
-  bottom:0;
-  margin-bottom: 3%;
-
+  width:100%;
+  margin-left: 40%;
+    top: 0;
+    margin-top: 83vh;
 }
 .risk_container {
   height: 100%;
@@ -146,7 +150,11 @@ margin-left: 1.3vw;
 
 </style>
 <script>
+import formVue from "components/investorform.vue";
 export default {
+    components:{
+      formVue
+    },
     methods:{
       open(){
         window.open('/files/lipetsk.pdf')

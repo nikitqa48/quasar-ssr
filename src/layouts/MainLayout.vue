@@ -1,14 +1,14 @@
 <template>
-<q-layout view="lhh LpR lff"> 
+<q-layout view="lhh LpR lff" > 
   <q-header elevated class="deckstop" reveal>
- <header-vue/>
+ <header-vue class="no-shadow"/>
   </q-header>
   <q-page-container>
   
  <router-view :visible ='visible'  @disableLoading ='visible = $event'/>
 
   </q-page-container>
-<forms-vue/>
+<!-- <forms-vue/> -->
    <q-inner-loading :showing="visible" dark >
     <q-spinner-dots color="light-blue-6" size='150px' />
       </q-inner-loading>
@@ -81,8 +81,10 @@ export default {
 
 .deckstop{
   color:white;
-  background: #262626;
-  min-height:5vh;
+  background: #727272;
+  display: flex;
+  align-items: center;
+  min-height:7vh;
   font-size: 1em;
 }
 </style>

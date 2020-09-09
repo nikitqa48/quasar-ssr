@@ -1,15 +1,17 @@
 <template>
     <div class="wrapper">
         <!-- <q-img src='image/ArtomonovIgor.png' class='absolute' style='border:1px solid red; '> </q-img> -->
+        <div class = 'container'>
         <div class="text">
-            <p style="padding:1%;font-size: 1.2vw;"> «<span style="font-weight:600;">Липецкая область</span> – <span style="opacity:.8;">надёжный и проверенный партнер для инвестора. Нам доверяют, мы это ценим. Могу с уверенностью сказать, что наш опыт в реализации проектов сформировал положительный имидж региона не только на территории России, но и во всем мире.
+            <p style="padding:1%;font-size: 1.2vw;"> «<span style="font-weight:600;">Липецкая область</span> – <span style="opacity:.8;">надёжный и проверенный партнер для инвестора. Нам доверяют, мы это ценим. Могу с уверенностью сказать, что наш <br> опыт в реализации проектов сформировал положительный имидж региона не только на территории России, но и во всем мире.
 <br>Липецкая область - открытый регион для инвестиций»</span></p>
-        <div class="wrap"><p style="font-size: 1vw; padding:1%;">  Глава администрации Липецкой области, Игорь Георгиевич Артамонов</p> <img src="icons/painting.png"> </div>
+        <div class="wrap"><p style="font-size: 1vw; padding:1%;">  Глава администрации  <br>Липецкой области, <br>Игорь Георгиевич Артамонов</p> <img src="icons/painting.png" style="width:30%;"> </div>
         </div>
         <a href="https://xn--80aacoonefzg3am8b1fsb.xn--p1ai/appeal"><div class="button">Обратиться к губернатору 
         </div> </a>
-         <div class="hmm">
+         <!-- <div class="hmm">
   <img src="icons/mouse.png">
+</div> -->
 </div>
     </div>
 </template>
@@ -58,32 +60,34 @@
 body a{
     text-decoration: none;
 }
+.container{
+    margin:auto;
+    padding-bottom: 5%;
+    width: 85%;
+}
 .button{
-    width: 25%;
+    min-width: 20%;
+    max-width: 25%;
     padding-top: 1vh;
     padding-bottom: 1vh;
+    margin-left: 1%;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 18px;
-    font-size: 1.2vw;
+    font-size: 1vw;
     color: #fff;
-    background: #2cccd8;
-    margin-left: 2%;
+    background: #3E8FD1;
 }
 .text{
-    margin-left: 2%;
+
     padding:1%;
-    margin-top: 10%;
-    margin-bottom: 5%;
     color: #fff;
-    background: rgba(31, 37, 55, 0.5);
-    opacity: .5;
     width: 35%;
 }
 .wrap{
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
     flex-wrap: nowrap;
 }

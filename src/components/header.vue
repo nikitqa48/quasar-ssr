@@ -18,8 +18,8 @@
         </div> -->
         <q-tabs
         indicator-color="blue-7"
-        class='q-tabs'
-        active-color='light-blue-13
+        class='q-tabs my-tabs'
+        active-color='blue
 '
         >
             <!-- <q-route-tab
@@ -36,66 +36,78 @@
   <router-link to = '/' style="align-self:center;">
   <button class="btn" > 
     <div class="img">
-    <img src="logo.png">
+    <img src="icons/flag.svg">
     </div>
-     <div style="display:flex;flex-direction:column;">
+     <div style="display:flex;flex-direction:column; padding-left:6vw;">
        <span class="investition"> Инвестиционный портал  </span> <span class="lipetsk">Липецкой области </span></div>
        </button>
   </router-link>
       <q-space/>
+<div class="space">
+            <q-item   clickable v-ripple to ='/region' stretch flat >Регион </q-item>
+              <q-item   clickable v-ripple to ='/square' stretch flat >Площадки </q-item>
+           
+              <q-item   clickable v-ripple="{color:'blue-6'}" to ='/support'   >Господдержка </q-item>
+    
+             <q-item  clickable v-ripple to ='/project' stretch flat >Проекты </q-item>
+           
+            <q-item  clickable v-ripple to ='/news' stretch flat >Новости </q-item>
+                  <q-item   clickable v-ripple to ='/documents' stretch flat >Документы </q-item>
+        
+                            <q-item   clickable v-ripple to ='/contacts' stretch flat >Контакты </q-item>
 
-      <q-route-tab
-      flat dense
+      <!-- <q-btn
+    
     label="Регион"
     class="route"
     no-caps
     to="/region"
-    exact
+  
   />
-        <q-route-tab
+        <q-btn
     label="Площадки"
     class="route"
     no-caps
     to="/square"
     exact
   /> 
-    <q-route-tab
+    <q-btn
     class="route"
     label="Господдержка"
     no-caps
     to="/support"
     exact  
   />
-  <q-route-tab
+  <q-btn
   class="route"
     label="Проекты"
     no-caps
     to="/project"
     exact
   />
-  <q-route-tab
+  <q-btn
   class="route"
     :to="{name:'news'}"
     label='Новости'
     no-caps=""
     exact
   />
-    <q-route-tab
+    <q-btn
     class="route"
     label="Документы"
     no-caps
     to="/documents"
     exact
   />
-  <q-route-tab
-class="route"
+  <q-btn
+    class="route"
     label="Контакты"
     no-caps
     to="/contacts"
     exact
-  />
+  /> -->
 
-
+</div>
 
  
 
@@ -149,6 +161,7 @@ export default {
 }
 </script>
 <style scoped>
+
   @media screen and (max-width: 900px) {
 .header{
   display: none!important;
@@ -167,7 +180,9 @@ export default {
   z-index: 100;
 }
 .mobile{
-  display: flex!important;
+  
+  /* display: flex!important; */
+  display:none!important;
 }
 .moble_header{
   display: flex!important;
@@ -184,10 +199,13 @@ export default {
 .img{
   padding-right: 0.2vw;
   margin-right: 0.2vw;
-  width: 10%;
+  width: 4.6%;
+  height:150%;
+  position: absolute;
 }
+
 .img img{
-  width: 100%;
+  width: 4.5vw;
 }
 .moble_header{
   display: none;
@@ -199,6 +217,10 @@ export default {
 .invest{
   margin-left: 3%;
   font-size: 0.8vw;
+}
+.space{
+  display: flex;
+  justify-content: space-between;
 }
 .header_button{
   font-size: 0.8vw;
@@ -216,7 +238,7 @@ export default {
   text-transform: uppercase;
   font-size: 0.8rem;
   line-height: 100%;
-  letter-spacing: 0.02vw;
+  letter-spacing: 0.03vw;
   font-weight: 600;
 }
 .lipetsk{
@@ -238,14 +260,12 @@ body a{
  text-decoration: none;
 }
 .route{
-  padding-right:0.1vw;
-  padding-bottom:0;
   margin:0;
-}
-/* .deckstop{
-  width:80%;
+  }
+ /* .deckstop{ 
+
   margin:auto;
-} */
+}  */
 @font-face {
   font-family: "Montserrat";
   src: url("../css/fonts/Montserrat/Montserrat-Regular.woff") format("woff");
@@ -253,10 +273,13 @@ body a{
 *{
   font-family: 'Montserrat'!important;
 }
+.wrap_header{
+  width:85%;
+  margin: auto;
+}
 
-
-/* .q-router-link--active{
+.q-router-link--active{
   color: #52A4DF;
   border-bottom: 2px solid #52A4DF;
-} */
+}
 </style>
