@@ -10,13 +10,16 @@
         <gubernator-vue/>
         </div>
         <div class="section" >
-            <map-vue/>
+            <!-- <map-vue/> -->
+            <newmap-vue/>
         </div>
    
         <div class="section">
             <history-vue/>
-            <logo-vue/>
         </div>
+        <div class='section'>
+            <logo-vue/>
+            </div>
         <div class="section">
             <industry-vue/>
         </div>
@@ -39,6 +42,7 @@ import logoVue from 'components/home_page/logo.vue'
 import industryVue from 'components/home_page/industry.vue'
 import newsVue from 'components/home_page/news.vue'
 import axios from 'axios'
+import newmapVue from 'components/home_page/newmap.vue'
 
 export default {
     props:['visible'],
@@ -48,6 +52,7 @@ export default {
         gubernatorVue,
         industryVue,
         logoVue,
+        newmapVue,
         mapVue,
         historyVue,
         newsVue
@@ -92,7 +97,7 @@ responsiveWidth: 800,
 </script>
 <style scoped>
 @media screen and (max-width: 800px) {
-    .section:nth-child(5){
+    .section:nth-child(5), .section:nth-child(4), .section:nth-child(3), .section:nth-child(2), .section:nth-child(1), .section:nth-child(6), .section:nth-child(7){
         display:none!important;
     }
 }

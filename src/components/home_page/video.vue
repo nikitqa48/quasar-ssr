@@ -22,7 +22,7 @@
           <!-- <source src="video/video_background1.webm" media="(min-width: 800px)" type="video/webm"> -->
         </video>
       </div>
-      <form-vue/>
+      <form-vue class="form"/>
          <!-- <div class="arrow_slide">
                        <q-btn  label="Стать инвестором" color="primary" no-caps square style="padding-left:3vw; padding-right:3vw; font-size:1.4em;"   	/>
 </div> -->
@@ -33,6 +33,9 @@
 <style scoped>
 @media screen and (max-width: 800px) {
   .presentation{
+    display: none!important;
+  }
+  .form{
     display: none!important;
   }
   .risk_container{
@@ -99,8 +102,7 @@ margin-left: 1.3vw;
 }
 .arrow_slide{
   position: absolute;
-  width:100%;
-  margin-left: 40%;
+  
     top: 0;
     margin-top: 83vh;
 }

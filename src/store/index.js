@@ -6,6 +6,7 @@ import square from './territory'
 import support from './support'
 import contacts from './conctact'
 import project from './project'
+import event from './event'
 
 Vue.use(Vuex)
 
@@ -25,6 +26,7 @@ export default function (/* { ssrContext } */) {
       lastNews,
       square,
       support,
+      event,
       contacts,
       project
     },

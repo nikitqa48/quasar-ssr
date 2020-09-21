@@ -404,7 +404,6 @@ window.open("data:application/pdf;base64, " + base64EncodedPDF);
 }
 .arrow_slide{
   position: absolute;
-  width:100%;
   margin-left: 40%;
   top: 0;
   margin-top: 83vh;

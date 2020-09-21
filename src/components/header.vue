@@ -44,17 +44,20 @@
   </router-link>
       <q-space/>
 <div class="space">
-            <q-item   clickable v-ripple to ='/region' stretch flat >Регион </q-item>
-              <q-item   clickable v-ripple to ='/square' stretch flat >Площадки </q-item>
+  
+            <q-item   clickable v-ripple to ='/region'  class='button' stretch flat >Регион </q-item>
+              <q-item   class='button' clickable v-ripple to ='/square' stretch flat >Площадки </q-item>
            
-              <q-item   clickable v-ripple="{color:'blue-6'}" to ='/support'   >Господдержка </q-item>
+              <q-item   class='button'  clickable v-ripple="{color:'blue-6'}" to ='/support'   >Господдержка </q-item>
     
-             <q-item  clickable v-ripple to ='/project' stretch flat >Проекты </q-item>
+             <q-item   class='button' clickable v-ripple to ='/project' stretch flat >Проекты </q-item>
            
-            <q-item  clickable v-ripple to ='/news' stretch flat >Новости </q-item>
-                  <q-item   clickable v-ripple to ='/documents' stretch flat >Документы </q-item>
+            <q-item  class='button' clickable v-ripple to ='/news' stretch flat >Новости </q-item>
+             <q-item  class='button'  clickable v-ripple to ='/event' stretch flat >События </q-item>
+                  <q-item   class='button'  clickable v-ripple to ='/documents' stretch flat >Документы </q-item>
         
-                            <q-item   clickable v-ripple to ='/contacts' stretch flat >Контакты </q-item>
+        
+                            <q-item  class='button'  clickable v-ripple to ='/contacts' stretch flat >Контакты </q-item>
 
       <!-- <q-btn
     
@@ -178,6 +181,12 @@ export default {
   /* position: fixed; */
   width: 100%;
   z-index: 100;
+ 
+}
+.button{
+  display:flex;
+  height: 100%;
+  align-items:center;
 }
 .mobile{
   
@@ -220,7 +229,15 @@ export default {
 }
 .space{
   display: flex;
+  height: 100%;
+  align-items: center;
   justify-content: space-between;
+}
+.space a{
+  height: 100%;
+  display: flex;
+  letter-spacing:0.05vw;
+  align-items: center;
 }
 .header_button{
   font-size: 0.8vw;
@@ -232,6 +249,7 @@ export default {
 .q-tabs{
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between!important;
 }
 .investition{
@@ -280,6 +298,7 @@ body a{
 
 .q-router-link--active{
   color: #52A4DF;
-  border-bottom: 2px solid #52A4DF;
+  font-weight: 600;
+  border-bottom: 3px solid #52A4DF;
 }
 </style>

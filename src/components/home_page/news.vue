@@ -1,7 +1,7 @@
 <template>
                   <div class="news">
                      <!-- <div class="overlay"></div> -->
-                        <q-img src="image/OEZ.png" native-context-menu style ='width:100%; filter: blur(2px);' class='absolute'  @load='disable'>
+                        <q-img src="image/OEZ.png" native-context-menu style ='width:100%; filter: blur(2px);' class='absolute '  @load='disable'>
     
         </q-img>     
                      <div class="opacity"></div>

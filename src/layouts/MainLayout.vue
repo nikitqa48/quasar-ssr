@@ -78,7 +78,11 @@ export default {
 * {
   font-family: "Montserrat";
 }
-
+ @media screen and (max-width: 900px) {
+   .deckstop{
+     display:none!important;
+   }
+ }
 .deckstop{
   color:white;
   background: #727272;

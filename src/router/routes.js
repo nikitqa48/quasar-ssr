@@ -6,6 +6,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '',
+        name:'home',
        component: () => import('pages/homePage.vue'),
        },
       {
@@ -74,13 +75,16 @@ const routes = [
 
         ]
       },
-      {
-        path:'/event',
-        component:() =>import('pages/event.vue'),
-        name:'event'
-      }
     ]
   },
+  {
+    path:'/event',
+    name:'event',
+    component:()=> import('pages/event.vue')
+  },
+  // {
+  //   path:'/event'
+  // },
   // Always leave this as last one,
   // but you can also remove it
   {

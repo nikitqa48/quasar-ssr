@@ -1,317 +1,483 @@
 <template>
-  <q-page padding class="background">
-  <q-card-section class ='description'>
-    <p class="text-white" style="font-size:2em; font-weight:600; "> Уважаемые коллеги и партнеры</p>
-    <p class="text-white"> Агенство инвестиционного развития Липецкой области и компания Knight Frank приглашают Вас принять участие в первой логистической конференции "Липецкая область- верное направление!"</p>
-    <p class='text-white'> Спикерами и участниками мероприятия станут представители власти, ведущие производители товаров, логистические операторы, крупнейшие девелоперы, ритейлеры и дитрибьюторы, которые в режиме живого диалога обсудят точки роста и возможности развития рынка</p>
-    <p class= 'small text-white' style='font-size:0.7em;'>Место проведения:Липецкая область <br> территория особой экономической зоны  "Липецк" административно-деловой центр </p>
-  </q-card-section>
-    <q-card-section class ='description'>
-    <p class="text-h3 text-white" style="font-size:2em; font-weight:600;"> Программа </p>
-    <p class="text-white"> 11 <sup> 30 </sup>- 11 <sup> 00 </sup> <span class='span'> Регистрация на мероприятие. Приветственный кофе </span></p>
-     <p class="text-white"> 11 <sup> 00 </sup>- 11 <sup> 15 </sup> <span class='span'> Визитная карточка Липецкой области  </span></p>
-          <p class="text-white"> 11 <sup> 15 </sup>- 11 <sup> 30 </sup> <span class='span'> Приветственное слово  </span></p>
-             <p class="text-white"> 11 <sup> 30 </sup>- 11 <sup> 45 </sup> <span class='span'>Векторы развития логистического потенциала региона  </span> </p>
-                 <p class="text-white"> 11 <sup> 45 </sup>- 11 <sup> 55 </sup> <span class='span'>Инвестиционная карта Липецкой области   </span></p>
-                            <p class="text-white"> 11 <sup> 55 </sup>- 12 <sup> 05 </sup> <span class='span'>Действующие инструменты развития и поддержки бизнеса  </span></p>
-         <p class="text-white"> 12 <sup> 05 </sup>- 12 <sup> 15 </sup> <span class='span'>Время для дискуссии</span></p>
-            <p class="text-white"> 12 <sup> 15 </sup>- 12 <sup> 45 </sup> <span class='span'>Кофе-брейк</span></p>
-              <p class="text-white"> 12 <sup> 45 </sup>- 13 <sup> 30 </sup> <span class='span'>Практикум. Оценка потребности в складской недвижимости со стороны бизнеса:<br></span></p>
-                <p class="text-white" ><span style='opacity:0'> 12 <sup> 45 </sup>- 13 <sup> 30 </sup></span> <span class='span'>Компания «ИнтерГрупп» успешный опыт строительства складских площадей в Липецкой области</span></p>
-      <p class="text-white" ><span style='opacity:0'> 12 <sup> 45 </sup>- 13 <sup> 30 </sup></span> <span class='span'> АО Фирма "Август" ключевые аргументы в пользу выбора площадки</span></p>
-      <p class="text-white"> 13 <sup> 00 </sup>- 13 <sup> 30 </sup> <span class='span'>Время для дискуссии</span></p>
-  </q-card-section>
-        <q-card-section class="form_container">
-    <p class="text-h3 text-white" style="font-size:2em; font-weight:600;  align-self:center;"> Регистрация </p>
-  <q-card-section class="q-pt-none">
+<div>
+<div class="main">
+ <div class='header'  >
+
+        <q-tabs
+        indicator-color="blue-7"
+        class='q-tabs my-tabs'
+        active-color='blue
+'
+     
+  <router-link to = '/' style="align-self:center;">
+  <button class="btn" > 
+    <div class="img">
+    <img src="icons/logotype-teal.png">
+    </div>
+     <div style="display:flex;flex-direction:column; padding-left:6vw;">
+       <span class="investition"> Инвестиционный портал  </span> <span class="lipetsk">Липецкой области </span></div>
+       </button>
+  </router-link>
+      <q-space/>
+<div class="space">
+          <q-btn  no-caps class='button' v-scroll="scrollHandler" clickable v-ripple="{color:'blue-6'}"   @click='description({behavior: "smooth"})' >Описание </q-btn >
+                <q-btn  no-caps class='button'  clickable v-ripple="{color:'blue-6'}"   @click='team({behavior: "smooth"})' >Участники </q-btn >
+           
+              <q-btn  no-caps class='button'  clickable v-ripple="{color:'blue-6'}"  @click='scroll({behavior: "smooth"})' >Трансляция </q-btn >
     
-         <q-form class='form'>
-           <div class="wrap">
-              <div class="column">
-           <span class="text-white" style="opacity:.8"><b>Фамилия *</b></span>
-          
-          <q-input class ='input'  filled v-model="second_name" dark lazy-rules placeholder="Введите фамилию"
-        :rules="[ val => val && val.length > 0 || 'Пожалуйста, введите вашу Фамилию']" style="width:100%;" />
-        </div>
-        <div class="column">
-       <span class="text-white " style="opacity:.8"> <b>Имя *</b> </span>
-       
-          <q-input class ='input' dark filled v-model="name"
-          lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Пожалуйста, введите ваше Имя']"
-           placeholder="Введите имя" style="width:100%; opacity:.8" />
-       </div>
-          </div>
-                     <div class="wrap">
-              <div class="column">
-           <span class="text-white" style="opacity:.8"><b>Профиль деятельности</b></span>
-          
-          <q-input class ='input'  filled v-model="profile" dark  placeholder="Ваш профиль деятельности"
-      style="width:100%; opacity:.8" />
-        </div>
-        <div class="column">
-            <span class="text-white" style="opacity:.8"> <b>Телефон</b></span>
-          <q-input class ='input' type="number" filled v-model="phone" placeholder="Введите телефон" style="width:100%; opacity:.8" dark />
-          </div>
-          </div>
-          <div class="wrap">
-                 <div class="column">
-           <span class="text-white" style="opacity:.8"><b>Организация </b></span>
-          
-          <q-input class ='input'  filled v-model="organisation" dark  placeholder="Введите название"
-      style="width:100%; opacity:.8" />
-        </div>
-          <div class="column">
-          <span class="text-white" style="opacity:.8"> <b>Почта * </b> </span>
-          <q-input class ='input'   dark lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Пожалуйста, введите вашу почту']"
-         filled v-model="email" type='email' placeholder="Введите email*" style="width:100%; opacity:.8" />
-          </div>
-          </div>
-          <div class="wrap_comment">
-            <div class="column">
-              <span class="text-white" style="opacity:.8"> <b>Ваша должность </b> </span>
-             <q-input
-             dark 
-             style="width:100%; margin-top:2%;"
-      v-model="role"
-      filled
+             <q-btn  no-caps class='button'  clickable v-ripple="{color:'blue-6'}"   @click='winners({behavior: "smooth"})' >Награждение </q-btn >
 
 
-    />
-            </div>
-            <div class="column" style="justify-content:flex-end;">
-    <span style="opacity:.8; color:white; font-size:0.8vw;"> 
-      Нужен трансфер из города Липецка?
-      <q-checkbox v-model="transfer" dark />
-    </span>
-            </div>
-          </div>
-          
-         </q-form>
-                <q-card-actions align="center" class="text-white">
-          <q-btn label="Регистрация" rounded type ='submit'v-close-popup  no-caps color="cyan-6" @click="onSubmit" style="width:20%; margin-top:3%;"  />
-        </q-card-actions>
+
+</div>
+
  
-        </q-card-section>
-    
-        </q-card-section>
-    
 
-  </q-page>
+</q-tabs>
+        </div>
+  <div class='center' style="margin-top:15%;">
+  <h5 class="text text-white" style='margin-bottom:10%;' >
+    <!-- <p style="text-align:center; padding-bottom:2%; font-size:2rem;">Конференция: </p>  -->
+    {{event[0].title}}
+  </h5>
+   <p class='text-white' style='text-align:center; font-size:1.5rem; margin-bottom:10%;'>  Событие состоится {{date.date}}.  В {{date.time}} по МСК </p>
+  <q-btn label="смотреть трансляцию" color="teal-4" no-caps size="1vw" style='width:50%; align-self:center; ' @click='scroll({behavior: "smooth"})'/> 
+       
+         </div>
+        
+           <q-btn color="white" flat icon="keyboard_backspace"  label="Вернуться на портал" no-caps  style="margin-top:5%;"  :to="{name:'home'}" />
+          
+</div>
+<div class="description" ref='description'>
+  <p class="text-description text-center text-teal-4"   >   
+     <q-icon left name="import_contacts" />Описание мероприятия 
+     </p>
+  <div class="row" style='justify-content:center;'>
+    <div class="text-desc" v-html="event[0].description"> {{event[0].description}}</div>
+<div class='image'>
+  
+  <q-img src='image/lathe.jpg'/>
+   </div>
+    </div>
+    
+  </div>
+  <div class = 'team' ref='team'>
+  <p class="team-description text-center text-white"   >   
+     <q-icon left name="group" />Участники
+     </p>
+           <!-- <div class="buttons">
+            
+           
+</div> -->
+<div class='stroke' style='flex-wrap:nowrap;'>
+      <q-btn icon = 'arrow_back'   @click.prevent="slidePrev()" color='teal-4' class='left' />
+         <hooper :settings="hooperSettings" class="slider" ref="carousel">
+      <slide v-for="(slide, indx) in event[0].partner" :key="indx" :index="indx">
+<div class = 'card'>
+  <div class='card_container'>
+<div class = 'logo'>
+  <div class='logo_image'>
+       <img :src='slide.logo' style='width:100%; '/>
+       </div>
+       <!-- <div class='border'>
+         </div> -->
+</div>
+<div class='card_description'>
+        {{ slide.description }}
+        </div>
+</div>
+</div>
+      </slide>
+
+     </hooper>
+      <q-btn @click.prevent="slideNext()" icon = 'arrow_forward' color='teal-4' class='right' />
+     </div>
+    </div>
+  <div class='translation' ref='video' id='video'>
+      
+     <p class="team-description text-center text-teal-4">   
+     <q-icon left name="mic" />Трансляция
+     </p>
+
+      <div class="video" id='video'>
+    <div class="q-video"> 
+    <iframe
+        :src="event[0].translation"
+        frameborder="0"
+        allowfullscreen
+      /> 
+    </div>
+  </div>
+    </div>
+    <div class='winners' ref='winners'> 
+         <p class="team-description text-center text-white"   >   
+     <q-icon left name="emoji_events" />Награждение
+     </p>
+     <div class='winners_container bg-teal-4'>
+       <div class='logotype' >
+         <img src='icons/teal-logo.svg' style="width:100%;">
+         </div>
+         <p class='logo-text'> Скоро тут будет список награжденных. Следите за обновлениями</p>
+       </div>
+      </div> 
+      <div class='footer bg-teal-4 text-white'>
+         <p class="footer-header text-center text-white">   
+     <q-icon left name="message" />Контакты
+     </p>
+     <div class='stroka'>
+       <div class ='row'style='font-size:1rem; margin-top:2%;'> <q-icon left name="location_on" /> 398050, г. Липецк, пл. Соборная, 1</div>
+       <div class ='row'style='font-size:1rem; margin-top:2%;'> <q-icon left name="call" /> +7(4742) 27-55-83</div>
+         <div class ='row'style='font-size:1rem; margin-top:2%;'> <q-icon left name="email" />diirs@admlr.lipetsk.ru</div>
+        </div>
+        </div>
+  </div>
 </template>
 
 <script>
-export default {
-  // name: 'PageName',
-  data(){
-    return{
-      transfer:false,
-      second_name:null,
-      profile:null,
-      name:null,
-      phone:null,
-      role:null,
-      organisation:null,
-      info:null,
-      email:null,
+import { Hooper } from 'hooper'
+import {Slide } from 'hooper'
+import 'hooper/dist/hooper.css';
+import Vue from "vue";
 
+
+Vue.use(Hooper, Slide)
+export default {
+ preFetch({store}){
+     return store.dispatch('event/getEvent')
+ },
+ components:{
+
+   Hooper, 
+   Slide,
+
+
+ },   
+   methods:{
+      slidePrev() {
+      this.$refs.carousel.slidePrev();
+    },
+
+        slideNext() {
+      this.$refs.carousel.slideNext();
+    },
+        updateCarousel(payload) {
+      this.myCarouselData = payload.currentSlide;
+    },
+    scroll(options){
+    let el = this.$refs.video
+    el.scrollIntoView(options)
+    },
+    description(options){
+   let el = this.$refs.description
+    el.scrollIntoView(options)
+    },
+    team(options){
+         let el = this.$refs.team
+    el.scrollIntoView(options)
+    },
+    winners(options){
+    let el = this.$refs.winners
+    el.scrollIntoView(options)
     }
   },
-  methods:{
-      onSubmit () {
-      let data2 ={name:this.name,
-                  second_name:this.second_name,
-                  profile:this.profile,
-                  email:this.email,
-                  organisation:this.organisation,
-                  phone:this.phone,
-                  role:this.role,
-                  transfer:this.transfer
-                  }
-      let url = 'https://backendinvest.admlr.lipetsk.ru/event/'
-      let data = JSON.stringify(data2)
-    fetch(url,{
-      method:'POST',
-      body:data,
-      headers:{'content-type':'application/json'}
-    }).then(function(response){
-      return response.json()
-    }).then(function(data){
-      alert('Ожидайте')
-    })
-    },
+ data(){
+   return{
+      event:{},
+      partner:'',
+      
+          hooperSettings: {
+                    infiniteScroll: true,
+                    // centerMode: true,
+                    autoPlay: false,
+                    playSpeed: 3500,
+                    breakpoints: {
+                        2400: { // 2400px ~
+                            itemsToShow: 3
+                        },
+                        1800: { // 1800px ~ 2400px
+                            itemsToShow: 3
+                        },
+                        1500: { // 1500px ~ 1800px
+                            itemsToShow: 3
+                        },
+                        1100: { // 1100px ~ 1500px
+                            itemsToShow: 3
+                        },
+                        600: { // 600px ~ 1100px
+                            itemsToShow: 3
+                        },
+                        0: { // 0px ~ 600px
+                            itemsToShow: 3
+                        }
+                    }
+                }   
+    }
+ },
+ computed:{
+   computedEvent(){
+     return this.$store.state.event.items
+    }
+   },
+     watch:{
+       carouselData () {
+      this.$refs.carousel.slideTo(this.carouselData);
+    }
+  },  
+  computed:{
+    date(){
+      let string = this.event[0].date.split('T')[0]
+      let string1 = string.split('-')
+      let string2 = string1.reverse()
+      let string3 = string2.join('-')
+      let time = this.event[0].date.split('T')[1] 
+      let time2 = time.split(':')
+      let time3 = []
+      time3.push(time2[0], time2[1])
+      let time4 = time3.join(':')
+      let datetime = {
+        date:string3,
+        time:time4
+      }
+     return datetime
+      
+    }
   },
-
-  mounted(){
-    return this.$emit('disableLoading', false)
-  },
-  destroyed(){
-    return this.$emit('disableLoading', true)
-  }
-}
+   created(){
+    this.event = this.$store.state.event.items
+   }
+ }
 </script>
 <style scoped>
-.background{
-  background: linear-gradient(180deg, #202F40 0%, #0D0D1C 100%)
+.investition{
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  line-height: 100%;
+  letter-spacing: 0.03vw;
+  font-weight: 600;
 }
-@media screen and (max-width: 800px) {
-  .fixed{
-    display: none!important;
-  }
-}
-.style{
+.footer{
   display:flex;
-  flex-direction: column;
-  height:75%;
-  width: 50%;
-  background:rgba(0, 0, 0, .9);
+  flex-direction:column;
+  align-items:center;
+  height:30vh;
 }
-.card{
+.stroka{
+  display:flex;
+  flex-direction:column;
+}
+.footer-header{
+  padding-top:2%;
+  font-size:2rem;
+}
+.btn{
   display: flex;
-  width:100%;
-
-  justify-content: space-between;
-}
-.comment{
-    color: white;
-  align-self: flex-start;
-  width:48%;
-  font-size: 0.7vw;
-}
-.span{
-  margin-left:2%;
-}
-.wrap{
-    display: flex;
-  flex-direction: row;
-  margin-top: 2%;
-  flex-wrap: nowrap;
-  width: 100%;
-  justify-content: space-between; 
-}
-.wrap_comment{
-      display: flex;
-  flex-direction: row;
-
-  flex-wrap: nowrap;
-  width: 100%;
-  justify-content: space-between; 
-}
-.column{
-  width:48%;
-}
-.description{
-  width:68%;
-  margin:auto;
-}
-.fixed{
-  right: 0;
-  border:none;
-  height: 6vh;
-  width:14vw;
-  border-radius: 150px;
-  margin-right: 6%;
-  font-size: 0.8vw;
-  color:white;
-  background: #2CCCD8;
+  align-self: flex-end;
+  background:none;
+  text-align: left;
   outline: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  bottom: 5%;
+  border:none;
   cursor: pointer;
-  z-index: 10;
-}
-.fond{
-  padding-top: 1.5%;
-  margin: 0;
   color:white;
-  
-  font-size: 2.3vw;
-}
-.absolute:hover{
-  /* background: rgba(255, 255, 255, 0.3); */
+  align-items: center;
 }
 .img{
-  width:1.2vw;
-  margin-right: 0.5vw;
+  padding-right: 0.2vw;
+  margin-right: 0.2vw;
+  width: 4.6%;
+  height:150%;
+  position: absolute;
 }
-.img img{
-  width:100%;
-}
-.form_inside{
-  margin-top: 5%;
-  height: 60%;
-  display: flex;
-  flex-direction: column;
-}
-
-.border_bottom{
-  margin-right: 150%;
-  width:50%;
-}
-.inside{
-  display: flex;
-}
-.left-top{
-  padding-top: 3%;
-  margin: 0;
+.header{
+  background:none;
+  height:7vh!important;
   color:white;
-  font-size: 2.3vw;
+  display:flex;
+  position:absolute;
+  top:0;
+  width:80%;
+  border-bottom:1px solid white;
+}
+.space{
+  display:flex;
+  align-items:center;
+  flex-wrap:nowrap;
+}
+.video{
+  height:50vh;
+}
+.logotype{
+  width:10vw;
+}
+.logo-text{
+  font-size:1.5rem;
+  text-align:center;
+  width:50%;
+  color:white;
+}
+.winners{
+  display:flex;
+  flex-direction:column;
+  min-height:70vh;
+  padding-bottom: 7vh;
+  background-repeat:no-repeat;
+  background:url('/image/bg4.png');
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.winners_container{
+  width:55%;
+  margin:auto;
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  align-items:center;
+  height:55vh;
+  opacity: .7;
+}
+.q-video{
+  width:50%;
+  height:100%;
+  margin:auto;
+}
+.translation{
+  min-height:70vh;
+     background:url('/image/bg2.png');
+       background-repeat:no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.card_description{
+  margin-top:5%;
+  font-size:0.8rem;
+  overflow:hidden;
+  letter-spacing:0.05rem;
+}
+.left{
+  margin-left:13%;
+}
+.right{
+  margin-right:13%;
+}
+.card{
+  height:100%;
+  width:95%;
+   border-radius: 0.35rem 0.35rem 0.35rem 0.35rem;
+  background:white;
+}
+.stroke{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  flex-wrap:nowrap;
+}
+.card_container{
+  width:90%;
+  margin:auto;
+  height:95%;
+}
+/* .logo_image{
+  width:50%;
+} */
+.logo{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  height:30%;
+  border-bottom: 0.5px solid rgba(0,0,0,0.5);
 }
 
-.flex{
-  align-items: center;
-  justify-content: space-between;
-}
-.input{
 
-  margin-top: 3%;
-  opacity: .8;
-  width:47%;
+.text-desc{
+  padding-left:1%;
+  font-size:1rem;
+  letter-spacing:0.05rem;
+  padding-right:1%;
 }
-.input_right{
-  margin-top: 3%;
-  margin-left:10%;
-  opacity: .8;
-  width:47%;
+.text-description{
+  font-size:1.5rem;
+  margin-top:2%;
+  margin-bottom:2%;
+  text-transform:uppercase;
 }
-.wrapp{
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-.form_container{
-  height: 90%;
-  width:70%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
+.slider{
+  height:50vh;
+  width:65%;
+  margin:auto;
 
-.one{ 
-  margin-bottom: 10%;
+  outline:none;
+}
+.hooper{
 
 }
-.fixed-center{
-  z-index: 10;
+
+.my-card{
+ 
+  width:95%;
+  min-height:100%;
+}
+.main{
+  min-height: 100vh;
   display:flex;
   flex-direction: column;
-  height:75%;
-  width: 50%;
-  background:rgba(0, 0, 0, .9);
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* filter: blur(8px); */
+  backdrop-filter: blur(10px);
+  background-position: 50% 50%;
+  background: url('/image/bg1.png');
+      -moz-background-size: cover; 
+    -webkit-background-size: cover; 
+    -o-background-size: cover; 
 }
-*{
-
-  font-family: 'Montserrat';
+.center{
+  display:flex;
+  flex-direction: column;
 }
+.team{
+  min-height:70vh;
+  display:flex;
+  flex-direction:column;
+    background-repeat:no-repeat;
+   background:url('/image/bg3.png');
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.main h5{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+.description{
+  min-height: 43vh;
+  padding-bottom:7vh;
+  display: flex;
+  flex-direction: column;
+    background-repeat:no-repeat;
+  background:url('/image/bg2.png');
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.team-description{
+  font-size:1.5rem;
+  padding-top:2%;
+  padding-bottom:0!important;
+  text-transform:uppercase;
+}
+.row{
+  width:100%;
+  height:100%;
+  display: flex;
+  flex-wrap: nowrap;
 
-.form_button{
-  position: absolute;
-  top:0;
-  right:2%;
-  justify-content: flex-end;
-  align-items: flex-end;
+}
+.text-desc{
+  width:30%;
+  height: 100%;
+ 
+}
+.image{
+  width:30%;
 }
 </style>

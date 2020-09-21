@@ -2,7 +2,7 @@
   "name": "invest",
   "version": "0.0.1",
   "description": "Инвестируй в Липецкую область",
-  "productName": "Инвест Портал",
+  "productName": "Инвестиционный портал Липецкой области",
   "author": "nikitqa48 <Princen1k@yandex.ru>",
   "private": true,
   "scripts": {
