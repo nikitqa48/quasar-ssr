@@ -6,7 +6,6 @@
   "author": "nikitqa48 <Princen1k@yandex.ru>",
   "private": true,
   "scripts": {
- 
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {

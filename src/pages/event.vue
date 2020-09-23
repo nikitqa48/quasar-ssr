@@ -6,8 +6,7 @@
         <q-tabs
         indicator-color="blue-7"
         class='q-tabs my-tabs'
-        active-color='blue
-'
+        active-color='blue'
      
   <router-link to = '/' style="align-self:center;">
   <button class="btn" > 
@@ -73,7 +72,11 @@
       <q-btn icon = 'arrow_back'   @click.prevent="slidePrev()" color='teal-4' class='left' />
          <hooper :settings="hooperSettings" class="slider" ref="carousel">
       <slide v-for="(slide, indx) in event[0].partner" :key="indx" :index="indx">
+
 <div class = 'card'>
+     <q-scroll-area
+      :thumb-style="thumbStyle"
+      style="height:100%; max-width: 100%;">
   <div class='card_container'>
 <div class = 'logo'>
   <div class='logo_image'>
@@ -82,10 +85,13 @@
        <!-- <div class='border'>
          </div> -->
 </div>
+      
 <div class='card_description'>
         {{ slide.description }}
         </div>
-</div>
+        
+        </div>
+   </q-scroll-area>     
 </div>
       </slide>
 
@@ -120,6 +126,29 @@
          <p class='logo-text'> Скоро тут будет список награжденных. Следите за обновлениями</p>
        </div>
       </div> 
+      <div class = 'star'>
+         <p class="team-description text-center text-teal-4">   
+     <q-icon left name="mic" />Поздравления
+     </p>
+     <div class='stroke' style='flex-wrap:nowrap;'>
+      <q-btn icon = 'arrow_back'   @click.prevent="slidePrev1()" color='teal-4' class='left' />
+      
+              <hooper :settings="hooperSettingsVideo" class="slider" ref="carousel1" style="display:flex; flex-direction:column;">
+     
+      <slide v-for="(slide, indx) in event[0].video" :key="indx" :index="indx">
+    <div class="q-video" style='width:85%;'> 
+    <iframe
+        :src="slide.video"
+        frameborder="0"
+        allowfullscreen
+      /> 
+    </div>
+      </slide>
+
+     </hooper>
+           <q-btn @click.prevent="slideNext1()" icon = 'arrow_forward' color='teal-4' class='right' />
+     </div>
+        </div>
       <div class='footer bg-teal-4 text-white'>
          <p class="footer-header text-center text-white">   
      <q-icon left name="message" />Контакты
@@ -160,6 +189,13 @@ export default {
         slideNext() {
       this.$refs.carousel.slideNext();
     },
+          slidePrev1() {
+      this.$refs.carousel1.slidePrev();
+    },
+
+        slideNext1() {
+      this.$refs.carousel1.slideNext();
+    },
         updateCarousel(payload) {
       this.myCarouselData = payload.currentSlide;
     },
@@ -182,13 +218,20 @@ export default {
   },
  data(){
    return{
-      event:{},
+      // event:{},
       partner:'',
-      
+              thumbStyle: {
+        right: '4px',
+        borderRadius: '5px',
+        backgroundColor: '#027be3',
+        width: '5px',
+        opacity: 0.75
+      },
           hooperSettings: {
-                    infiniteScroll: true,
+                    infiniteScroll: false,
                     // centerMode: true,
                     autoPlay: false,
+                    wheelControl:false,
                     playSpeed: 3500,
                     breakpoints: {
                         2400: { // 2400px ~
@@ -208,6 +251,33 @@ export default {
                         },
                         0: { // 0px ~ 600px
                             itemsToShow: 3
+                        }
+                    }
+                },
+                          hooperSettingsVideo: {
+                    infiniteScroll: false,
+                    centerMode: true,
+                    wheelControl:false,
+                    autoPlay: false,
+                    playSpeed: 3500,
+                    breakpoints: {
+                        2400: { // 2400px ~
+                            itemsToShow: 2
+                        },
+                        1800: { // 1800px ~ 2400px
+                            itemsToShow: 2
+                        },
+                        1500: { // 1500px ~ 1800px
+                            itemsToShow: 2
+                        },
+                        1100: { // 1100px ~ 1500px
+                            itemsToShow: 2
+                        },
+                        600: { // 600px ~ 1100px
+                            itemsToShow: 2
+                        },
+                        0: { // 0px ~ 600px
+                            itemsToShow: 2
                         }
                     }
                 }   
@@ -254,6 +324,13 @@ export default {
   line-height: 100%;
   letter-spacing: 0.03vw;
   font-weight: 600;
+}
+.star{
+  min-height:70vh;
+  background-repeat:no-repeat;
+  background:url('/image/bg2.png');
+  background-size: cover;
+  background-position: 50% 50%;
 }
 .footer{
   display:flex;
@@ -375,15 +452,15 @@ export default {
   margin:auto;
   height:95%;
 }
-/* .logo_image{
-  width:50%;
-} */
+.logo_image{
+  width:8rem;
+}
 .logo{
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  height:30%;
+  height:15vh;
   border-bottom: 0.5px solid rgba(0,0,0,0.5);
 }
 

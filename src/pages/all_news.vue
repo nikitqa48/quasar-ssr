@@ -178,7 +178,6 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  border:1px solid red;
 }
 .top h5 {
     margin-top: 1.2vh;

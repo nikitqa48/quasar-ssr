@@ -14,7 +14,9 @@
                 <h5>ГЕОГРАФИЧЕСКОЕ ПОЛОЖЕНИЕ: БЛИЗОСТЬ К РЫНКАМ </h5>
       <div class='row' style='height:100%;'>
       <div class="image" style="width:100%; height:100%;">
+        <div style="width:100%;">
       <q-img src="image/lipetskworld.png"/>
+      </div>
       </div>
 
       </div>
@@ -24,7 +26,9 @@
         <h5>ГЕОГРАФИЧЕСКОЕ ПОЛОЖЕНИЕ: БЛИЗОСТЬ К РЫНКАМ </h5>
       <div class='row'>
       <div class="image">
+        <div style="width:100%;">
       <q-img src="image/jd.png"/>
+      </div>
       </div>
       <div class="column" style="flex-wrap:nowrap; height:100%; width:25%; padding-top:10%;">
     <div class="text">  
@@ -44,7 +48,9 @@
         <h5>ГЕОГРАФИЧЕСКОЕ ПОЛОЖЕНИЕ: БЛИЗОСТЬ К РЫНКАМ </h5>
       <div class='row'>
       <div class="image">
+        <div style="width:100%;">
       <q-img src="image/auto-road.png"/>
+      </div>
       </div>
       <div class="column" style="flex-wrap:nowrap; height:100%; width:25%; justify-content:center;">
       <div class="row" style="flex-wrap:nowrap;" >
@@ -69,15 +75,14 @@
         </div>
       </div>
       </q-carousel-slide>
-
-
       <q-carousel-slide name="fly" class="container column">
                         <h5>ГЕОГРАФИЧЕСКОЕ ПОЛОЖЕНИЕ: БЛИЗОСТЬ К РЫНКАМ </h5>
       <div class='row' style='height:100%;'>
+        <div style="width:100%;">
       <div class="image" style="width:100%; ">
       <q-img src="image/lipetskavia.png"/>
       </div>
-
+      </div>
       </div>
 
         </q-carousel-slide>
