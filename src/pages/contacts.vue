@@ -18,7 +18,7 @@
       
           active-color="light-blue-14"
           indicator-color="light-blue-14"
-          align="left"
+          align="center"
           
         >
           <q-tab name="Руководство"   no-caps >  <span class='tab'> Руководство </span> </q-tab>
@@ -34,13 +34,13 @@
     <div class="border"> </div>
     <div class="parent">
     <div class="image">
-          <q-img
+          <!-- <q-img
       :src="item.image"
       spinner-color="white"
  
-    />
+    /> -->
  
-        <!-- <img :src="item.image"> -->
+        <img :src="item.image">
     </div>
     <div class="mobile">
      <div class="inside_parent">
@@ -110,14 +110,7 @@
             {{item.phone}}
         </span>
     </div>
-             <!-- <div class="inside_parent">
-        <span class="fio">
-            Должность
-        </span>
-        <span class="name">
-            {{item.position}}
-        </span>
-    </div> -->
+
                  <div class="inside_parent">
         <span class="fio">
             E-mail
@@ -133,10 +126,7 @@
           
           </q-tab-panel>
 
-          <q-tab-panel name="movies"  class="text-black">
-            <div class="text-h6">Movies</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </q-tab-panel>
+ 
         </q-tab-panels>
     
 
@@ -323,7 +313,7 @@
 }
 .fio{
     font-size: 1vw;
-    color:#56718A;
+    color:rgba(255,255,255, 0.6);
 }
 .name{
     color:white;
@@ -428,7 +418,7 @@ body a{
  
 }
 .items_wrap{
-background:rgba(35, 46, 75, 0.7);
+background:rgba(0, 0, 0, 0.6);
 padding-bottom: 2vh;
 margin-top: 1vh;
 margin-bottom: 0.5vh;
@@ -504,7 +494,11 @@ margin-bottom: 0.5vh;
 }
 .wrapper {
   width: 100%;
-    background: #3A4566;;
+   background:url('/image/bg2.png');
+  background-position:50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   display: flex;
 }
 .left_content {
@@ -516,6 +510,7 @@ margin-bottom: 0.5vh;
   text-align: right;
 }
 .container {
+  
   display: flex;
   flex-direction: column;
   width: 83%;
@@ -523,9 +518,11 @@ margin-bottom: 0.5vh;
   color: white;
 }
 .container h4{
-
+    color: #7A7E7E;
     font-size: 2.25vw;
+
     letter-spacing: 0.1vw;
+    align-self:center;
     margin-bottom: 4vh;
     font-weight: 600;
 }
@@ -546,7 +543,7 @@ margin-bottom: 0.5vh;
 .q-tab{
   padding: 0;
   background: none;
-  color:white;
+  color:#7A7E7E;
 
   margin-right: 1%;
 }

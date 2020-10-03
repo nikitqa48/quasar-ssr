@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class='news'>
   <router-view @disableLoading='disableLoading'/>
   </div>
 </template>
@@ -20,3 +20,12 @@ export default {
   }
 }
 </script>
+<style scoped>
+.news{
+      /* background:url('/image/bg2.png');
+  background-position:50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; */
+}
+</style>

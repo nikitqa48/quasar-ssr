@@ -2,7 +2,7 @@
     <q-page class="news">
 
     <q-scroll-area
-      style="height:93vh; max-width: 100%;"
+      style="height:90vh; max-width: 100%;"
     :thumb-style="thumbStyle"
     >
 
@@ -22,8 +22,12 @@
         style="height:100%"
         spinner-color="white"
       >
-     
-        <div class="absolute-bottom text-subtitle2 text-center">
+      
+        <div class="absolute-bottom text-subtitle2 text-left">
+          <div class='text-left'>
+          {{date}}
+          </div>
+           <q-separator dark />
          {{item.title}}
          
         </div>
@@ -108,7 +112,7 @@
 }
 .image2{
   border-radius: 5px;
-  height:20vh;
+  height:35vh;
   position: relative;
   width:100%;
 }
@@ -130,7 +134,11 @@
 }
 .news{
     height: 100%;
-    background: #3A4566;
+     background:url('/image/bg2.png');
+  background-position:50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .wrapper{
@@ -143,7 +151,7 @@
 }
 .wrapper h4{
     align-self: center;
-    color:white;
+    color:rgba(0,0,0,0.6);
     font-weight: 600;
 }
 .bottom{
@@ -248,8 +256,19 @@ export default {
     },
 
     computed:{
+
         allnews(){
           return this.$store.state.lastNews.all_news
+        },
+        date(){
+          for(let i = 0; i< this.news.results.length; i++){
+         let string = this.news.results[i].publish.split('T')[0]
+         let string1 = string.split('.')
+        let string2 = string1.reverse()
+        let string3 = string2.join('.')
+        this.news.results[i].publish = string3
+         return string3
+          }
         }
     },
     created(){

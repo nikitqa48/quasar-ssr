@@ -21,10 +21,14 @@
             <logo-vue/>
             </div>
         <div class="section">
+            <LazyHydrate  ssr-only >
             <industry-vue/>
+            </LazyHydrate>
         </div>
         <div class="section">
+            <LazyHydrate when-visible>
             <news-vue :visible='visible'   @disableLoading='disableLoading' />
+            </LazyHydrate>
         </div>
             <div class ="section">
                 </div>
@@ -34,6 +38,7 @@
   </div>
 </template>
 <script>
+import LazyHydrate from 'vue-lazy-hydration';
 import gubernatorVue from 'components/home_page/gubernator.vue'
 import videoVue from 'components/home_page/video.vue'
 import mapVue from 'components/home_page/map.vue'
@@ -47,9 +52,10 @@ import newmapVue from 'components/home_page/newmap.vue'
 export default {
     props:['visible'],
     components:{
+         gubernatorVue,
+         LazyHydrate,
         // videoVue: ()=> import ('components/home_page/video.vue'),
         videoVue,
-        gubernatorVue,
         industryVue,
         logoVue,
         newmapVue,
@@ -72,6 +78,7 @@ responsiveWidth: 800,
         lockAnchors:true,
         navigation:true,
         loopBottom:true,
+        dragAndMove:true,
         navigationTooltips:['Инвестируй в Липецкую область', 'Обратиться к губернатору', 'Географическое положение', 'Истории успеха', 'Новости'],
         slidesNavPosition:'color:white',
         afterLoad:this.afterLoad,

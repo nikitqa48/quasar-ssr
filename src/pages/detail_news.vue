@@ -9,7 +9,7 @@
              
              <div class="all_news">
                  <router-link :to="{name: 'news' }" class="rout"> 
-                 <q-btn color="white" flat icon="keyboard_backspace"  label="Все новости" no-caps />
+                 <q-btn color="primary" flat icon="keyboard_backspace"  label="Все новости" no-caps />
                       </router-link>    
              </div>
                  
@@ -66,8 +66,8 @@ body a{
     width:100%;
 }
 .news{
-    min-height:100vh;
-     background: linear-gradient(180deg, #202F40 0%, #0D0D1C 100%); 
+    /* min-height:100vh;
+     background: linear-gradient(180deg, #202F40 0%, #0D0D1C 100%);  */
 }
 
 .wrapper{
@@ -79,10 +79,10 @@ body a{
     flex-direction: column;
 }
 .bottom{
-    width:70%;
+    width:45%;
     margin:0 auto;
     line-height: 130%;
-    color:white;
+    color:rgba(0,0,0,1);
     font-size: 0.8vw;
     padding-bottom: 4vh;
 }
@@ -105,12 +105,12 @@ body a{
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    width:40%;
+    width:60%;
 }
 .top h5 {
     margin-top: 1.2vh;
     margin-bottom: 2vh;
-    color:white;
+    color:black;
     font-weight: 600;
     font-size: 1.1vw;
 }

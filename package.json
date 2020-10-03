@@ -15,7 +15,8 @@
     "core-js": "^3.6.5",
     "hooper": "^0.3.4",
     "quasar": "^1.0.0",
-    "vue-fullpage.js": "^0.1.5"
+    "vue-fullpage.js": "^0.1.5",
+    "vue-lazy-hydration": "^1.0.0-beta.14"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0"

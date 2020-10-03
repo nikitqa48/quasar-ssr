@@ -3,15 +3,36 @@
  
     <div class="container">
   
-      <div class="wrap_container" style="display:flex; flex-direction:row; justify-content:space-between; align-items:flex-end; width:90%;">
+      <div class="wrap_container" style="display:flex; flex-direction:row; justify-content:space-between; align-items:flex-end; width:100%;">
       <h4>Государственная поддержка</h4>
-      <div class="presentation" style="display:flex;align-items:center; width:30%; justify-content:space-between; border:1px solid #2CCCD8; padding:1%; ">
+      <div class="presentation" style="display:flex;align-items:center; width:30%; justify-content:space-between; border:1px solid #52a4df; padding:1%; color:#5D5E62; ">
       Презентация <br> «поддержка промышленности<br>Липецкой области» 
       <button class="open" @click="open"> Открыть</button>
       </div>
 </div>
       <q-form @submit="onSubmit" class="blue_container">
+        <div class="form_wrapper">
+          
+          <div class="mobile">
+      <template v-for="(select, index) in selectList">
+              <q-item :key="index"  class='q-item'>
+                  <q-item-section>
+                  {{ select.label }}
+                </q-item-section>
+                  <q-select standout="bg-primary text-white"   outlined v-model="select.model"  
+                    :options='select.options' class ='input_filter'
+                    :option-value="select.value"
+                    /> 
+              </q-item>
+            </template>
+          
+          </div>
+            <button class="more" type="submit">Поиск</button>
+        </div>
+      </q-form>
+      <!-- <q-form @submit="onSubmit" class="blue_container">
         <div class="perekrestok">
+          
           <div class="mobile">
             <div class="wrap">
               <span class="text">Вид деятельности:</span>
@@ -24,13 +45,11 @@
                 <option value="8">Прочие виды материального произ-ва</option>
                 <option value>Все отрасли</option>
               </select>
-              <!-- <q-select standout="text-white" class="inp"  v-model="industry"  :options= 'optns'    outlined :dense='true'  hide-bottom-space
-              option-value="id" />-->
+          
             </div>
             <div class="wrap">
               <span class="text">Вид поддержки:</span>
-              <!-- <q-select standout="text-white" class="inp"  v-model="type"  :options= 'optns_type'  outlined :dense='true'  hide-bottom-space  
-              option-value="id" />-->
+     
               <select v-model="form.type">
                 <option value="direct">Прямая финансовая поддержка</option>
                 <option value="loan_funding">Заемная финансовая поддержка</option>
@@ -45,7 +64,7 @@
                 <option value="nds">Льготы по уплате НДС</option>
                 <option value="customs">Льготы по уплате НДС</option>
                 <option value="infrastructure">Субсидии на инфраструктуру</option>
-                <!-- <option value="loan_profit"> Кредиты под залог создаваемого имущества</option> -->
+            
                 <option value>Все виды поддержки</option>
               </select>
             </div>
@@ -64,14 +83,14 @@
                 <option value="small">МСП</option>
                 <option value="legally">Юр. Лицо</option>
                 <option value="municipality">Муниципалитет</option>
-                <!-- <option value="all">Для всех</option> -->
+             
                 <option value>Все</option>
               </select>
             </div>
             <button class="more" type="submit">Поиск</button>
           </div>
         </div>
-      </q-form>
+      </q-form> -->
       <div class="items">
 
 
@@ -158,9 +177,20 @@
 <script>
 </script>
 <style scoped>
+.input_filter{
+  width:20vw;
+  padding:0;
+  margin:0;
+ 
+}
+.q-item{
+  display:flex;
+  flex-direction:column;
+  padding:0;
+}
 .open{
   border:none;
-  background: #2CCCD8;
+  background: #52a4df;
   color:white;
   padding-left: 2%;
   padding-right: 2%;
@@ -202,7 +232,7 @@
   .container h4 {
     font-size: 5vw !important;
   }
-  .perekrestok {
+  .form_wrapper {
     padding-top: 2% !important;
     flex-direction: column !important;
     width: 100% !important;
@@ -245,6 +275,7 @@
 }
 .mobile {
   width: 100%;
+  justify-content:space-between;
   display: flex;
 }
 body a {
@@ -270,7 +301,7 @@ body a {
 }
 
 .grey {
-  color: #56718a;
+  color: #F6F6F6;
   margin: 2vh;
   font-size: 0.8vw;
 }
@@ -302,13 +333,14 @@ body a {
   align-self: flex-end;
   color: white;
   font-size: 0.8vw;
-  border-radius: 5px;
+  /* border-radius: 5px; */
+  margin-top:1%;
   margin-left: 10%;
   height: 3.5vh;
-  width: 6vw;
+  width: 20vw;
 }
 .item {
-  background: rgba(35, 46, 75, 0.7);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   padding-top: 2vh;
   z-index: 1;
@@ -317,18 +349,20 @@ body a {
   margin-bottom: 4vh;
 }
 .item:hover {
-  background: rgba(59, 70, 104, 0.7);
+  background: rgba(0, 0, 0, 0.5);
 }
 .item:first-child {
   margin-top: 7vh;
 }
-.perekrestok {
-  background: rgba(35, 46, 75, 0.7);
+.form_wrapper {
+  /* background: rgba(35, 46, 75, 0.7); */
+  margin-top:3vh;
   padding-bottom: 2vh;
+  color:#727272;
   align-self: center;
   display: flex;
-  flex-direction: row;
-  min-width: 90%;
+  flex-direction: column;
+  min-width: 100%;
 }
 .left {
   border-right: 1px solid rgba(255, 255, 255, 0.6);
@@ -398,11 +432,8 @@ body a {
 .support_wrap {
   min-height: 100vh;
   /* background: linear-gradient(70deg, #224870 0%, #1b3b5e 100%); */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("/image/background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/image/background.jpg"); */
   display: flex;
 }
 .left_content {
@@ -421,9 +452,8 @@ body a {
   color: white;
 }
 .container h4 {
-  margin-top: 10vh;
   font-size: 1.8vw;
-
+  color:#727272;
   font-weight: 600;
 }
 .container li {
@@ -441,6 +471,14 @@ body a {
 }
 </style>
 <script>
+
+     const form = {
+        industry: '',
+        type: "",
+        recipient: "",
+        type_project: "",
+        support_type: "",
+       }
 export default {
   preFetch({store}){
     return store.dispatch('support/getSupport')
@@ -449,6 +487,7 @@ export default {
     return {
       options: ["1", "2", "3"],
       page: 1,
+      
       support:{},
                         thumbStyle: {
         right: '4px',
@@ -458,8 +497,8 @@ export default {
         opacity: 0.75
       },
       url: "http://127.0.0.1:8000/support/?format=json",
-      form: {
-        industry: "",
+      form:{
+        industry: '',
         type: "",
         recipient: "",
         type_project: "",
@@ -534,23 +573,128 @@ export default {
         },
         { id: "18", label: "Жилищное хозяйство" },
       ],
+            selectList: [
+  {
+    model: {value:'', label:'Все отрасли'},
+    options: [{
+     value:'1', label:'Промышленность' 
+    },
+    {
+      value:'4', label:'Сельское хозяйство'
+    },
+    {
+      value:'6', label:'Лесное хозяйство'
+    },
+      {
+      value:'7', label:'Строительство'
+    },
+    {
+      value:'8', label:'Прочие виды материального произ-ва'
+    },
+    {
+      value:"", label:'Все отрасли'
+    }],
+    label: 'Вид деятельности'
+  },
+  {
+    model:{value:'', label:'Все'},
+    label: 'Вид поддержки',
+    options: [{
+     value:'direct', label:'Прямая финансовая поддержка' 
+    },
+    {
+      value:'loan_funding', label:'Заемная финансовая поддержка'
+    },
+    {
+      value:'profit', label:'Льготы по налогу на прибыль'
+    },
+      {
+      value:'transport', label:'Льготы по транспортному налогу'
+    },
+    {
+      value:'property', label:'Льготы по налогу на имущество'
+    },
+    {
+      value:"subsidies", label:'Субсидии'
+    },
+       {
+      value:"grant", label:'Гранты'
+    },
+           {
+      value:"rent", label:'Льготы по аренде'
+    },
+           {
+      value:"garant", label:'Гарантии'
+    },
+           {
+      value:"earth", label:'Льготы по земельному налогу'
+    },
+               {
+      value:"nds", label:'Льготы по уплате НДС'
+    },
+                   {
+      value:"customs", label:'Льготы по уплате НДС'
+    },
+        {
+      value:"infrastructure", label:'Субсидии на инфраструктуру'
+    },
+           {
+      value:"", label:'Все виды поддержки'
+    },
+    ]
+  },
+  {
+    label: 'Тип проекта',
+    model:{value:'', label:'Все'},
+    options:[{
+      value:'3', label:'Модернизация',
+    },
+      {
+        value:'2', label:'Реконструкция'
+      },
+    {
+      value:'1', label:'Новое строительство'
+    },{
+    value:'', label: 'Все'
+    }],
+  },
+  {
+    label: 'Тип получателя поддержки',
+    model:{value:'', label:'Все'},
+        options:[{
+      value:'small', label:'МСП',
+    },
+      {
+        value:'legally', label:'Юр. Лицо'
+      },
+    {
+      value:'municipality', label:"Муниципалитет"
+    },
+    {
+    value:'', label: 'Все'
+    }],
+  },
+],
     };
+
   },
   methods: {
+
     open(){
       window.open('/files/podderzhka.pdf')
     },
     onSubmit() {
       let backendurl = "https://backendinvest.admlr.lipetsk.ru/support/?format=json";
       let url = backendurl;
-      if (this.form.industry == "" && this.form.type_project.valueOf() == "") {
-        url = `${backendurl}&type=${this.form.type}&recipient=${this.form.recipient}`;
+      if (this.selectList[0].model.value == "" && this.selectList[2].model.value == "") {
+        
+        url = `${backendurl}&type=${this.selectList[1].model.value}&recipient=${this.selectList[3].model.value}`;
       } 
-      else if (this.form.type_project.valueOf() == "") {
-        url = `${backendurl}&type=${this.form.type}&recipient=${this.form.recipient}&industry=${this.form.industry}`;
+      else if (this.selectList[2].model.value == "") {
+        url = `${backendurl}&type=${this.selectList[1].model.value}&recipient=${this.selectList[3].model.value}&industry=${this.selectList[0].model.value}`;
       } 
       else if (this.form.industry.valueOf() == "") {
-        url = `${backendurl}&type=${this.form.type}&type_project=${this.form.type_project}&recipient=${this.form.recipient}`;
+        url = `${backendurl}&type=${this.selectList[1].model.value}&type_project=${this.selectList[2].model.value}&recipient=${this.selectList[3].model.value}`;
       }
        fetch(url)
         .then((response) => response.json())

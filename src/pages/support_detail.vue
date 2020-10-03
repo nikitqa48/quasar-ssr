@@ -4,7 +4,7 @@
    
         <div class="back">
      <router-link :to="{name: 'support', }" class="rout">
-               <q-btn color="white" flat icon="keyboard_backspace"  label="Вернуться назад" no-caps />
+               <q-btn color="primary" flat icon="keyboard_backspace"  label="Вернуться назад" no-caps />
                 </router-link>
         </div>
      
@@ -292,14 +292,14 @@ body a {
   align-items: center;
   justify-content: center;
   background-size: cover;
-  background: linear-gradient(180deg, #202f40 0%, #0d0d1c 100%);
+  /* background: linear-gradient(180deg, #202f40 0%, #0d0d1c 100%); */
 }
 .wrapper {
   display: flex;
   padding-top: 2vh;
   padding-bottom: 2vh;
   flex-direction: column;
-  background: rgba(35, 46, 75, 0.7);
+  background: rgba(0, 0, 0, 0.6);
 }
 .item {
   margin-top: 0.5vh;
@@ -316,7 +316,7 @@ body a {
   margin-left: 2vh;
   margin-right: 2vh;
   border-bottom: 1px solid white;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .container {
@@ -341,7 +341,7 @@ body a {
   width: 100%;
 }
 .name {
-  color: white;
+  color:rgba(0, 0, 0, 0.7);
   font-size: 1.2vw;
   align-self: center;
   font-weight: 600;

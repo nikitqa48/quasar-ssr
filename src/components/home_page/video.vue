@@ -17,7 +17,7 @@
           </div>
   
         </div>
-        <video loop muted autoplay class="fullscreen-bg__video" src="video/video_background1.webm" type="video/webm" media="(min-width:800px)" >
+        <video loop muted autoplay class="fullscreen-bg__video" src="video/video_background1.webm" type="video/webm" media="(min-width:800px)" rel="preload" >
          
           <!-- <source src="video/video_background1.webm" media="(min-width: 800px)" type="video/webm"> -->
         </video>

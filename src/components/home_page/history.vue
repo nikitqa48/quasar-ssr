@@ -1,6 +1,6 @@
 <template>
   <div class="slider">
-    <q-img src='image/indesit.png' class='absolute' style="z-index:-1;"> </q-img>
+    <q-img src='image/indesit.png' class='absolute' style="z-index:-1;" rel="preload"> </q-img>
     <div class = "history">
       <div class="number">  </div>
       <h4> Истории успеха </h4>

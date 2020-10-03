@@ -1,7 +1,7 @@
 <template>
     <q-page class='wrapper'>
     <q-scroll-area
-      style="height:93vh; max-width: 100%;"
+      style="height:90vh; max-width: 100%;"
     :thumb-style="thumbStyle"
     >
      
@@ -15,7 +15,7 @@
         expand-separator
         label="Фильтр проектов"
         dark
-        :header-style="{ backgroundColor: 'rgba(42, 50, 74, 0.6)' }"
+        :header-style="{ backgroundColor: 'rgba(0, 0, 0, 0.63)' }"
         style="border-radius: 4px; margin-top:2%; "
       >
         <div class="form_filter">
@@ -23,15 +23,15 @@
       <div class="q-mt-xl">
         <div class='mobile' style="display:flex; justify-content:space-between; ">
         <q-input dark outlined v-model="number" label="Сумма инвестиций (млн руб)" class = 'input_filter' stack-label  type="number"   />
-       <q-select standout="bg-cyan-6 text-white"   v-model="industry"  label="Отрасль"  :options= 'options'  dark  outlined
+       <q-select standout="bg-primary text-white"   v-model="industry"  label="Отрасль"  :options= 'options'  dark  outlined
        option-value="id" 
         class = 'input_filter'/> 
-        <q-select standout="bg-cyan-6 text-white"  dark  outlined v-model="year"  label="Год реализации"  :options= 'years' class = 'input_filter'/> 
+        <q-select standout="bg-primary text-white"  dark  outlined v-model="year"  label="Год реализации"  :options= 'years' class = 'input_filter'/> 
         </div>
       </div>
 
       <div class="btn">
-        <q-btn label="Поиск" type="submit" color="cyan-6" class="search" />
+        <q-btn label="Поиск" type="submit" color="primary" class="search" />
       </div>
     </q-form>
         </div>
@@ -102,7 +102,7 @@
           </div>
          </q-form>
              <q-card-actions align="left" class="bg-white text-teal">
-           <q-btn label="Отправить" rounded type ='submit'v-close-popup  no-caps color="cyan-6" @click="submit" class='sub' style="width:20%; margin-top:5%;" />
+           <q-btn label="Отправить" rounded type ='submit'v-close-popup  no-caps color="primary" @click="submit" class='sub' style="width:20%; margin-top:5%;" />
         </q-card-actions>
         </q-card-section>
     
@@ -253,7 +253,7 @@
     }
     .text-h4{
         margin-top: 4vh;
-        color:white;
+        color:#7A7E7E;
     }
     .item{
         width:100%;
@@ -273,13 +273,18 @@
   font-family: 'Montserrat';
 }
 .form_filter{
-    background: rgba(42, 50, 74, 0.6);
+    background: rgba(0, 0, 0, 0.6);
     color:white;
     padding:1%;
 }
     .wrapper{
-        color:white;
-       background: #3A4566;
+        color:#7A7E7E;
+           background:url('/image/bg2.png');
+  background-position:50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+       /* background: #3A4566; */
     }
 .item_image__div{
     min-width:15vw;
@@ -331,16 +336,16 @@ export default {
             options:[{ id: '',label:'Все' },
             { id:'1', label:'Промышленность'},
             { id:'4',label: 'Сельское хозяйство'},
-      {id:'6', label: 'Лесное хозяйство'}, {id:'7', label:'Строительство'},
-      {id:'8', label:'Прочие виды деятельности сферы материального производства'}, {id:'9', label:'Обслуживание сельского хозяйства'},
-      {id:'10', label:'Транспорт'}, {id:'11', label:'Связь'}, {id:'12', label:'Торговля и общественное питание'},
-      {id:'13', label:'Материально-техническое снабжение и сбыт'}, {id:'14', label:'Заготовки'},
-      {id:'15', label:'Информационно-вычислительное обслуживание'}, {id:'16', label:'Операции с недвижимым имуществом'},
-      {id:'17', label:'Геология и разведка недр, геодезическая и гидрометеологическая службы'}, {id:'18', label:'Жилищное хозяйство'},
-      {id:'19', label:'Коммунальное хозяйство'}, {id:'20', label:'Непроизводственные виды бытового обслуживания населения'},
-      {id:'21', label:'Здравоохранение, физическая культура и соц.обеспечение'}, {id:'22', label:'Народное образование'},
-      {id:'23', label:'Культура и искусство'}, {id:'24', label:'Наука и научное обслуживание'}, {id:'25', label:'Финансы, кредит, страхование, пенсионное обеспечение'},
-      {id:'26', label:'Управление'}, {id:'27', label:'Общественные объединения'}]
+            {id:'6', label: 'Лесное хозяйство'}, {id:'7', label:'Строительство'},
+            {id:'8', label:'Прочие виды деятельности сферы материального производства'}, {id:'9', label:'Обслуживание сельского хозяйства'},
+            {id:'10', label:'Транспорт'}, {id:'11', label:'Связь'}, {id:'12', label:'Торговля и общественное питание'},
+            {id:'13', label:'Материально-техническое снабжение и сбыт'}, {id:'14', label:'Заготовки'},
+            {id:'15', label:'Информационно-вычислительное обслуживание'}, {id:'16', label:'Операции с недвижимым имуществом'},
+            {id:'17', label:'Геология и разведка недр, геодезическая и гидрометеологическая службы'}, {id:'18', label:'Жилищное хозяйство'},
+            {id:'19', label:'Коммунальное хозяйство'}, {id:'20', label:'Непроизводственные виды бытового обслуживания населения'},
+            {id:'21', label:'Здравоохранение, физическая культура и соц.обеспечение'}, {id:'22', label:'Народное образование'},
+            {id:'23', label:'Культура и искусство'}, {id:'24', label:'Наука и научное обслуживание'}, {id:'25', label:'Финансы, кредит, страхование, пенсионное обеспечение'},
+            {id:'26', label:'Управление'}, {id:'27', label:'Общественные объединения'}]
       ,
       years:['2010','2011','2012','2013', '2014', 
       '2015','2016','2017','2018','2019','2020','2021',

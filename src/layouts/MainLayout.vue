@@ -1,9 +1,38 @@
 <template>
-<q-layout view="lhh LpR lff" > 
-  <q-header elevated class="deckstop" reveal>
+<q-layout view="hHh Lpr lff" > 
+  <q-header elevated class="deckstop" >
+   
  <header-vue class="no-shadow"/>
+
   </q-header>
-  <q-page-container>
+  
+        <q-drawer
+        v-model="drawer"
+        show-if-above
+        :mini="miniState"
+        @mouseover="miniState = false"
+        @mouseout="miniState = true"
+        mini-to-overlay
+        :width="200"
+        :breakpoint="500"
+        content-class="bg-blue-grey-10 text-white"
+      >
+        <q-scroll-area class="fit">
+        <template v-for="(menuItem, index) in menuList">
+              <q-item :key="index" clickable :active="menuItem.label === 'Outbox'" v-ripple :to='menuItem.to'>
+                <q-item-section avatar>
+                  <q-icon :name="menuItem.icon" />
+                </q-item-section>
+                <q-item-section>
+                  {{ menuItem.label }}
+                </q-item-section>
+              </q-item>
+              <q-separator :key="'sep' + index"  v-if="menuItem.separator" />
+            </template>
+          </q-list>
+        </q-scroll-area>
+      </q-drawer>
+  <q-page-container class="q-page">
   
  <router-view :visible ='visible'  @disableLoading ='visible = $event'/>
 
@@ -19,6 +48,58 @@
 </style>
 
 <script>
+const menuList = [
+  {
+    icon: 'mdi-map-marker',
+    label: 'Регион',
+    separator: true,
+    to:'/region'
+  },
+  {
+    icon: 'mdi-map',
+    label: 'Площадки',
+    separator: false,
+    to:'/square'
+  },
+  {
+    icon: 'mdi-bank',
+    label: 'Господдержка',
+    separator: false,
+    to:'/support'
+  },
+  {
+    icon: 'mdi-folder-open',
+    label: 'Проекты',
+    separator: true,
+    to:'/project'
+  },
+  {
+    icon: 'mdi-newspaper-variant',
+    label: 'Новости',
+    separator: false,
+    to: '/news'
+  },
+  {
+    icon: 'mdi-calendar-multiple-check',
+    label: 'События',
+    separator: false,
+    to:'/event'
+  },
+  {
+    icon: 'mdi-file',
+    iconColor: 'primary',
+    label: 'Документы',
+    to:'/documents',
+    separator: false
+  },
+    {
+    icon: 'mdi-tooltip-account',
+    iconColor: 'primary',
+    label: 'Контакты',
+    separator: false,
+    to:'/contacts'
+  }
+]
 import headerVue from "../components/header.vue";
 import store from 'vuex'
 import formsVue from "components/forms";
@@ -42,7 +123,10 @@ export default {
     data(){
       return{
         visible:true,
+        drawer:true,
+        miniState: true,
         question:'',
+        menuList,
         answer: this.$store.state.loading.loading
       }
     },
@@ -83,12 +167,14 @@ export default {
      display:none!important;
    }
  }
+
 .deckstop{
   color:white;
-  background: #727272;
+  background: #515151;
   display: flex;
   align-items: center;
   min-height:7vh;
   font-size: 1em;
 }
+
 </style>

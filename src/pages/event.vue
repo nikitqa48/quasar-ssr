@@ -48,9 +48,13 @@
           
 </div>
 <div class="description" ref='description'>
+ 
   <p class="text-description text-center text-teal-4"   >   
      <q-icon left name="import_contacts" />Описание мероприятия 
      </p>
+           <q-scroll-area
+      :thumb-style="thumbStyle"
+      style="height:50vh; max-width: 100%;">
   <div class="row" style='justify-content:center;'>
     <div class="text-desc" v-html="event[0].description"> {{event[0].description}}</div>
 <div class='image'>
@@ -58,7 +62,7 @@
   <q-img src='image/lathe.jpg'/>
    </div>
     </div>
-    
+           </q-scroll-area>
   </div>
   <div class = 'team' ref='team'>
   <p class="team-description text-center text-white"   >   
@@ -167,32 +171,25 @@ import { Hooper } from 'hooper'
 import {Slide } from 'hooper'
 import 'hooper/dist/hooper.css';
 import Vue from "vue";
-
-
 Vue.use(Hooper, Slide)
 export default {
  preFetch({store}){
      return store.dispatch('event/getEvent')
  },
  components:{
-
    Hooper, 
    Slide,
-
-
  },   
    methods:{
       slidePrev() {
       this.$refs.carousel.slidePrev();
     },
-
         slideNext() {
       this.$refs.carousel.slideNext();
     },
           slidePrev1() {
       this.$refs.carousel1.slidePrev();
     },
-
         slideNext1() {
       this.$refs.carousel1.slideNext();
     },
@@ -463,8 +460,6 @@ export default {
   height:15vh;
   border-bottom: 0.5px solid rgba(0,0,0,0.5);
 }
-
-
 .text-desc{
   padding-left:1%;
   font-size:1rem;
@@ -481,13 +476,10 @@ export default {
   height:50vh;
   width:65%;
   margin:auto;
-
   outline:none;
 }
 .hooper{
-
 }
-
 .my-card{
  
   width:95%;
@@ -547,7 +539,6 @@ export default {
   height:100%;
   display: flex;
   flex-wrap: nowrap;
-
 }
 .text-desc{
   width:30%;

@@ -33,17 +33,18 @@
     no-caps icon= 'img:statics/icons/logo.png'  to="/example/head">
   <span> Инвестиционный портал Липецкой области </span>
   </q-btn> -->
+  
   <router-link to = '/' style="align-self:center;">
   <button class="btn" > 
     <div class="img">
-    <img src="icons/flag.svg">
+    <img src="icons/full_logo.png">
     </div>
-     <div style="display:flex;flex-direction:column; padding-left:6vw;">
+     <div style="display:flex;flex-direction:column; padding-left:0.5vw;">
        <span class="investition"> Инвестиционный портал  </span> <span class="lipetsk">Липецкой области </span></div>
        </button>
   </router-link>
       <q-space/>
-<div class="space">
+<!-- <div class="space">
   
             <q-item   clickable v-ripple to ='/region'  class='button' stretch flat >Регион </q-item>
               <q-item   class='button' clickable v-ripple to ='/square' stretch flat >Площадки </q-item>
@@ -57,7 +58,7 @@
                   <q-item   class='button'  clickable v-ripple to ='/documents' stretch flat >Документы </q-item>
         
         
-                            <q-item  class='button'  clickable v-ripple to ='/contacts' stretch flat >Контакты </q-item>
+                            <q-item  class='button'  clickable v-ripple to ='/contacts' stretch flat >Контакты </q-item> -->
 
       <!-- <q-btn
     
@@ -110,7 +111,7 @@
     exact
   /> -->
 
-</div>
+<!-- </div> -->
 
  
 
@@ -208,13 +209,14 @@ export default {
 .img{
   padding-right: 0.2vw;
   margin-right: 0.2vw;
-  width: 4.6%;
-  height:150%;
-  position: absolute;
+  width:2.7vw;
+  height:100%;
+  /* position: absolute; */
 }
 
 .img img{
-  width: 4.5vw;
+  width: 100%;
+  height:100%;
 }
 .moble_header{
   display: none;
@@ -292,7 +294,7 @@ body a{
   font-family: 'Montserrat'!important;
 }
 .wrap_header{
-  width:85%;
+  width:95%;
   margin: auto;
 }
 
