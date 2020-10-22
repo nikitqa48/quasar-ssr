@@ -1,7 +1,8 @@
 <template>
-<div class="wrap_header">
+<div class="wrap_header" >
 
         <q-toolbar class='deckstop'  >
+               
       <!-- <q-btn align="between" flat class="btn-fixed-width" color="white" label="Главная страница"  no-wrap  no-caps icon= 'img:statics/icons/logo.png'  to="/"/>
       <q-space />
     
@@ -42,83 +43,19 @@
      <div style="display:flex;flex-direction:column; padding-left:0.5vw;">
        <span class="investition"> Инвестиционный портал  </span> <span class="lipetsk">Липецкой области </span></div>
        </button>
+       <!--  -->
+       
   </router-link>
       <q-space/>
-<!-- <div class="space">
-  
-            <q-item   clickable v-ripple to ='/region'  class='button' stretch flat >Регион </q-item>
-              <q-item   class='button' clickable v-ripple to ='/square' stretch flat >Площадки </q-item>
-           
-              <q-item   class='button'  clickable v-ripple="{color:'blue-6'}" to ='/support'   >Господдержка </q-item>
-    
-             <q-item   class='button' clickable v-ripple to ='/project' stretch flat >Проекты </q-item>
-           
-            <q-item  class='button' clickable v-ripple to ='/news' stretch flat >Новости </q-item>
-             <q-item  class='button'  clickable v-ripple to ='/event' stretch flat >События </q-item>
-                  <q-item   class='button'  clickable v-ripple to ='/documents' stretch flat >Документы </q-item>
-        
-        
-                            <q-item  class='button'  clickable v-ripple to ='/contacts' stretch flat >Контакты </q-item> -->
+        <q-btn flat @click="disableDrawer" round dense icon="menu" v-if="$q.platform.is.mobile" /> 
 
-      <!-- <q-btn
-    
-    label="Регион"
-    class="route"
-    no-caps
-    to="/region"
-  
-  />
-        <q-btn
-    label="Площадки"
-    class="route"
-    no-caps
-    to="/square"
-    exact
-  /> 
-    <q-btn
-    class="route"
-    label="Господдержка"
-    no-caps
-    to="/support"
-    exact  
-  />
-  <q-btn
-  class="route"
-    label="Проекты"
-    no-caps
-    to="/project"
-    exact
-  />
-  <q-btn
-  class="route"
-    :to="{name:'news'}"
-    label='Новости'
-    no-caps=""
-    exact
-  />
-    <q-btn
-    class="route"
-    label="Документы"
-    no-caps
-    to="/documents"
-    exact
-  />
-  <q-btn
-    class="route"
-    label="Контакты"
-    no-caps
-    to="/contacts"
-    exact
-  /> -->
-
-<!-- </div> -->
 
  
 
 </q-tabs>
         </q-toolbar>
        
-      <div class="mobile">
+      <!-- <div class="mobile">
         <q-toolbar  class="moble_header bg-grey-10" >
           <q-btn flat @click="drawer = !drawer" round dense icon="menu" color="white"/>
           <q-btn flat  dense icon="img:logo.png"  label="Инвест. Липецк" to="/" no-caps color="white"/> 
@@ -149,7 +86,7 @@
       </q-menu>
     
 
-  </div>
+  </div> -->
 </div>
 </template>
 <script>
@@ -157,9 +94,13 @@
 export default {
     data(){
       return{
-        drawerRight:false,
-        drawerLeft:false,
-        drawer:false
+        draw:false
+      }
+    },
+    methods:{
+      disableDrawer(){
+        this.draw = !this.draw
+   this.$emit('drawerEvent', this.draw)
       }
     }
 }
@@ -167,12 +108,15 @@ export default {
 <style scoped>
 
   @media screen and (max-width: 900px) {
+  .img{
+    width:13%!important;
+  }
 .header{
   display: none!important;
 }
-.deckstop{
+/* .deckstop{
   display:none;
-}
+} */
 .mobile{
   height: 100%;
   width: 100%;

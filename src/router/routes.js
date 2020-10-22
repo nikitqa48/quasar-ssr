@@ -12,7 +12,7 @@ const routes = [
       {
         path: '/square',
         name: 'map',
-        component: () => import('pages/interactiv_map.vue'),
+        component:()=>import('pages/whitemap.vue'),
         children: [
           {
             path: 'square/region/:id',
@@ -75,6 +75,7 @@ const routes = [
 
         ]
       },
+
     ]
   },
   {

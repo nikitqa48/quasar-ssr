@@ -1,12 +1,12 @@
 <template>
 <q-layout view="hHh Lpr lff" > 
   <q-header elevated class="deckstop" >
-   
- <header-vue class="no-shadow"/>
-
+ <header-vue class="no-shadow" @drawerEvent ='drawer = $event' :getDrawer='drawer'/>
+ 
   </q-header>
   
         <q-drawer
+        v-if="$q.platform.is.desktop"
         v-model="drawer"
         show-if-above
         :mini="miniState"
@@ -14,7 +14,7 @@
         @mouseout="miniState = true"
         mini-to-overlay
         :width="200"
-        :breakpoint="500"
+        :breakpoint="800"
         content-class="bg-blue-grey-10 text-white"
       >
         <q-scroll-area class="fit">
@@ -29,9 +29,36 @@
               </q-item>
               <q-separator :key="'sep' + index"  v-if="menuItem.separator" />
             </template>
-          </q-list>
+          
         </q-scroll-area>
       </q-drawer>
+<q-drawer
+        v-model="drawer"
+         v-if="$q.platform.is.mobile"
+        :width="200"
+        overlay
+        :breakpoint="100"
+        elevated
+        content-class="bg-blue-grey-10 text-white"
+      >
+        <q-scroll-area class="fit">
+        <template v-for="(menuItem, index) in menuList" >
+              <q-item :key="index" clickable :active="menuItem.label === 'Outbox'" v-ripple :to='menuItem.to'>
+                <q-item-section avatar>
+                  <q-icon :name="menuItem.icon" />
+                </q-item-section>
+                <q-item-section>
+                  {{ menuItem.label }}
+                </q-item-section>
+              </q-item>
+              <q-separator :key="'sep' + index"  v-if="menuItem.separator" />
+            </template>
+          
+        </q-scroll-area>
+      </q-drawer>
+
+
+
   <q-page-container class="q-page">
   
  <router-view :visible ='visible'  @disableLoading ='visible = $event'/>
@@ -53,7 +80,7 @@ const menuList = [
     icon: 'mdi-map-marker',
     label: 'Регион',
     separator: true,
-    to:'/region'
+    to:'/region',
   },
   {
     icon: 'mdi-map',
@@ -123,8 +150,8 @@ export default {
     data(){
       return{
         visible:true,
-        drawer:true,
         miniState: true,
+        drawer:false,
         question:'',
         menuList,
         answer: this.$store.state.loading.loading
@@ -134,14 +161,17 @@ export default {
    
     },
     watch:{
-      visible(){
-          // alert('ты че там меняешь собака')
-      }
+
     },
       methods: {
         disableLoading(value){
           this.visible= value
+        },
+        drawerEvent(value){
+         this.drawer = value
         }
+
+        
   },
     computed:{
       loadingState: {
@@ -159,13 +189,21 @@ export default {
 }
 </script>
 <style scoped>
+@font-face {
+  font-family: "xz";
+  src: url("../css/fonts/Root/PT Root UI_Medium.woff") format("woff");
+}
+/* @font-face {
+  font-family: root;
+  src: url(./fonts/css/customfont.woff);
+} */
 * {
-  font-family: "Montserrat";
+  font-family: "xz";
 }
  @media screen and (max-width: 900px) {
-   .deckstop{
+   /* .deckstop{
      display:none!important;
-   }
+   } */
  }
 
 .deckstop{

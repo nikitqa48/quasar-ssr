@@ -248,6 +248,9 @@ height:5vh;
 .overlay {
   background: url('/image/OEZ.png');
   background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 60%;
+    background-size: cover;
   position: absolute;
   height: 100vh;
   filter: blur(2px);
@@ -258,7 +261,7 @@ height:5vh;
  background: rgba(0, 0, 0, 0.4);
   background-size: cover;
   position: absolute;
-  height: 100vh;
+  min-height: 100vh;
   filter: blur(2px);
   z-index: 0;
   width: 100%;

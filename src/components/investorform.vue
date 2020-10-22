@@ -1,14 +1,14 @@
 <template>
 <div>        
          <div class="arrow_slide">
-                       <q-btn  label="Стать инвестором" color="primary" no-caps square style="padding-left:3vw; padding-right:3vw; font-size:1.4em;"   @click="show=!show" 	/>
+                       <q-btn  label="Стать инвестором" color="primary" no-caps square style="padding-left:3vw; padding-right:3vw; font-size:1.4em;"  class="btn" @click="show=!show" 	/>
 </div>
         <q-dialog
       v-model="show" >
-      <q-card  class = 'style' style="width: 55%; max-width: 100vw; height:83vh;">
+      <q-card  class = 'q-card'>
         <q-card-section class="form_container">
         <q-card-section class="card">
-          <div class="fond text-h6" > <span style="border-bottom:2px solid white; padding-bottom:0.2%;">Связаться с нами </span>
+          <div class="fond text-h6" > <span  class="call">Связаться с нами </span>
          </div>
            
               <q-btn
@@ -72,17 +72,25 @@
             <div class="column">
               <span class="text-white" style="opacity:.8"> <b>Комментарий </b> </span>
              <q-input
+             v-if="$q.platform.is.desktop"
              dark 
              style="width:100%; margin-top:2%;"
       v-model="text"
       filled
       placeholder="Введите комментарий"
       type="textarea"
-      
+    />
+                 <q-input
+             v-if="$q.platform.is.mobile"
+             dark 
+             style="width:100%; margin-top:2%;"
+      v-model="text"
+      filled
+      placeholder="Введите комментарий"
     />
             </div>
             <div class="column" style="justify-content:flex-end;">
-    <span style="opacity:.8; color:white; font-size:0.8vw;"> Поля помеченные * обязательны для заполнения
+    <span style="opacity:.8; color:white; font-size:0.8vw;" class="information"> Поля помеченные * обязательны для заполнения
     <br><br>Нажимая на кнопку «Отправить» Вы даёте согласие на обработку своих персональных данных в соответствии со статьей 9 Федерального закона от 27 июля 2006 г. N 152-ФЗ «О персональных данных»
     </span>
             </div>
@@ -90,7 +98,7 @@
           
          </q-form>
                 <q-card-actions align="left" class="text-white">
-          <q-btn label="Отправить" rounded type ='submit'v-close-popup  no-caps color="cyan-6" @click="onSubmit" style="width:20%; margin-top:3%;" />
+          <q-btn label="Отправить" rounded type ='submit'   no-caps color="primary" @click="onSubmit"  class="submit"/>
         </q-card-actions>
  
         </q-card-section>
@@ -98,94 +106,7 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-     <!-- <q-form
-      @submit="onSubmit"
-      @reset="onReset"
-      class="fixed-center"
-      v-if="show"
-    >
 
-    <div class="form_button">
-    <q-btn 
-    :dense=true
-    flat round color="white" icon="close" @click="show=!show"/>
-    </div>
-    <div class="form_container">
-          <h2 class="left-top">
-      Связаться с нами
-    </h2>
-    <hr class="border_bottom">
-   <div class="form_inside">
-     <div class="inside">
-        <q-input
-        dark outlined
-        v-model="surname"
-        label-color = 'grey-2'
-        class="input"
-        
-        label="Ваша фамилия *"
-        lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Пожалуйста, введите вашу фамилию']"
-      />
-      <q-input
-        dark outlined
-        v-model="name"
-        class="input_right"
-        label-color = 'grey-2'
-        label="Ваше имя *"
-        lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Пожалуйста, введите имя']"
-      />
-     </div>
-     <div class="inside">
-            <q-input
-        dark outlined
-        class="input"
-        label-color = 'grey-2'
-        v-model="middle_name"
-        label="Ваше отчество *"
-       
-      />
-            <q-input
-            dark outlined
-        class="input_right"
-        label-color = 'white'
-        type = 'tel'
-        v-model="phone"
-        label="Телефон *"
-       
-      />
-     </div>
-     <div class="inside">
-      <q-input
-      class="input"
-        dark outlined
-    
-        type='email'
-        v-model="email"
-        label="Почта*"
-        lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Пожалуйста, введите вашу почту']"
-      />
-  
-        <q-input
-      class="input_right"
-        dark outlined
-    
-        v-model="organisation"
-        label="Организация*"
-
-      />
-      
-   </div>
-   </div>
-      <div>
-        <q-btn label="Отправить" type="submit" color="primary"/>
-        <q-btn label="Сбросить" type="reset" color="primary" flat class="q-ml-sm" />
-      </div>
-        </div>
-    </q-form> -->
-    
 </div>
 </template>
 <script>
@@ -217,26 +138,41 @@ export default {
     this.text = null
      },
     onSubmit () {
-      let data2 ={name:this.name,
-                  surname:this.surname,
-                  middle_name:this.middle_name,
-                  email:this.email,
-                  organisation:this.organisation,
-                  phone:this.phone,
-                  text:this.text
-                  }
-      let data = JSON.stringify(data2)
+        if(this.name != null && this.name != '' && this.email != null && this.email != '' && this.phone != null && this.phone != ''){
+                let data2 ={name:this.name,
+                    surname:this.surname,
+                    middle_name:this.middle_name,
+                    email:this.email,
+                    organisation:this.organisation,
+                    phone:this.phone,
+                    text:this.text
+                    }
+   let data = JSON.stringify(data2)
+      this.$q.notify({
+          color: 'green',
+          textColor: 'white',
+          icon: 'done',
+          message: 'Спасибо за обращение! C вами свяжутся в ближайшее время, ожидайте'
+        }) 
     fetch('https://backendinvest.admlr.lipetsk.ru/',{
       method:'POST',
       body:data,
       headers:{'content-type':'application/json'}
     }).then(function(response){
       return response.json()
-    }).then(function(data){
-      alert('Ожидайте')
     })
-    this.onReset()
-    data.show=!show
+     this.show = false
+     this.onReset()
+        }
+        else{
+                this.$q.notify({
+          color: 'red',
+          textColor: 'white',
+          icon: 'warning',
+          message: 'Пожалуйста, заполните обязательные поля корректно!'
+        }) 
+        }
+
     },
     OpenPDF(){
 window.open("data:application/pdf;base64, " + base64EncodedPDF);
@@ -249,13 +185,114 @@ window.open("data:application/pdf;base64, " + base64EncodedPDF);
 }
 </script>
 <style scoped>
-@media screen and (max-width: 800px) {
+
+@media screen and (min-width:280px){
+  /* мобильная верстка */
+  .arrow_slide{
+ position: absolute;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+  margin-left: 0!important;
+  top: 0;
+  width:100%!important;
+  margin-top: 83vh;
+  }
+  .btn{
+    width:90%;
+  }
+  .wrap{
+    flex-direction: column!important;
+  }
+  .column{
+    width:100%!important;
+  }
+  .q-card{
+    width:100%!important;
+  }
+  .form_container{
+    padding:0!important;
+  }
+  .wrap_comment{
+    flex-direction: column!important;
+  }
+.information{
+  font-size:2.5vw!important;
+}
+.submit{
+  width:100%!important;
+}
+.fond{
+  font-size:5vw!important;
+}
+}
+.submit{
+  width:20%; 
+  margin-top:3%;
+}
+@media screen and (min-width: 768px) {
+  /* планшетная верстка */
   .fixed{
     display: none!important;
   }
+  .column{
+    width:48%!important;
+  }
+  .wrap{
+    flex-direction: row!important;
+  }
+.fond{
+  font-size:2vw!important;
 }
-.style{
-  display:flex;
+  .btn{
+    width:35%;
+  }
+  .information{
+    font-size:1vw!important;
+  }
+  .wrap_comment{
+    
+    flex-direction:row!important;
+  }
+}
+.call{
+  border-bottom:2px solid white;
+  padding-bottom:0.2%;
+}
+@media (min-width: 768px) and (max-width: 1024px){
+  .q-card{
+     height:auto!important;
+    width:100%!important;
+  }
+     .submit{
+     margin:2% auto;
+     width:20%!important;
+   }
+}
+@media screen and (min-width: 1025px){
+   .btn{
+    width:auto;
+  }
+  .information{
+    font-size: 0.7vw!important;
+  }
+    .q-card{
+     justify-content: space-around;
+     width:55%!important;
+     height:auto!important;
+   }
+   .submit{
+     margin:2% auto;
+     width:20%!important;
+   }
+
+}
+
+.q-card{
+  width: 55%; 
+  max-width: 100vw; 
+  height:83vh;
+    display:flex;
   flex-direction: column;
   height:75%;
   width: 50%;
@@ -404,8 +441,9 @@ window.open("data:application/pdf;base64, " + base64EncodedPDF);
 }
 .arrow_slide{
   position: absolute;
-  margin-left: 40%;
-  top: 0;
-  margin-top: 83vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
 }
+
 </style>

@@ -213,7 +213,7 @@
                     <div class="square_number">
                      <div class="wrap_number">
                         <div class="number_row">
-                          <img src="icons/ploshad.svg" />
+                          <img src="icons/ploshad.svg" style='fill:black;' />
                               <span>Площадь:</span>
                           </div>
                           <div class="inside_square">{{item.square}} ГА</div>
@@ -776,6 +776,13 @@
 .form button {
   margin-left: 3%;
 }
+ 
+
+.inside_square {
+     display: flex;
+    justify-content: center;
+    padding-bottom: 1vw;
+    }
 .form select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -877,6 +884,7 @@
   display: flex;
   margin-left: 1vh;
 }
+
 .number_row span {
   margin-left: 0.5vw;
   font-size: 1vw;

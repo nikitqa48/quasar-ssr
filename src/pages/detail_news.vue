@@ -27,9 +27,7 @@
 </template>
 <style scoped>
   @media screen and (max-width: 800px) {
-   .wrapper{
-       padding-top: 8vh!important;
-   }
+
    .all_news{
        margin-top: 1vh;
    }

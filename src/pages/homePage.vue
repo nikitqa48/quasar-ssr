@@ -1,11 +1,11 @@
 <template>
      <div>
-    <div data-anchor="investinlipetsk" >
-    <video-vue/>
-    </div>
+
     <q-no-ssr>
       <full-page @after-load="afterLoad" ref="fullpage" :options="opts" id="fullpage" >  
-
+    <div class='section'>
+         <video-vue/>
+        </div>
         <div class="section" >
         <gubernator-vue/>
         </div>
@@ -13,13 +13,13 @@
             <!-- <map-vue/> -->
             <newmap-vue/>
         </div>
-   
+       <div class='section'>
+            <logo-vue/>
+            </div>
         <div class="section">
             <history-vue/>
         </div>
-        <div class='section'>
-            <logo-vue/>
-            </div>
+    
         <div class="section">
             <LazyHydrate  ssr-only >
             <industry-vue/>
@@ -30,8 +30,6 @@
             <news-vue :visible='visible'   @disableLoading='disableLoading' />
             </LazyHydrate>
         </div>
-            <div class ="section">
-                </div>
                     
       </full-page>
     </q-no-ssr>
@@ -67,11 +65,10 @@ export default {
         return{
 opts:{
 start: 0,
-responsiveWidth: 800,
         beforeChange: function(prev, next) {},
         afterChange: function(prev, next) {},
         lazyLoading: true,
-        responsiveWidth: 900,
+        responsiveWidth: 768,
         fitToSection:true,
         dots:true,
         // anchors: ['video', 'about-us', 'contact', 'novosti'],
@@ -103,10 +100,14 @@ responsiveWidth: 800,
 }
 </script>
 <style scoped>
-@media screen and (max-width: 800px) {
-    .section:nth-child(5), .section:nth-child(4), .section:nth-child(3), .section:nth-child(2), .section:nth-child(1), .section:nth-child(6), .section:nth-child(7){
+@media screen and (max-width: 728px) {
+.section:nth-child(3), .section:nth-child(6){
+    display:none!important;
+}
+ 
+    /* .section:nth-child(5), .section:nth-child(4), .section:nth-child(3), .section:nth-child(2), .section:nth-child(1), .section:nth-child(6), .section:nth-child(7){
         display:none!important;
-    }
+    } */
 }
 /* @font-face {
   font-family: "Montserrat";

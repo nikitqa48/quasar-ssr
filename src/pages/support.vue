@@ -30,67 +30,7 @@
             <button class="more" type="submit">Поиск</button>
         </div>
       </q-form>
-      <!-- <q-form @submit="onSubmit" class="blue_container">
-        <div class="perekrestok">
-          
-          <div class="mobile">
-            <div class="wrap">
-              <span class="text">Вид деятельности:</span>
 
-              <select v-model="form.industry">
-                <option value="1">Промышленность</option>
-                <option value="4">Сельское Хозяйство</option>
-                <option value="6">Лесное Хозяйство</option>
-                <option value="7">Строительство</option>
-                <option value="8">Прочие виды материального произ-ва</option>
-                <option value>Все отрасли</option>
-              </select>
-          
-            </div>
-            <div class="wrap">
-              <span class="text">Вид поддержки:</span>
-     
-              <select v-model="form.type">
-                <option value="direct">Прямая финансовая поддержка</option>
-                <option value="loan_funding">Заемная финансовая поддержка</option>
-                <option value="profit">Льготы по налогу на прибыль</option>
-                <option value="transport">Льготы по транспортному налогу</option>
-                <option value="property">Льготы по налогу на имущество</option>
-                <option value="subsidies">Субсидии</option>
-                <option value="grant">Гранты</option>
-                <option value="rent">Льготы по аренде</option>
-                <option value="garant">Гарантии</option>
-                <option value="earth">Льготы по земельному налогу</option>
-                <option value="nds">Льготы по уплате НДС</option>
-                <option value="customs">Льготы по уплате НДС</option>
-                <option value="infrastructure">Субсидии на инфраструктуру</option>
-            
-                <option value>Все виды поддержки</option>
-              </select>
-            </div>
-            <div class="wrap">
-              <span class="text">Тип проекта:</span>
-              <select v-model="form.type_project">
-                <option value="3">Модернизация</option>
-                <option value="2">Реконструкция</option>
-                <option value="1">Новое строительство</option>
-                <option value>Все</option>
-              </select>
-            </div>
-            <div class="wrap">
-              <span class="text">Тип получателя поддержки:</span>
-              <select v-model="form.recipient">
-                <option value="small">МСП</option>
-                <option value="legally">Юр. Лицо</option>
-                <option value="municipality">Муниципалитет</option>
-             
-                <option value>Все</option>
-              </select>
-            </div>
-            <button class="more" type="submit">Поиск</button>
-          </div>
-        </div>
-      </q-form> -->
       <div class="items">
 
 
@@ -199,6 +139,9 @@
   border-radius: 5px;
 }
 @media screen and (max-width: 800px) {
+  .input_filter{
+    width:100%!important;
+  }
   .mobile {
     width: 95%;
     display: flex;

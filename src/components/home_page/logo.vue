@@ -131,10 +131,26 @@ export default {
 };
 </script>
 <style scoped>
+@media screen and (max-width: 800px) {
+  .item{
+    width:25vw!important;
+  }
+  .items{
+    margin-top: 10%;
+  }
+  .container{
+    width:95%!important;
+    text-align: center;
+  }
+  .container h3{
+    font-size: 2.5rem!important;
+  }
+}
 .background {
   background: rgba(255, 255, 255, 1);
   min-height: 100vh;
-  background-size: contain;
+  background-position: 50%;
+  background-size: cover;
   background-image: url("/image/city.png");
 }
 .container {

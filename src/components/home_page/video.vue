@@ -17,25 +17,138 @@
           </div>
   
         </div>
-        <video loop muted autoplay class="fullscreen-bg__video" src="video/video_background1.webm" type="video/webm" media="(min-width:800px)" rel="preload" >
+        <video loop muted autoplay class="fullscreen-bg__video" src="video/video_background1.webm" type="video/webm" media="(min-width:800)" rel="preload" data-autoplay>
          
-          <!-- <source src="video/video_background1.webm" media="(min-width: 800px)" type="video/webm"> -->
+      
         </video>
       </div>
       <form-vue class="form"/>
-         <!-- <div class="arrow_slide">
-                       <q-btn  label="Стать инвестором" color="primary" no-caps square style="padding-left:3vw; padding-right:3vw; font-size:1.4em;"   	/>
-</div> -->
+
        <div class="presentation"> <span>Презентация <br> <b>Липецкой области</b> </span><button class="open" @click="open"> Открыть</button></div>
 </div>
      
 </template>
 <style scoped>
-@media screen and (max-width: 800px) {
+@media screen and (min-width:320px){
+.risk {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  color:white;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.fullscreen-bg__video{
+  display:none;
+}
+.presentation{
+  display:none;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 4;
+}
+  .risk_container{  
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align:center;
+    justify-content: center;
+    background: url("/image/mobile_video.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .heading {
+  line-height: 100%!important;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  padding-bottom: 5%;
+  font-size: 15vw!important;
+}
+  .risk_p{
+    font-size: 4vw!important;
+    width:70%;
+  }
+  .hmm{
+  color:white;
+  margin-bottom: 2%;
+}
+  .heading {
+  line-height: 100%!important;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  padding-bottom: 5%;
+  font-size: 15vw!important;
+}
+}
+@media screen and (min-width:768px){
+  .risk_container{
+    background:none!important;
+  }
+ .fullscreen-bg__video {
+   display: block!important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+.heading{
+  font-size: 5vw!important;
+}
+}
+@media screen and (min-width:1024px){
+ 
+   
+  .heading{
+    line-height: 6.09375vw;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    font-size: 5vw!important;
+  }
+  .overlay{
+    background: rgba(0,0,0,0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 4;
+  }
+  .risk{
+       display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+  .risk_p{
+        line-height: 140%;
+    font-size: 2.5vw!important;
+    text-align: center;
+    color: #fff;
+  }
+}
+/* @media screen and (max-width: 799px) {
   .presentation{
     display: none!important;
-  }
-  .form{
+  } */
+  /* .form{
     display: none!important;
   }
   .risk_container{
@@ -148,7 +261,7 @@ margin-left: 1.3vw;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+} */
 
 </style>
 <script>
