@@ -3,8 +3,8 @@
     <q-img src='image/indesit.png' class='absolute' style="z-index:-1;" rel="preload"> </q-img>
     <div class = "history">
       <div class="number">  </div>
-      <h4> Истории успеха </h4>
-      <p class="today"> В Липецкой области </p>
+      <h4> {{$t('history')}}  </h4>
+      <p class="today"> {{$t('inLipetsk')}}  </p>
       <div class="buttons">
                 <button   @click.prevent="slidePrev()" class="prev"><img src="/icons/prev_history.png"></button>
             <button class="next" @click.prevent="slideNext()"><img src="/icons/next_history.png"></button>
@@ -16,12 +16,13 @@
            <div class="left">
                   <div class="levo">
                     <h5 class="title">
-                           ООО «ЙОКОХАМА Р.П.З.»
-                <br />производство автомобильных шин
+                           {{$t('yokohama')}}
+                <br />{{$t('yokohamaIndustry')}}
                     </h5>
                     <div class="left_text">
                       <p>
-                        Наша компания очень <br>комфортно чувствует <br>себя в Липецкой области.
+                        {{$t('yokohamaQuote')}}
+                        <!-- Наша компания очень <br>комфортно чувствует <br>себя в Липецкой области. -->
                       </p>
                     </div>
              </div>
@@ -44,12 +45,12 @@
            <div class="left">
                   <div class="levo">
                     <h5 class="title">
-                      <b>АО «ИНДЕЗИТ ИНТЕРНЕШНЛ» <br>
-                      производство бытовой техники</b>
+                      <b>{{$t('indesit')}} <br>
+                      {{$t('indesitIndustry')}}</b>
                     </h5>
                     <div class="left_text">
                       <p>
-                        Факт присутствия <br> нашей корпорации <br> в Липецке укрепился  <br>с годами.
+                        {{$t('indesitQuote')}}
                       </p>
                     </div>
              </div>
@@ -73,11 +74,11 @@
            <div class="left">
                   <div class="levo">
                     <h5 class="title">
-                      <b>ООО «Хавле Индустриверке» производство оборудования для систем водоснабжения</b>
+                      <b>{{$t('hawle')}} {{$t('hawleIndustry')}}</b>
                     </h5>
                     <div class="left_text">
                       <p>
-                       С 2011 года мы находимся <br>в Чаплыгине Липецкой <br> области и не жалеем <br>об этом.
+                       {{$t('hawleQuote')}}
                       </p>
                     </div>
              </div>
@@ -100,11 +101,11 @@
            <div class="left">
                   <div class="levo">
                     <h5 class="title">
-                      <b> ООО «Ангел Ист Рус» производство дрожжей </b>
+                      <b>  {{$t('angel')}} {{$t('angelIndustry')}} </b>
                     </h5>
                     <div class="left_text">
                       <p>
-                        Каждый год нам нужно минимум 100 000 тонн сахарной свеклы, которую обеспечивает Липецкая область.
+                        {{$t('angelQuote')}}
                       </p>
                     </div>
              </div>
@@ -230,6 +231,7 @@
   border-left:3px solid #52A4DF;
   font-size: 1vw;
   margin:5%;
+  width: 50%;
 }
 .left_text p{
   margin-bottom: 0;

@@ -1,44 +1,47 @@
 <template>
   <div class="wrap">
-    <div class="container">
+
+    <div class="container" >
    
         <div class="back">
      <router-link :to="{name: 'support', }" class="rout">
                <q-btn color="primary" flat icon="keyboard_backspace"  label="Вернуться назад" no-caps />
                 </router-link>
         </div>
-     
-      <div class="name">{{support.name}}</div>
+     <div v-if="support.translations[$i18n.locale]" style='display:flex;flex-direction:column;'>
+      <div class="name" v-if="support.translations[$i18n.locale]">
+        {{support.translations[$i18n.locale].name}}
+        </div>
       <div class="category">
         <div class="item" v-if="support.recipient != ''">
           <div class="wrapper">
-            <span class="text">Получатели:</span>
+            <span class="text">{{$t('Support.recipient')}}:</span>
             <!-- <q-select v-model="model" :options="options" label="Standard" outlined label-color="white" class="select" color="white"/> -->
             <span
               class="vid"
               v-if="support.recipient == 'industrial'"
-            >Резиденты индустриальных парков</span>
-            <span class="vid" v-if="support.recipient == 'small'">МСП</span>
-            <span class="vid" v-if="support.recipient == 'municipality'">муниципалитет</span>
-            <span class="vid" v-if="support.recipient == 'developers'">Разработчики ПО</span>
-            <span class="vid" v-if="support.recipient == 'resident_oez'">Резиденты ОЭЗРУ Липецк</span>
-            <span class="vid" v-if="support.recipient == 'subject'">Субъект</span>
-            <span class="vid" v-if="support.recipient == 'legally'">Юридические лица</span>
-            <span class="vid" v-if="support.recipient == 'not_msp'">Все кроме МСП</span>
-            <span class="vid" v-if="support.recipient == 'cooperatives'">Кооперативы</span>
+            >{{$t('Support.sez_industrial')}}</span>
+            <span class="vid" v-if="support.recipient == 'small'">{{$t('Support.real_msp')}}</span>
+            <span class="vid" v-if="support.recipient == 'municipality'">{{$t('Support.municipality')}}</span>
+            <!-- <span class="vid" v-if="support.recipient == 'developers'">Разработчики ПО</span> -->
+            <span class="vid" v-if="support.recipient == 'resident_oez'">{{$t('Support.sez_lipetsk')}}</span>
+            <span class="vid" v-if="support.recipient == 'subject'">{{$t('Support.subject')}}</span>
+            <span class="vid" v-if="support.recipient == 'legally'">{{$t('Support.legal')}}</span>
+            <span class="vid" v-if="support.recipient == 'not_msp'">{{$t('Support.msp')}}</span>
+            <span class="vid" v-if="support.recipient == 'cooperatives'">{{$t('Support.cooperatives')}}</span>
           </div>
         </div>
         <div class="item" v-if="support.type != ''">
           <div class="wrapper">
-            <span class="text">Тип поддержки:</span>
-            <span class="vid" v-if="support.type == 'direct'">Инвестиции</span>
-            <span class="vid" v-if="support.type == 'loan'">Налоговые льготы по налогу на займ</span>
-            <span class="vid" v-if="support.type == 'subsidies'">Субсидии</span>
-            <span class="vid" v-if="support.type == 'profit'">Налоговые льготы по налогу на прибыль</span>
-            <span class="vid" v-if="support.type == 'grant'">Гранты</span>
-            <span class="vid" v-if="support.type == 'rent'">Льготы по аренде</span>
-            <span class="vid" v-if="support.type == 'garant'">Гарантии</span>
-            <span class="vid" v-if="support.type == 'loan_funding'">Заемное финансирование</span>
+            <span class="text">{{$t('Support.type_support')}}:</span>
+            <span class="vid" v-if="support.type == 'direct'">{{$t('Support.investition')}}</span>
+            <span class="vid" v-if="support.type == 'loan'">{{$t('Support.tax')}}</span>
+            <span class="vid" v-if="support.type == 'subsidies'">{{$t('Support.subsidies')}}</span>
+            <span class="vid" v-if="support.type == 'profit'">{{$t('Support.income')}}</span>
+            <span class="vid" v-if="support.type == 'grant'">{{$t('Support.grants')}}</span>
+            <span class="vid" v-if="support.type == 'rent'">{{$t('Support.rental')}}</span>
+            <span class="vid" v-if="support.type == 'garant'">{{$t('Support.warranty')}}</span>
+            <span class="vid" v-if="support.type == 'loan_funding'">{{$t('Support.debt')}}</span>
             <span
               class="vid"
               v-if="support.type == 'transport'"
@@ -59,36 +62,36 @@
         </div>
         <div class="item" v-if="support.industry != '' ">
           <div class="wrapper">
-            <span class="text">Вид деятельности:</span>
+            <span class="text">{{$t('Support.activity_type')}}:</span>
             <span class="vid" v-if="support.industry!=undefined">{{support.industry.toString()}}</span>
           </div>
         </div>
         <div class="item" v-if="support.implementation != ''">
           <div class="wrapper">
-            <span class="text">Способ реализации проекта:</span>
-            <span class="vid" v-if="support.implementation == 'agreement'">Соглашение</span>
+            <span class="text">{{$t('Support.implementation')}}:</span>
+            <span class="vid" v-if="support.implementation == 'agreement'">{{$t('Support.agreement')}}</span>
             <span class="vid" v-if="support.implementation == 'gchp'">ГЧП</span>
-            <span class="vid" v-if="support.implementation == 'any'">Любой</span>
+            <span class="vid" v-if="support.implementation == 'any'">{{$t('Support.other')}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.target != 0 && support.target != ''">
+        <div class="item" v-if="support.translations.ru.target != 0 && support.translations[$i18n.locale] != ''">
           <div class="wrapper">
-            <span class="text">Цели/ адресаты государственной поддержки:</span>
+            <span class="text">{{$t('Support.goals')}}:</span>
             <!-- <span class="vid" v-if="support.implementation == 'agreement'">{{support.target}}</span> -->
-            <span class="vid">{{support.target}}</span>
+            <span class="vid">{{support.translations[$i18n.locale].target}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.condition != ''">
+        <div class="item" v-if="support.translations[$i18n.locale].condition != ''">
           <div class="wrapper">
             <span
               class="text"
-            >Основные условия предоставления мер гос. поддержки для инвесторов (предпринимателей): ставка, сроки, сумма:</span>
-            <span class="vid">{{support.condition}}</span>
+            >{{$t('Support.condition')}}:</span>
+            <span class="vid">{{support.translations[$i18n.locale].condition}}</span>
           </div>
         </div>
         <div class="item" v-if="support.authority != ''">
           <div class="wrapper">
-            <span class="text">Куррирующий орган:</span>
+            <span class="text">{{$t('Support.organ')}}:</span>
             <span class="vid" v-if="support.authority == 'uilo'">УИиИ ЛО</span>
             <span class="vid" v-if="support.authority == 'min'">Минпромторг России</span>
             <span class="vid" v-if="support.authority == 'bank'">Уполномоченные банки</span>
@@ -100,54 +103,54 @@
             >Центры "мой бизнес", Управляющие компании</span>
           </div>
         </div>
-        <div class="item" v-if="support.project_name != '' && support.program_name != 0">
+        <div class="item" v-if="support.translations[$i18n.locale].project_name != '' && support.translations[$i18n.locale].project_name != 0">
           <div class="wrapper">
-            <span class="text">Наименование национального проекта:</span>
-            {{support}}
-            <span class="vid">{{support.project_name}}</span>
+            <span class="text">{{$t('Support.national')}}:</span>
+            <span class="vid">{{support.translations[$i18n.locale].project_name}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.program_name != 0 && support.program_name != ''">
+
+        <div class="item" v-if="support.translations[$i18n.locale].program_name != 0 && support.translations[$i18n.locale].program_name != ''">
           <div class="wrapper">
-            <span class="text">Наименование гос программы:</span>
-            <span class="vid">{{support.program_name}}</span>
+            <span class="text">{{$t('Support.program_name')}}:</span>
+            <span class="vid">{{support.translations[$i18n.locale].program_name}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.money != 0 && support.money != ''">
+        <div class="item" v-if="support.translations[$i18n.locale].money != 0 && support.translations[$i18n.locale].money != ''">
           <div class="wrapper">
-            <span class="text">Объем меры гос.поддержки(млрд.руб.):</span>
-            <span class="vid">{{support.money}}</span>
+            <span class="text">{{$t('Support.volume')}}:</span>
+            <span class="vid">{{support.translations[$i18n.locale].money}}</span>
           </div>
         </div>
         <div class="item" v-if="support.form != ''">
           <div class="wrapper">
-            <span class="text">Категория получателя:</span>
-            <span class="vid" v-if="support.form == 'lawyer'">Юр.лицо</span>
-            <span class="vid" v-if="support.form == 'ip'">ИП</span>
-             <span class="vid" v-if="support.form == 'municipality'">Муниципалитет</span>
+            <span class="text">{{$t('Support.form')}}:</span>
+            <span class="vid" v-if="support.form == 'lawyer'">{{$t("Support.legal")}}</span>
+            <span class="vid" v-if="support.form == 'ip'">{{$t('Support.msp')}}</span>
+             <span class="vid" v-if="support.form == 'municipality'">{{$t('Support.municipality')}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.nds != 0 && support.nds != ''">
+        <div class="item" v-if="support.translations[$i18n.locale].nds != 0 && support.translations[$i18n.locale].nds != ''">
           <div class="wrapper">
-            <span class="text">Налоговая ставка НДС:</span>
-            <span class="vid">{{support.nds}}</span>
+            <span class="text">{{$t('Support.nalog')}}:</span>
+            <span class="vid">{{support.translations[$i18n.locale].nds}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.expenses != '' && support.expenses != 0">
+        <div class="item" v-if="support.translations[$i18n.locale].expenses != '' && support.translations[$i18n.locale].expenses != 0">
           <div class="wrapper">
             <span class="text">Затраты подлежащие возмещению:</span>
-            <span class="vid">{{support.expenses}}</span>
+            <span class="vid">{{support.translations[$i18n.locale].expenses}}</span>
           </div>
         </div>
 
         <div class="item" v-if="support.territory != ''">
           <div class="wrapper">
-            <span class="text">Территория реализации проекта:</span>
-            <span class="vid" v-if="support.territory == 'without'">Без ограничений</span>
-            <span class="vid" v-if="support.territory == 'park'">индустриальные парки</span>
+            <span class="text">{{$t('Support.project_area')}}:</span>
+            <span class="vid" v-if="support.territory == 'without'">{{$t('Support.borders')}}</span>
+            <span class="vid" v-if="support.territory == 'park'">{{$t('map.industrial')}}</span>
             <span class="vid" v-if="support.territory == 'mono'">моногород</span>
-            <span class="vid" v-if="support.territory == 'techno'">технопарк</span>
-            <span class="vid" v-if="support.territory == 'oez'">ОЭЗ ппт липецк</span>
+            <span class="vid" v-if="support.territory == 'techno'">{{$t('techno')}}</span>
+            <span class="vid" v-if="support.territory == 'oez'">{{$t('Support.oez_ppt')}}</span>
             <span class="vid" v-if="support.territory == 'oezru'">ОЭЗРУ</span>
             <span class="vid" v-if="support.territory == 'all'">Любая</span>
             <span class="vid" v-if="support.territory == 'cluster'">Участник кластера</span>
@@ -155,81 +158,81 @@
         </div>
         <div class="item" v-if="support.type_project != ''">
           <div class="wrapper">
-            <span class="text">Тип проекта:</span>
-
+            <span class="text">{{$t('Support.type_project')}}:</span>
             <span class="vid">{{support.type_project.toString('')}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.npa != 0 && support.npa != ''">
+        <div class="item" v-if="support.translations[$i18n.locale].npa != 0 && support.translations[$i18n.locale].npa != ''">
           <div class="wrapper">
             <span class="text">НПА устанавливающий меры:</span>
 
-            <span class="vid">{{support.npa}}</span>
+            <span class="vid">{{support.translations[$i18n.locale].npa}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.loan_time != '' && support.loan_time != 0">
+        <div class="item" v-if="support.translations[$i18n.locale].loan_time != '' && support.translations[$i18n.locale].loan_time != 0">
           <div class="wrapper">
             <span class="text">Сроки займа:</span>
 
-            <span class="vid">{{support.loan_time}}</span>
+            <span class="vid">{{support.translations[$i18n.locale].loan_time}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.organisation != '' ">
+        <div class="item" v-if="support.translations[$i18n.locale].organisation != '' ">
           <div class="wrapper">
-            <span class="text">Меру поддержки выдает:</span>
+            <span class="text">{{$t('Support.issued')}}:</span>
 
-            <span class="vid" v-html="support.organisation">{{support.organisation}}</span>
+            <span class="vid" v-html="support.translations[$i18n.locale].organisation">{{support.translations[$i18n.locale].organisation}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.category != '' ">
+        <div class="item" v-if="support.translations[$i18n.locale].category != '' ">
           <div class="wrapper">
             <span class="text">Категория налогоплатильщиков:</span>
 
-            <span class="vid">{{support.category}}</span>
+            <span class="vid">{{support.translations[$i18n.locale].category}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.property_rate != '' ">
+        <div class="item" v-if="support.translations[$i18n.locale].property_rate != '' ">
           <div class="wrapper">
             <span class="text">Налоговая ставка на имущество:</span>
 
-            <span class="vid">{{support.property_rate}}</span>
+            <span class="vid">{{support.translations[$i18n.locale].property_rate}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.profit != '' ">
+        <div class="item" v-if="support.translations[$i18n.locale].profit != '' ">
           <div class="wrapper">
             <span class="text">Налог на прибыль:</span>
 
-            <span class="vid">{{support.profit}}</span>
+            <span class="vid">{{support.translations[$i18n.locale].profit}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.transport != '' ">
+        <div class="item" v-if="support.translations[$i18n.locale].transport != '' ">
           <div class="wrapper">
             <span class="text">Налоговая ставка по транспортному налогу:</span>
 
-            <span class="vid">{{support.transport}}</span>
+            <span class="vid">{{support.translations[$i18n.locale].transport}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.land != '' ">
+        <div class="item" v-if="support.translations[$i18n.locale].land != '' ">
           <div class="wrapper">
             <span class="text">Налоговая ставка по земельному налогу:</span>
 
-            <span class="vid">{{support.land}}</span>
+            <span class="vid">{{support.translations[$i18n.locale].land}}</span>
           </div>
         </div>
-        <div class="item" v-if="support.summ != '' && support.summ != null ">
+        <div class="item" v-if="support.translations[$i18n.locale].summ != '' && support.translations[$i18n.locale].summ != null ">
           <div class="wrapper">
             <span class="text">Сумма займа:</span>
 
-            <span class="vid">{{support.summ}}</span>
+            <span class="vid">{{support.translations[$i18n.locale].summ}}</span>
           </div>
         </div>
-                <div class="item" v-if="support.percent != '' && support.percent != null ">
+                <div class="item" v-if="support.translations[$i18n.locale].percent != '' && support.translations[$i18n.locale].percent != null ">
           <div class="wrapper">
             <span class="text">Процентная ставка:</span>
-            <span class="vid">{{support.percent}}</span>
+            <span class="vid">{{support.translations[$i18n.locale].percent}}</span>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -287,7 +290,6 @@ body a {
   text-decoration: none;
 }
 .wrap {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

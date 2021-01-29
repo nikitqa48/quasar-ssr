@@ -20,14 +20,15 @@
             <history-vue/>
         </div>
     
-        <div class="section">
+        <!-- <div class="section">
             <LazyHydrate  ssr-only >
             <industry-vue/>
             </LazyHydrate>
-        </div>
+        </div> -->
         <div class="section">
             <LazyHydrate when-visible>
             <news-vue :visible='visible'   @disableLoading='disableLoading' />
+            
             </LazyHydrate>
         </div>
                     

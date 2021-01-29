@@ -111,11 +111,11 @@
 
       <div class="video" id='video'>
     <div class="q-video"> 
-    <iframe
+    <!-- <iframe
         :src="event[0].translation"
         frameborder="0"
         allowfullscreen
-      /> 
+      />  -->
     </div>
   </div>
     </div>
@@ -141,11 +141,11 @@
      
       <slide v-for="(slide, indx) in event[0].video" :key="indx" :index="indx">
     <div class="q-video" style='width:85%;'> 
-    <iframe
+    <!-- <iframe
         :src="slide.video"
         frameborder="0"
         allowfullscreen
-      /> 
+      />  -->
     </div>
       </slide>
 

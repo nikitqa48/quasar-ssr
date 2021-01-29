@@ -1,19 +1,20 @@
 <template>
 <div>        
-        <button 
-      class="fixed" 
-       @click="show=!show">
-    <div class="img">
-      <img src="icons/call.svg">
-    </div>
-     Обратная связь
-        </button>
+        <q-btn
+        icon="img:icons/call.svg"
+       @click="show=true"
+       no-caps
+       rounded
+       color="primary"
+       :label="$t('header.contact')"
+       />
+       
         <q-dialog
       v-model="show" >
       <q-card  class = 'style' style="width: 55%; max-width: 100vw; height:83vh;">
         <q-card-section class="form_container">
         <q-card-section class="card">
-          <div class="fond text-h6" > <span style="border-bottom:2px solid white; padding-bottom:0.2%;">Связаться с нами </span>
+          <div class="fond text-h6" > <span style="border-bottom:2px solid white; padding-bottom:0.2%;">{{$t('contact')}} </span>
          </div>
            
               <q-btn
@@ -95,7 +96,7 @@
           
          </q-form>
                 <q-card-actions align="left" class="text-white">
-          <q-btn label="Отправить" rounded type ='submit'v-close-popup  no-caps color="cyan-6" @click="onSubmit" style="width:20%; margin-top:3%;" />
+          <q-btn label="Отправить" rounded type ='submit'  no-caps color="cyan-6" @click="onSubmit" style="width:20%; margin-top:3%;" />
         </q-card-actions>
  
         </q-card-section>
@@ -194,7 +195,9 @@
 </div>
 </template>
 <script>
+
 export default {
+
     data(){
         return{
       show:false,
@@ -220,26 +223,41 @@ export default {
     this.text = null
      },
     onSubmit () {
-      let data2 ={name:this.name,
-                  surname:this.surname,
-                  middle_name:this.middle_name,
-                  email:this.email,
-                  organisation:this.organisation,
-                  phone:this.phone,
-                  text:this.text
-                  }
-      let data = JSON.stringify(data2)
+        if(this.name != null && this.name != '' && this.email != null && this.email != '' && this.phone != null && this.phone != ''){
+                let data2 ={name:this.name,
+                    surname:this.surname,
+                    middle_name:this.middle_name,
+                    email:this.email,
+                    organisation:this.organisation,
+                    phone:this.phone,
+                    text:this.text
+                    }
+   let data = JSON.stringify(data2)
+      this.$q.notify({
+          color: 'green',
+          textColor: 'white',
+          icon: 'done',
+          message: 'Спасибо за обращение! C вами свяжутся в ближайшее время, ожидайте'
+        }) 
     fetch('https://backendinvest.admlr.lipetsk.ru/',{
       method:'POST',
       body:data,
       headers:{'content-type':'application/json'}
     }).then(function(response){
       return response.json()
-    }).then(function(data){
-      alert('Ожидайте')
     })
-    this.onReset()
-    data.show=!show
+     this.show = false
+     this.onReset()
+        }
+        else{
+                this.$q.notify({
+          color: 'red',
+          textColor: 'white',
+          icon: 'warning',
+          message: 'Пожалуйста, заполните обязательные поля корректно!'
+        }) 
+        }
+
     },
     OpenPDF(){
 window.open("data:application/pdf;base64, " + base64EncodedPDF);

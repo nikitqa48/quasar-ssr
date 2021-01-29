@@ -1,5 +1,6 @@
 <template>
   <q-page>
+    
     <q-scroll-area
       style="height: 90vh; max-width: 100%"
       :thumb-style="thumbStyle"
@@ -16,15 +17,15 @@
               class="left_menu"
               indicator-color="transparent"
             >
-              <q-tab name="a" label="Нормативно правовая база"></q-tab>
-              <q-tab name="b" label="Приказы по общей деятельности" />
+              <q-tab name="a" :label="$t('documents.menu.normative')"></q-tab>
+              <!-- <q-tab name="b" label="Приказы по общей деятельности" /> -->
               <!-- <q-tab name="c"  label="Региональный стандарт" /> -->
               <!-- <q-tab name="d">
                 Инвестиционный меморандум
                 <br />Липецкой области
               </q-tab> -->
               <q-tab name="e" label="Стандарт развития конкуренции" />
-              <q-tab name="f" label=" Целевые модели" />
+              <!-- <q-tab name="f" label=" Целевые модели" /> -->
               <q-tab name="g" label=" Противодействие коррупции" />
               <q-tab name="h" label="Защита персональных данных" />
               <q-tab name="j" label="Национальный рейтинг" />
@@ -39,23 +40,16 @@
               transition-next="jump-up"
             >
               <q-tab-panel name="a">
-                <div class="text-h4 q-mb-md">Нормативно правовая база</div>
+                <div class="text-h4 q-mb-md">{{$t('documents.menu.normative')}}</div>
                 <p>
-                  Отношения, связанные с инвестиционной деятельностью,
-                  осуществляемой инвесторами в форме инвестиций в основной
-                  капитал, в Липецкой области регулируются международными
-                  договорами Российской Федерации, Гражданским кодексом
-                  Российской Федерации, федеральными законами и нормативными
-                  правовыми актами Липецкой области.
+               {{$t('documents.razdel.normative.quote')}}
                   <br />
-                  <br />Основные законы и иные нормативные правовые акты,
-                  касающиеся осуществления инвестиционной деятельности в
-                  Липецкой области:
+                  <br />   {{$t('documents.razdel.normative.quote1')}}
                 </p>
                 <q-expansion-item
                   dark
                   expand-separator
-                  label="Федеральное законодательство"
+                  :label="$t('documents.razdel.normative.legislation')"
                   header-class="bg-blue-grey-8 text-white"
                   style="
                     border: 1px solid rgba(31, 37, 55, 0.7);
@@ -63,41 +57,41 @@
                   "
                 >
                   <div class="rightside_tabpanel">
-                    <a href="http://127.0.0.1:8000/document/1">
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/63">
                       <img src="image/file.svg" />Федеральный закон от
                       25.02.1999 № 39-ФЗ «Об инвестиционной деятельности в
                       Российской Федерации, осуществляемой в форме капитальных
                       вложений»</a
                     >
-                    <a href="http://127.0.0.1:8000/document/2"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/64"
                       ><img src="image/file.svg" />Федеральный закон от
                       09.07.1999 № 160-ФЗ «Об иностранных инвестициях в
                       Российской Федерации»</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/65"
                       ><img src="image/file.svg" />Федеральный закон от
                       29.04.2008 № 57-ФЗ «О порядке осуществления иностранных
                       инвестиций в хозяйственные общества, имеющие
                       стратегическое значение для</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/66"
                       ><img src="image/file.svg" />Федеральный закон от
                       22.07.2005 № 116-ФЗ «Об особых экономических зонах в
                       Российской Федерации»</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/67"
                       ><img src="image/file.svg" />Федеральный закон от
                       29.11.2001 № 156-ФЗ «Об инвестиционных фондах»</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/68"
                       ><img src="image/file.svg" />Федеральный закон от
                       30.12.1995 № 225-ФЗ «О соглашениях о разделе продукции»</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/69"
                       ><img src="image/file.svg" />Закон РСФСР от 29.06.1991 №
                       1488-1 «Об инвестиционной деятельности в РСФСР»</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/70"
                       ><img src="image/file.svg" />Постановление Правительства
                       Российской Федерации от 23.07.1996 № 883 «О льготах по
                       уплате ввозной таможенной пошлины и налога на добавленную
@@ -107,13 +101,13 @@
                       не противоречащей Налоговому кодексу Российской
                       Федерации"</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/71"
                       ><img src="image/file.svg" />Постановление Правительства
                       РФ «Об особой экономической зоне
                       промышленно-производственного типа, созданной на
                       территории Липецкой области» от 11.07.2015 № 697</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/72"
                       ><img src="image/file.svg" />Постановление Правительства
                       РФ «О создании на территории Грязинского района Липецкой
                       области особой экономической зоны промышленно -
@@ -124,7 +118,7 @@
                 <q-expansion-item
                   dark
                   expand-separator
-                  label="Областное законодательство"
+                  :label="$t('documents.razdel.normative.regional')"
                   header-class="bg-blue-grey-8 text-white"
                   style="
                     border: 1px solid rgba(31, 37, 55, 0.7);
@@ -133,55 +127,55 @@
                   "
                 >
                   <div class="rightside_tabpanel">
-                    <a href="http://127.0.0.1:8000/document/1"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/73"
                       ><img src="image/file.svg" />Закон Липецкой области «О
                       поддержке инвестиций в экономику Липецкой области» от
                       25.02.1997г. N 59-ОЗ (ред. от 02.10.2019 N 298-ОЗ)</a
                     >
-                    <a href="http://127.0.0.1:8000/document/2"
+                    <!-- <a href="https://backendinvest.admlr.lipetsk.ru/document/73"
                       ><img src="image/file.svg" />Закон Липецкой области «О
                       применении пониженной налоговой ставки налога на прибыль
                       организаций, подлежащего зачислению в областной бюджет» от
                       29.05.2008 N 151-ОЗ (ред. от 29.10.2018 N 212-ОЗ)</a
-                    >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    > -->
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/75"
                       ><img src="image/file.svg" />Закон Липецкой области «О
                       налоге на имущество организаций Липецкой области» от
                       27.11.2003 N 80-ОЗ (ред. от 11.06.2019 N 263-ОЗ)</a
                     >
-                    <a href="http://127.0.0.1:8000/document/1"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/76"
                       ><img src="image/file.svg" />Закон Липецкой области «О
                       транспортном налоге в Липецкой области» от 25.11.2002 N
                       20-ОЗ (ред. от 11.06.2019 N 263-ОЗ)</a
                     >
-                    <a href="http://127.0.0.1:8000/document/1"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/74"
                       ><img src="image/file.svg" />Закон Липецкой области «Об
                       особых экономических зонах регионального уровня» от
                       18.08.2006 N 316-ОЗ (ред. от 27.04.2017 N 62-ОЗ)</a
                     >
-                    <a href="http://127.0.0.1:8000/document/1"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/79"
                       ><img src="image/file.svg" />Закон Липецкой области «О
                       залоговом фонде Липецкой области» от 29.09.2004 №
                       127-ОЗ</a
                     >
-                    <a href="http://127.0.0.1:8000/document/1"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/77"
                       ><img src="image/file.svg" />Закон Липецкой области «Об
                       инновационной деятельности в Липецкой области» от
                       27.10.2010 № 425-ОЗ (ред.от 22.02.2017 N 45-ОЗ)</a
                     >
-                    <a href="http://127.0.0.1:8000/document/1"
+                    <!-- <a href="http://127.0.0.1:8000/document/1"
                       ><img src="image/file.svg" />Закон Липецкой области от
                       17.12.2019 N 318-ОЗ "Об областном бюджете на 2020 год и на
                       плановый период 2021 и 2022 годов" (принят Липецким
                       областным Советом депутатов 12.12.2019)</a
-                    >
-                    <a href="http://127.0.0.1:8000/document/1"
+                    > -->
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/78"
                       ><img src="image/file.svg" />Постановление Администрации
                       Липецкой области «Об утверждении порядка проведения
                       экспертизы нормативных правовых актов Липецкой области» от
                       27.12.2013 № 634</a
                     >
-                    <a href="http://127.0.0.1:8000/document/1"
+                  <!-- <a href="http://127.0.0.1:8000/document/1"
                       ><img src="image/file.svg" />Постановление Администрации
                       Липецкой области «Об утверждении порядка проведения оценки
                       регулирующего воздействия проектов нормативных правовых
@@ -192,62 +186,58 @@
                       Липецкой области «Об утверждении государственной программы
                       Липецкой области «Обеспечение инвестиционной
                       привлекательности Липецкой области» от 11.10.2013 № 458</a
-                    >
-                    <a href="http://127.0.0.1:8000/document/1"
+                    > -->
+                  <a href="https://backendinvest.admlr.lipetsk.ru/document/82"
                       ><img src="image/file.svg" />Постановление Администрации
                       Липецкой области «О создании особых экономических зон
                       регионального уровня агропромышленного типа» от 12.08.2013
                       № 367</a
                     >
-                    <a href="http://127.0.0.1:8000/document/1"
-                      ><img src="image/file.svg" />Закон Липецкой области «Об
-                      инновационной деятельности в Липецкой области» от
-                      27.10.2010 № 425-ОЗ (ред.от 22.02.2017 N 45-ОЗ)</a
-                    >
-                    <a href="http://127.0.0.1:8000/document/1"
+          
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/80"
                       ><img src="image/file.svg" /> Закон Липецкой области от
                       17.12.2019 N 318-ОЗ "Об областном бюджете на 2020 год и на
                       плановый период 2021 и 2022 годов" (принят Липецким
                       областным Советом депутатов 12.12.2019)
                     </a>
-                    <a href="http://127.0.0.1:8000/document/1"
+                    <!-- <a href="http://127.0.0.1:8000/document/1"
                       ><img src="image/file.svg" /> Постановление Администрации
                       Липецкой области «Об утверждении порядка проведения
                       экспертизы нормативных правовых актов Липецкой области» от
                       27.12.2013 № 634
-                    </a>
-                    <a href="http://127.0.0.1:8000/document/1"
+                    </a> -->
+                    <!-- <a href="http://127.0.0.1:8000/document/1"
                       ><img src="image/file.svg" />Постановление Администрации
                       Липецкой области «Об утверждении порядка проведения оценки
                       регулирующего воздействия проектов нормативных правовых
                       актов Липецкой области» от 27.12.2013 № 633
-                    </a>
-                    <a href="http://127.0.0.1:8000/document/1">
+                    </a> -->
+                    <!-- <a href="http://127.0.0.1:8000/document/1">
                       <img src="image/file.svg" />Постановление Администрации
                       Липецкой области «Об утверждении государственной программы
                       Липецкой области «Обеспечение инвестиционной
                       привлекательности Липецкой области» от 11.10.2013 № 458
-                    </a>
-                    <a href="http://127.0.0.1:8000/document/1"
+                    </a> -->
+                    <!-- <a href="http://127.0.0.1:8000/document/1"
                       ><img src="image/file.svg" /> Постановление Администрации
                       Липецкой области «О создании особых экономических зон
                       регионального уровня агропромышленного типа» от 12.08.2013
                       № 367
-                    </a>
-                    <a href="http://127.0.0.1:8000/document/1"
+                    </a> -->
+                    <!-- <a href="http://127.0.0.1:8000/document/1"
                       ><img src="image/file.svg" /> Постановление Администрации
                       Липецкой области «О порядке формирования и использования
                       бюджетных ассигнований инвестиционного фонда Липецкой
                       области» от 27.05.2013 № 247
-                    </a>
-                    <a href="http://127.0.0.1:8000/document/1"
+                    </a> -->
+                    <!-- <a href="http://127.0.0.1:8000/document/1"
                       ><img src="image/file.svg" />Постановление Управления
                       энергетики и тарифов Липецкой области «О плате за
                       технологическое присоединение к электрическим сетям ОАО
                       "Липецкая городская энергетическая компания» от 27.12.2012
                       № 58/12
-                    </a>
-                    <a href="http://127.0.0.1:8000/document/1"
+                    </a> -->
+                    <!-- <a href="http://127.0.0.1:8000/document/1"
                       ><img src="image/file.svg" /> Постановление Администрации
                       Липецкой области «Об утверждении порядка отнесения
                       территории к индустриальному парку Липецкой области» от
@@ -355,26 +345,25 @@
                       Липецкой области от 04.04.2012 N 108-р О Совете по
                       улучшению инвестиционного климата в Липецкой области в
                       новой редакции 27.02.2018
-                    </a>
-                    <a href="http://127.0.0.1:8000/document/1">
+                    </a> -->
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/81">
                       <img src="image/file.svg" />Закон Липецкой области от
                       28.09.2018 N 198-ОЗ "О регулировании некоторых вопросов,
                       связанных с региональными инвестиционными проектами"
                     </a>
-                    <a href="http://127.0.0.1:8000/document/1">
+                    <!-- <a href="http://127.0.0.1:8000/document/1">
                       <img src="image/file.svg" /> Распоряжение администрации
                       Липецкой области «Об установлении целевых значений
                       показателей Липецкой области в Национальном рейтинге
                       состояния инвестиционного климата субъектов РФ на
                       2019-2020 годы» от 10 октября 2019 г. № 638-р
-                    </a>
+                    </a> -->
                   </div>
                 </q-expansion-item>
                 <q-expansion-item
                   dark
                   expand-separator
-                  label="
-Стратегия социально-экономического развития Липецкой области"
+                  :label="$t('documents.razdel.normative.strategy')"
                   header-class="bg-blue-grey-8 text-white"
                   style="
                     border: 1px solid rgba(31, 37, 55, 0.7);
@@ -383,31 +372,30 @@
                   "
                 >
                   <div class="rightside_tabpanel">
-                    <a href="http://127.0.0.1:8000/document/1"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/83"
                       ><img src="image/file.svg" />Стратегия
                       социально-экономического развития Липецкой области на
                       период до 2024 года (ред.от 29.10.2018)</a
                     >
-                    <a href="http://127.0.0.1:8000/document/2"
+                    <!-- <a href="http://127.0.0.1:8000/document/2"
                       ><img src="image/file.svg" />Приложение 3. Графические
                       материалы</a
-                    >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    > -->
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/85"
                       ><img src="image/file.svg" /> План мероприятий по
                       реализации Стратегии социально-экономического развития
                       Липецкой области до 2024 года</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/84"
                       ><img src="image/file.svg" /> Инвестиционная стратегия
-                      Липецкой области на период до 2020 года</a
+                      Липецкой области на период до 2021 года</a
                     >
                   </div>
                 </q-expansion-item>
                 <q-expansion-item
                   dark
                   expand-separator
-                  label="
-Нормативно правовые акты в рамках оказания государственной поддержки"
+                  :label="$t('documents.razdel.normative.regulatory')"
                   header-class="bg-blue-grey-8 text-white"
                   style="
                     border: 1px solid rgba(31, 37, 55, 0.7);
@@ -416,7 +404,7 @@
                   "
                 >
                   <div class="rightside_tabpanel">
-                    <a href="http://127.0.0.1:8000/document/1"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/86"
                       ><img src="image/file.svg" /> Постановление администрации
                       Липецкой области от 03.02.2020г. № 39 «Об утверждении
                       Порядка предоставления субсидий некоммерческим
@@ -430,22 +418,10 @@
                       новой высокотехнологичной конкурентоспособной промышленной
                       продукции»</a
                     >
-                    <a href="http://127.0.0.1:8000/document/2">
-                      <img src="image/file.svg" /> Приказ управления инвестиций
-                      и инноваций Липецкой области от 17 февраля 2020 года №
-                      16-ОД «Об утверждении результатов распределения субсидий
-                      некоммерческим организациям на содержание и обеспечение
-                      текущей деятельности фонда развития промышленности
-                      Липецкой области в целях развития промышленного и
-                      инвестиционного потенциала Липецкой области и
-                      предоставления финансовой поддержки в виде займов
-                      субъектам деятельности в сфере промышленности для
-                      реализации проектов, направленных на создание, завершение
-                      разработки и внедрение в производство новой
-                      высокотехнологичной конкурентоспособной промышленной
-                      продукции, в 2020 году»</a
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/87">
+                      <img src="image/file.svg" /> Распоряжение администрации Липецкой области от 26.11.2020 №788-р о составе наблюдательного совета ОЭЗ</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3">
+                    <!-- <a href="http://127.0.0.1:8000/document/3">
                       <img src="image/file.svg" />Приказ № 39-ОД от 20 апреля
                       2020 г. "Об утверждении результатов распределения субсидий
                       юридическим лицам на возмещение затрат по работе с
@@ -460,13 +436,13 @@
                       особой экономической зоны промышленно-производственного
                       типа,созданной на территории Грязинского и Елецкого
                       муниципальны районов Липецкой области"</a
-                    >
+                    > -->
                   </div>
                 </q-expansion-item>
                 <q-expansion-item
                   dark
                   expand-separator
-                  label="Перечень государственных программ, в рамках которых оказывается государственная поддержка инвестиционной деятельности"
+                  :label="$t('documents.razdel.normative.staterun')"
                   header-class="bg-blue-grey-8 text-white"
                   style="
                     border: 1px solid rgba(31, 37, 55, 0.7);
@@ -475,42 +451,42 @@
                   "
                 >
                   <div class="rightside_tabpanel">
-                    <a href="http://127.0.0.1:8000/document/1">
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/92">
                       <img src="image/file.svg" /> Постановление Администрации
                       Липецкой области «Об утверждении государственной программы
                       Липецкой области «Обеспечение инвестиционной
                       привлекательности Липецкой области» от 11.10.2013 № 458
                     </a>
-                    <a href="http://127.0.0.1:8000/document/2"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/93"
                       ><img src="image/file.svg" /> Постановление Администрации
                       Липецкой области «Об утверждении государственной программы
                       Липецкой области «Модернизация и инновационное развитие
                       экономики Липецкой области» от 07.11.2013 № 500</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/94"
                       ><img src="image/file.svg" /> Постановление Администрации
                       Липецкой области «Об утверждении государственной программы
                       Липецкой области «Развитие кооперации и коллективных форм
                       собственности в Липецкой области» от 30.10.2013 № 490</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/96"
                       ><img src="image/file.svg" /> Постановление Администрации
                       Липецкой области «Охрана окружающей среды, воспроизводство
                       и рациональное использование природных ресурсов Липецкой
                       области» от 19.12.2012 № 524</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/97"
                       ><img src="image/file.svg" /> Постановление Администрации
                       Липецкой области «Развитие сельского хозяйства и
                       регулирование рынков сельскохозяйственной продукции, сырья
                       и продовольствия Липецкой области» от 28.10.2013 № 485</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <a href="https://backendinvest.admlr.lipetsk.ru/document/98"
                       ><img src="image/file.svg" /> Постановление Администрации
                       Липецкой области «Развитие культуры и туризма в Липецкой
                       области» от 29.11.2013 № 535</a
                     >
-                    <a href="http://127.0.0.1:8000/document/3"
+                    <!-- <a href="http://127.0.0.1:8000/document/3"
                       ><img src="image/file.svg" /> Уведомление о проведении
                       общественного обсуждения</a
                     >
@@ -521,7 +497,7 @@
                     <a href="http://127.0.0.1:8000/document/3"
                       ><img src="image/file.svg" />Проект
                       Постановления_изменения в №500</a
-                    >
+                    > -->
                   </div>
                 </q-expansion-item>
               </q-tab-panel>
@@ -964,7 +940,7 @@
               </q-tab-panel>
               <q-tab-panel name="h">
                 <div class="text-h4 q-mb-md">Защита персональных данных</div>
-                <p>
+                <!-- <p>
                   В управлении инвестиций и международных связей Липецкой
                   области ведется электронный документооборот, позволяющий вести
                   учет и контроль за корреспонденцией.
@@ -973,7 +949,7 @@
                 <p>
                   В 2017 году была запущена в эксплуатацию новая версия сайта
                   управления инвестиций и международных связей Липецкой области.
-                </p>
+                </p> -->
                 <q-expansion-item
                   dark
                   expand-separator
@@ -985,7 +961,13 @@
                     margin-top: 2%;
                   "
                 >
-                  <div class="rightside_tabpanel"></div>
+                  <div class="rightside_tabpanel">
+                        <a
+                    href="https://backendinvest.admlr.lipetsk.ru/document/99"
+                    >Политика управления инвестиций и инноваций Липецкой области в отношении обработки персональных данных</a
+                  >
+                  
+                  </div>
                 </q-expansion-item>
               </q-tab-panel>
               <q-tab-panel name="j">
@@ -1004,17 +986,12 @@
                 >
                   <div class="rightside_tabpanel">
                     <a
-                      href="https://backendinvest.admlr.lipetsk.ru/document/46"
+                      href="https://backendinvest.admlr.lipetsk.ru/document/84"
                     >
                       <img src="image/file.svg" /> Инвестиционная стратегия
-                      Липецкой области на период до 2020 года
+                      Липецкой области на период до 2021 года
                     </a>
-                    <a
-                      href="https://backendinvest.admlr.lipetsk.ru/document/47"
-                    >
-                      <img src="image/file.svg" /> Инвестиционная составляющая
-                      Стратегии СЭР
-                    </a>
+                
 
              
                   </div>
@@ -1031,11 +1008,17 @@
                   "
                 >
                   <div class="rightside_tabpanel">
-                    <a
+                    <!-- <a
                       href="https://backendinvest.admlr.lipetsk.ru/document/48"
                     >
                       <img src="image/file.svg" /> Инвестиционная стратегия
                       Липецкой области
+                    </a> -->
+                        <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/47"
+                    >
+                      <img src="image/file.svg" /> Инвестиционная составляющая
+                      Стратегии СЭР
                     </a>
                   </div>
                 </q-expansion-item>
@@ -1072,41 +1055,49 @@
                   "
                 >
                   <div class="rightside_tabpanel">
-                    <a
-                      href="https://backendinvest.admlr.lipetsk.ru/document/52"
+                        <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/90"
                     >
-                      <img src="image/file.svg" /> План работы Совета на 2020
-                      год
+                      <img src="image/file.svg" /> План работы Совета на 2021 год
                     </a>
-                    <a
+                      <a
                       href="https://backendinvest.admlr.lipetsk.ru/document/53"
                     >
                       <img src="image/file.svg" /> Протокол 39 от 25.02.2019г.
                     </a>
-                    <a
-                      href="https://backendinvest.admlr.lipetsk.ru/document/53"
+                           <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/59"
                     >
-                      <img src="image/file.svg" /> Протокол 39 от 25.02.2019г.
+                      <img src="image/file.svg" /> Протокол Совета №41 от
+                      08.04.2019
+                    </a>
+                      <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/56"
+                    >
+                      <img src="image/file.svg" /> Протокол №43 от 16.09.2019
+                    </a>
+                         <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/60"
+                    >
+                      <img src="image/file.svg" /> Протокол Совета №45 от
+                      20.12.19
+                    </a>
+                      <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/61"
+                    >
+                      <img src="image/file.svg" /> Протокол Совета №46 от
+                      24.02.2020
                     </a>
                     <a
                       href="https://backendinvest.admlr.lipetsk.ru/document/54"
                     >
                       <img src="image/file.svg" /> Протокол 47 от 18.03.2020
                     </a>
+
                     <a
                       href="https://backendinvest.admlr.lipetsk.ru/document/55"
                     >
                       <img src="image/file.svg" /> Протокол 48 от 20.04.20
-                    </a>
-                    <a
-                      href="https://backendinvest.admlr.lipetsk.ru/document/56"
-                    >
-                      <img src="image/file.svg" /> Протокол №43 от 16.09.2019
-                    </a>
-                    <a
-                      href="https://backendinvest.admlr.lipetsk.ru/document/57"
-                    >
-                      <img src="image/file.svg" /> Протокол №49 от 25.06.2020
                     </a>
 
                     <a
@@ -1119,36 +1110,23 @@
                     >
                       <img src="image/file.svg" /> Протокол №50 001
                     </a>
-                    <a
-                      href="https://backendinvest.admlr.lipetsk.ru/document/59"
+                     <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/89"
                     >
-                      <img src="image/file.svg" /> Протокол Совета №41 от
-                      08.04.2019
+                      <img src="image/file.svg" /> Протокол от 24.09.2020 № 51
+                    </a>
+                       <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/91"
+                    >
+                      <img src="image/file.svg" /> Протокол Совета №52 от 11.12.2020г.
                     </a>
                     <a
-                      href="https://backendinvest.admlr.lipetsk.ru/document/60"
-                    >
-                      <img src="image/file.svg" /> Протокол Совета №45 от
-                      20.12.19
-                    </a>
-                    <a
-                      href="https://backendinvest.admlr.lipetsk.ru/document/61"
-                    >
-                      <img src="image/file.svg" /> Протокол Совета №46 от
-                      24.02.2020
-                    </a>
-                    <a
-                      href="https://backendinvest.admlr.lipetsk.ru/document/61"
-                    >
-                      <img src="image/file.svg" /> Протокол Совета №46 от
-                      24.02.2020
-                    </a>
-                    <a
-                      href="https://backendinvest.admlr.lipetsk.ru/document/62"
+                      href="https://backendinvest.admlr.lipetsk.ru/document/88"
                     >
                       <img src="image/file.svg" /> Распоряжение 108-р состав и
                       Положение о Совете
                     </a>
+                
                   </div>
                 </q-expansion-item>
                 <q-expansion-item
@@ -1207,7 +1185,7 @@
                     <a href = 'http://investinlipetsk.ru/'>http://investinlipetsk.ru/ </a> через форму «Обратиться к
 губернатору» <a href ="https://липецкаяобласть.рф/appeal"> https://липецкаяобласть.рф/appeal </a>
 
- <a href ='http://investinlipetsk.ru/contacts'> http://investinlipetsk.ru/contacts </a> 
+ <a href ='http://investinlipetsk.ru/contacts'>http://investinlipetsk.ru/contacts </a> 
                   </div>
                 </q-expansion-item>
                 <q-expansion-item
@@ -1246,13 +1224,10 @@
 
                   </div>
                 </q-expansion-item>
-                                <q-expansion-item
+            <q-expansion-item
                   dark
                   expand-separator
-                  label="Актуальная информация о доступной инфраструктуре для
-размещения производственных и иных объектов инвесторов
-(государственные и частные промышленные площадки,
-промышленные парки, технологических парки, бизнес"
+                  label="Описание мер поддержки инвесторов и инвестиционных проектов"
                   header-class="bg-blue-grey-8 text-white"
                   style="
                     border: 1px solid rgba(31, 37, 55, 0.7);
@@ -1260,12 +1235,47 @@
                     margin-top: 2%;
                   "
                 >
-                  <div class="rightside_tabpanel">
-                    <a href='http://investinlipetsk.ru/square'> http://investinlipetsk.ru/square </a>
+                    <div class="rightside_tabpanel">
+                    <a href='http://investinlipetsk.ru/support'> http://investinlipetsk.com/support
+ </a>
 
                   </div>
-                </q-expansion-item>
+            </q-expansion-item>
+                        <q-expansion-item
+                  dark
+                  expand-separator
+                  label="Реализуемые инвестиционные проекты"
+                  header-class="bg-blue-grey-8 text-white"
+                  style="
+                    border: 1px solid rgba(31, 37, 55, 0.7);
+                    border-radius: 4px;
+                    margin-top: 2%;
+                  "
+                >
+                    <div class="rightside_tabpanel">
+                    <a href='http://investinlipetsk.ru/project'> http://investinlipetsk.com/project
 
+ </a>
+
+                  </div>
+            </q-expansion-item>
+                                  <q-expansion-item
+                  dark
+                  expand-separator
+                  label="Организация по привлечению инвестиций"
+                  header-class="bg-blue-grey-8 text-white"
+                  style="
+                    border: 1px solid rgba(31, 37, 55, 0.7);
+                    border-radius: 4px;
+                    margin-top: 2%;
+                  "
+                >
+                    <div class="rightside_tabpanel">
+          <a href='http://investinlipetsk.ru/contacts'> http://investinlipetsk.com/contacts
+ </a>
+
+                  </div>
+            </q-expansion-item>
               </q-tab-panel>
             </q-tab-panels>
           </div>
@@ -1309,7 +1319,9 @@
 .document a img {
   padding-right: 1%;
 }
-
+.q-tab-panels{
+  width:100%;
+}
 .document a:hover {
   color: rgb(13, 142, 235);
 }

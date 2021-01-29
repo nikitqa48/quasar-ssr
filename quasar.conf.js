@@ -24,6 +24,11 @@ module.exports = function (/* ctx */) {
         path:'fullpage'
       },
         'axios',
+        'i18n',
+        {
+          server:false,
+          path:'esp'
+        },
       {
         client:false,
         path:'hooper'
@@ -100,7 +105,7 @@ module.exports = function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: ['Notify']
+      plugins: ['Notify', 'BottomSheet']
     },
 
     // animations: 'all', // --- includes all animations
@@ -109,7 +114,8 @@ module.exports = function (/* ctx */) {
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
-      pwa: false
+      pwa: false,
+      publicPath:['invest-lipetsk.com', 'investinlipetsk.ru', 'invest-lipetsk.ru', 'investinlipetsk.com']
     },
 
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa

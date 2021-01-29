@@ -1,14 +1,14 @@
 <template>
 <div>        
          <div class="arrow_slide">
-                       <q-btn  label="Стать инвестором" color="primary" no-caps square style="padding-left:3vw; padding-right:3vw; font-size:1.4em;"  class="btn" @click="show=!show" 	/>
+                       <q-btn  :label="$t('contactButton')" color="primary" no-caps square style="padding-left:3vw; padding-right:3vw; "  class="btn" @click="show=!show" 	/>
 </div>
         <q-dialog
       v-model="show" >
       <q-card  class = 'q-card'>
         <q-card-section class="form_container">
         <q-card-section class="card">
-          <div class="fond text-h6" > <span  class="call">Связаться с нами </span>
+          <div class="fond text-h6" > <span  class="call">{{ $t('contact') }}</span>
          </div>
            
               <q-btn
@@ -189,17 +189,17 @@ window.open("data:application/pdf;base64, " + base64EncodedPDF);
 @media screen and (min-width:280px){
   /* мобильная верстка */
   .arrow_slide{
- position: absolute;
+ /* position: absolute; */
  display:flex;
  align-items:center;
  justify-content:center;
   margin-left: 0!important;
   top: 0;
   width:100%!important;
-  margin-top: 83vh;
+  /* margin-top: 83vh; */
   }
   .btn{
-    width:90%;
+    width:100%;
   }
   .wrap{
     flex-direction: column!important;
@@ -245,7 +245,7 @@ window.open("data:application/pdf;base64, " + base64EncodedPDF);
   font-size:2vw!important;
 }
   .btn{
-    width:35%;
+    width:auto;
   }
   .information{
     font-size:1vw!important;
@@ -271,6 +271,8 @@ window.open("data:application/pdf;base64, " + base64EncodedPDF);
 }
 @media screen and (min-width: 1025px){
    .btn{
+     padding-top: 0.5vh;
+     padding-bottom:0.5vh;
     width:auto;
   }
   .information{
@@ -440,7 +442,6 @@ window.open("data:application/pdf;base64, " + base64EncodedPDF);
   align-items: flex-end;
 }
 .arrow_slide{
-  position: absolute;
  display:flex;
  align-items:center;
  justify-content:center;

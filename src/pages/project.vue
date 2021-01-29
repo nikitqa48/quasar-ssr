@@ -13,7 +13,7 @@
             <q-expansion-item
                          dark
         expand-separator
-        label="Фильтр проектов"
+        :label="$t('projectFilter')"
         dark
         :header-style="{ backgroundColor: 'rgba(0, 0, 0, 0.63)' }"
         style="border-radius: 4px; margin-top:2%; "
@@ -23,7 +23,7 @@
       <div class="q-mt-xl">
         <div class='mobile' style="display:flex; justify-content:space-between; ">
         <q-input dark outlined v-model="number" label="Сумма инвестиций (млн руб)" class = 'input_filter' stack-label  type="number"   />
-       <q-select standout="bg-primary text-white"   v-model="industry"  label="Отрасль"  :options= 'options'  dark  outlined
+       <q-select standout="bg-primary text-white"   v-model="industry"  :label="$t('project.industry')"  :options= 'options'  dark  outlined
        option-value="id" 
         class = 'input_filter'/> 
         <q-select standout="bg-primary text-white"  dark  outlined v-model="year"  label="Год реализации"  :options= 'years' class = 'input_filter'/> 
@@ -42,7 +42,7 @@
       <q-card style="width: 50%; max-width: 80vw;">
         <q-card-section class="form_container">
         <q-card-section class="card">
-          <div class="text-h6"> <b>Стать инвестором</b></div>
+          <div class="text-h6"> <b>{{$t('project.invest')}}</b></div>
               <q-btn
               v-close-popup
               align="right"
@@ -109,7 +109,7 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-      <div class="item" v-for="item in project">
+      <div class="item" v-for="item in project" v-if="item.translations[$i18n.locale]">
           <div class="item_image__div">
                 <q-img
         :src="item.image"
@@ -121,13 +121,13 @@
           </div>
           <div class="right_content" >
             
-       <p class="text-h5"> {{item.name}}</p>
-              <p> <span style="opacity: .6;"> Отрасль:</span> {{item.industry}} </p>
-              <p> <span style="opacity: .6;">Описание: </span>{{item.body}} </p>
-              <p> <span style="opacity: .6;">Текущее состояние проекта: </span>  {{item.now}}</p>
-              <p> <span style="opacity: .6;"> Реализация проекта: </span>  с {{item.start}} по {{item.finish}}г.</p>
-              <p> <span style="opacity: .6;">Сумма инвестиций: </span>{{item.sum}} млн.руб.</p>
-              <q-btn flat class="invest" @click="form(item)" v-if="item.help == true">Стать инвестором </q-btn>
+       <p class="text-h5"> {{item.translations[$i18n.locale].name}}</p>
+              <p> <span style="opacity: .6;"> {{$t('project.industry')}}:</span> {{item.industry}} </p>
+              <p> <span style="opacity: .6;">{{$t('project.description')}}: </span>{{item.translations[$i18n.locale].body}} </p>
+              <p> <span style="opacity: .6;">{{$t('project.status')}}: </span>  {{item.translations[$i18n.locale].now}}</p>
+              <p> <span style="opacity: .6;"> {{$t('project.realization')}}: </span>  с {{item.start}} по {{item.finish}}г.</p>
+              <p> <span style="opacity: .6;">{{$t('project.summ')}}: </span>{{item.sum}} млн.руб.</p>
+              <q-btn flat class="invest" @click="form(item)" v-if="item.help == true">{{$t('project.invest')}} </q-btn>
           </div>
       </div>
       

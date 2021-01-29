@@ -31,7 +31,7 @@
           <div class="dots_wrap">
             <h3>
               <b>
-                Географическое положение:
+                Географическое положение: фывфы
                 <br />близость к рынкам
               </b>
             </h3>
@@ -87,12 +87,6 @@
             enter-active-class="animated bounceInLeft"
             leave-active-class="animated bounceOutLeft slow"
           >
-            <!-- <img src="statics/image/newmap.png"> -->
-            <!-- <picture>
-              <source media="(max-width: 799px)" srcset="/image/newmap.png" />
-              <source media="(min-width: 800px)" srcset="/image/newmap.png" />
-              <img src="elva-800w.jpg" alt="lipetsk map" />
-            </picture> -->
             <div class='img' >
             <q-img  src="elva-800w.jpg" alt="Авиа пути, Липецк"  srcset="/image/newmap.png " style='width:95%; height:95%;'/>
             </div>

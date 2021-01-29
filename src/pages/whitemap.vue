@@ -4,23 +4,8 @@
     <div class='container'>
 
     <div class="left_map__container">
-  <p class="headline"> Интерактивная карта площадок</p>
-      <!-- <q-btn-toggle
-        v-model="model"
-        toggle-color="primary"
-        toggle-class='xz'
-        unelevated
-        
-        flat
-        no-caps
-        :options="[
-          {label: 'Все', value: 'one', props:{color:'white'}},
-          {label: 'Особая экономическая зона «Липецк»', value: 'two'},
-          {label: 'Индустриальные парки', value: 'three'},
-          {label:'Особые экономические зоны Регион. уровня', value: 'four'},
-          {label:'Технопарки', value:'five'}
-        ]"
-      /> -->
+  <p class="headline"> {{$t('interactiveMap')}}</p>
+
             <q-tabs
             active-color="primary"
           no-caps
@@ -30,11 +15,11 @@
         class="tab"
       >
        
-        <q-tab name="two"  @click="active"label="Особая экономическая зона «Липецк»"  id="first"  style='padding-left:0'/>
-        <q-tab name="three" @click="active"label="Индустриальные парки"  id="third"  v-bind:class="{button_active: oez_button}"/>
-        <q-tab name="four"  @click="active"label="Особые экономические зоны Регион. уровня" id="second"  v-bind:class="{button_active: oez_button}"/>
-        <q-tab name="five"  @click="active"label="Технопарки "  id="four"  v-bind:class="{button_active: oez_button}"/>
-       <q-tab name="one"  @click="active" label="Все"   ref='all'/>
+        <q-tab name="two"  @click="oezLipetsk" :label="$t('oezLipetsk')"  id="first"  style='padding-left:0'/>
+        <q-tab name="three" @click="industryPark" :label="$t('industryialLipetsk')" id="third"  v-bind:class="{button_active: oez_button}"/>
+        <q-tab name="four"  @click="oezRegion" :label="$t('oezRegion')" id="second"  v-bind:class="{button_active: oez_button}"/>
+        <q-tab name="five"  @click="techopark" :label="$t('techno')"  id="four"  v-bind:class="{button_active: oez_button}"/>
+       <q-tab name="one"  @click="all"    :label="$t('all')"   ref='all'/>
       </q-tabs>
   
       <div class="left_map">
@@ -162,17 +147,14 @@
                   d="m 801.54761,609.08799 c 0.0227,-2.95746 4.23658,-4.23843 6.41338,-6.33424 l -1.4419,-6.63234 c 9.97624,-10.04465 14.99526,-15.11824 16.06786,-16.30394 1.63476,-4.06785 -3.08742,-5.50244 -3.4551,-11.5861 l 6.13931,-5.86186 1.42087,-11.98109 c 2.99903,-3.69769 3.36323,-3.70659 8.9971,-11.09305 l -3.64838,-8.05263 8.0743,-20.35555 c 3.17834,6.27694 -0.85794,18.3021 3.72978,18.83083 l 22.3444,1.34211 5.11166,8.58545 -10.93414,12.75099 4.25437,13.99622 57.95978,13.14361 c -0.0789,3.06963 -0.30658,6.07975 1.91047,10.06776 l 9.7351,-1.61954 9.76292,9.39671 -4.35103,12.39577 7.73191,7.38158 14.69173,-7.51668 39.5468,34.14338 -11.468,12.02086 -15.14698,-20.01541 -12.47656,10.67876 6.70466,16.91514 -13.84034,7.32349 -4.63044,22.58069 7.71297,6.03848 -1.38148,19.14568 -16.1376,9.79131 -5.04093,29.29024 -13.50564,1.59985 -43.44259,-4.95413 c -1.71899,3.99383 -1.07713,6.80723 -5.15696,11.98148 -9.26163,-3.03547 -14.74091,-12.01463 -22.11136,-18.02194 2.42591,-2.77714 -14.30329,1.81904 -19.85325,5.66555 -4.21089,-2.50668 -8.95303,-3.95088 -12.53366,-7.7181 0.76556,-4.44586 -5.45501,-12.017 1.10388,-17.0467 l 0.25906,-0.95113 c 0.0181,-2.9504 1.98335,-10 -1.33206,-16.34254 -3.07379,-1.0501 -1.43192,-3.20977 -0.68226,-5.1595 1.90534,-0.67739 2.75996,-2.66333 1.87089,-6.82085 -1.74279,-2.98733 -2.25309,-6.67895 -5.46613,-8.82613 l -4.74521,-4.40683 2.88336,-5.77663 -5.26954,-24.71138 -19.46151,-11.40888 6.375,-19.4625 z"
                 />
               </svg>
-              <img src='image/Lipetsk_region.svg' class='svg' @load='action' rel='preload'> 
-              <!-- <img src="image/lipetsk_map.svg" class="svg" /> -->
+              <q-img :src="$t('map.link')" class='svg' @load='action' rel='preload'/> 
             </div>
                
             </div>
         
           </div>
         </transition>
-        
       </div>
-    
       <div class='right_map'>
         <div class='right_container'>
                    <div class="right_wrapper">
@@ -206,14 +188,14 @@
         text-color="grey-8"
         no-caps
         :options="[
-          {label: 'Гринфилд', value: 'greenfield'},
-          {label: 'Браунфилд', value: 'brownfield'},
-          {label: 'Все', value: 'all'}
+          {label: $t('map.greenfield'), value: 'greenfield'},
+          {label: $t('map.brownfield'), value: 'brownfield'},
+          {label: $t('map.all'), value: 'all'}
         ]"
       />
 
       </div>
-         <span class='note'> Список площадок</span>
+         <span class='note'> {{$t('map.note')}}</span>
                   <!-- <q-form @submit="onSubmit" class="form">
                     <div style="display:flex; flex-direction:column;">
                       <p style="opacity:0.9;">Выберите тип площадки</p>
@@ -237,13 +219,13 @@
                           @click="ShowGreenfield(item)"
                         >
                       
-                          <div class="square">Участок №{{item.number_territory}}</div>
+                          <div class="square">{{$t('map.plot')}} №{{item.number_territory}}</div>
                   
                     <div class="square_number">
                      <div class="wrap_number">
                         <div class="number_row">
                           <img src="icons/square.svg" style='fill:black;' />
-                              <span>Площадь:</span>
+                               <span>{{$t('map.area')}}:</span>
                           </div>
                           <div class="inside_square">{{item.square}} ГА</div>
                        </div>
@@ -251,20 +233,20 @@
                         <div class="number_row">
                           <q-icon name='mdi-map' style='opacity:.5'/>
                           <!-- <img src="icons/square.svg" /> -->
-                              <span>Тип участка:</span>
+                               <span>{{$t('map.type_plot')}}:</span>
                           </div>
                           <div class="inside_square">
-                            <span v-if="item.type == 'greenfield'">Гринфилд</span>
-                              <span v-if="item.type == 'brownfield'">Браунфилд</span></div>
+                            <span v-if="item.type == 'greenfield'">{{$t('map.greenfield')}}</span>
+                              <span v-if="item.type == 'brownfield'">{{$t('map.brownfield')}}</span></div>
                        </div>
                              <div class="wrap_number">
                         <div class="number_row">
                           <q-icon name='mdi-map' style='opacity:.5'/>
-                              <span>Форма собственности:</span>
+                              <span>{{$t('map.form')}}:</span>
                           </div>
                           <div class="inside_square">
-                            <span class="usefull_inside" v-if="item.desired == 'goverment'">Государственная</span>
-                             <span class="usefull_inside" v-if="item.desired == 'private'">Частная</span>
+                            <span class="usefull_inside" v-if="item.desired == 'goverment'">{{$t('map.state')}}</span>
+                             <span class="usefull_inside" v-if="item.desired == 'private'">{{$t('map.private')}}</span>
                               </div>
                        </div>
                       </div>
@@ -284,33 +266,33 @@
                           v-if="item.region == index+1"
                           @click="ShowGreenfield(item)"
                         >
-                          <div class="square">Участок №{{item.number_territory}}</div>
+                          <div class="square">{{$t('map.plot')}} №{{item.number_territory}}</div>
                           <div class="border"></div>
                     <div class="square_number">
                      <div class="wrap_number">
                         <div class="number_row">
                              <q-icon name='mdi-map' style='opacity:.5'/>
-                              <span>Площадь:</span>
+                              <span>{{$t('map.area')}}:</span>
                           </div>
                           <div class="inside_square">{{item.square}} ГА</div>
                        </div>
                              <div class="wrap_number">
                         <div class="number_row">
                             <q-icon name='mdi-map' style='opacity:.5'/>
-                              <span>Тип участка:</span>
+                              <span>{{$t('map.type_plot')}}:</span>
                           </div>
                           <div class="inside_square">
-                            <span v-if="item.type == 'greenfield'">Гринфилд</span>
-                              <span v-if="item.type == 'brownfield'">Браунфилд</span></div>
+                            <span v-if="item.type == 'greenfield'">{{$t('map.greenfield')}}</span>
+                              <span v-if="item.type == 'brownfield'">{{$t('map.brownfield')}}</span></div>
                        </div>
                              <div class="wrap_number">
                         <div class="number_row">
                          <q-icon name='mdi-map' style='opacity:.5'/>
-                              <span>Форма собственности:</span>
+                                <span>{{$t('map.form')}}:</span>
                           </div>
                           <div class="inside_square">
-                            <span class="usefull_inside" v-if="item.desired == 'goverment'">Государственная</span>
-                             <span class="usefull_inside" v-if="item.desired == 'private'">Частная</span>
+                            <span class="usefull_inside" v-if="item.desired == 'goverment'">{{$t('map.state')}}</span>
+                             <span class="usefull_inside" v-if="item.desired == 'private'">{{$t('map.private')}}</span>
                               </div>
                        </div>
                       </div>
@@ -321,7 +303,7 @@
                     <div v-if="show_industrial">
                       <p class="square_name__territory"
                       v-if="!show_greenfield && index=='8' || index == '4'" 
-                    >Индустриальные парки</p>
+                    >{{$t('map.industrial')}}</p>
                                  <div class="green">
                         <div
                           class="greenfield_border"
@@ -329,33 +311,33 @@
                           v-if="item.region == index+1"
                           @click="ShowGreenfield(item)"
                         >
-                          <div class="square">Участок №{{item.number_territory}}</div>
+                          <div class="square">{{$t('map.plot')}} №{{item.number_territory}}</div>
                           <div class="border"></div>
                     <div class="square_number">
                      <div class="wrap_number">
                         <div class="number_row">
                          <q-icon name='mdi-map' style='opacity:.5'/>
-                              <span>Площадь:</span>
+                              <span>{{$t('map.area')}}:</span>
                           </div>
                           <div class="inside_square">{{item.square}} ГА</div>
                        </div>
                              <div class="wrap_number">
                         <div class="number_row">
                          <q-icon name='mdi-map' style='opacity:.5'/>
-                              <span>Тип участка:</span>
+                              <span>{{$t('map.plot')}}:</span>
                           </div>
                           <div class="inside_square">
-                            <span v-if="item.type == 'greenfield'">Гринфилд</span>
-                              <span v-if="item.type == 'brownfield'">Браунфилд</span></div>
+                            <span v-if="item.type == 'greenfield'">{{$t('map.greenfield')}}</span>
+                              <span v-if="item.type == 'brownfield'">{{$t('map.brownfield')}}</span></div>
                        </div>
                              <div class="wrap_number">
                         <div class="number_row">
                            <q-icon name='mdi-map' style='opacity:.5'/>
-                              <span>Форма собственности:</span>
+                               <span>{{$t('map.form')}}:</span>
                           </div>
                           <div class="inside_square">
-                            <span class="usefull_inside" v-if="item.desired == 'goverment'">Государственная</span>
-                             <span class="usefull_inside" v-if="item.desired == 'private'">Частная</span>
+                            <span class="usefull_inside" v-if="item.desired == 'goverment'">{{$t('map.state')}}</span>
+                             <span class="usefull_inside" v-if="item.desired == 'private'">{{$t('map.private')}}</span>
                               </div>
                        </div>
                       </div>
@@ -364,7 +346,7 @@
                       </div>
                       </div>
                       <div  v-if="show_any">
-                            <p class="square_name__territory" v-if="!show_greenfield  && territory.any.length != 0">Иные площадки</p>
+                            <p class="square_name__territory" v-if="!show_greenfield  && territory.any.length != 0"> {{this.$t('map.other')}}</p>
                                           <div class="green">
                         <div
                           class="greenfield_border"
@@ -372,33 +354,33 @@
                           v-if="item.region == index+1"
                           @click="ShowGreenfield(item)"
                         >
-                          <div class="square">Участок №{{item.number_territory}}</div>
+                          <div class="square">{{$t('map.plot')}} №{{item.number_territory}}</div>
                           <div class="border"></div>
                     <div class="square_number">
                      <div class="wrap_number">
                         <div class="number_row">
                            <q-icon name='mdi-map' style='opacity:.5'/>
-                              <span>Площадь:</span>
+                              <span>{{$t('map.area')}}:</span>
                           </div>
                           <div class="inside_square">{{item.square}} ГА</div>
                        </div>
                              <div class="wrap_number">
                         <div class="number_row">
                           <q-icon name='mdi-map' style='opacity:.5'/>
-                              <span>Тип участка:</span>
+                               <span>{{$t('map.type_plot')}}:</span>
                           </div>
                           <div class="inside_square">
-                            <span v-if="item.type == 'greenfield'">Гринфилд</span>
-                              <span v-if="item.type == 'brownfield'">Браунфилд</span></div>
+                            <span v-if="item.type == 'greenfield'">{{$t('map.greenfield')}}</span>
+                              <span v-if="item.type == 'brownfield'">{{$t('map.brownfield')}}</span></div>
                        </div>
                              <div class="wrap_number">
                         <div class="number_row">
                           <q-icon name='mdi-map' style='opacity:.5'/>
-                              <span>Форма собственности:</span>
+                                <span>{{$t('map.form')}}:</span>
                           </div>
                           <div class="inside_square">
-                            <span class="usefull_inside" v-if="item.desired == 'goverment'">Государственная</span>
-                             <span class="usefull_inside" v-if="item.desired == 'private'">Частная</span>
+                            <span class="usefull_inside" v-if="item.desired == 'goverment'">{{$t('map.state')}}</span>
+                             <span class="usefull_inside" v-if="item.desired == 'private'">{{$t('map.private')}}</span>
                               </div>
                        </div>
                       </div>
@@ -410,12 +392,12 @@
      
             <div class="q-scroll" >
                <q-btn color="grey-6"  v-if="show_greenfield == true"
-                @click="show_greenfield = false" flat icon="keyboard_backspace"  label="Вернуться назад" no-caps style='margin-top:5%;'/>
+                @click="show_greenfield = false" flat icon="keyboard_backspace"  :label="$t('back')" no-caps style='margin-top:5%;'/>
                     <p
                 class="title"
                 v-if="show_greenfield == true"
                 @click="show_greenfield = true"
-              >Участок № {{greenfield.number_territory}}</p>
+              >{{$t('map.plot')}} № {{greenfield.number_territory}}</p>
                    <q-scroll-area
                 :thumb-style="thumbStyle"
                 class="bg-white text-black rounded-borders"
@@ -425,6 +407,7 @@
                   <div class="greenfield_image" ref="grinf" >
                   <q-img
                     :src="greenfield.image"
+                    @click="modalImage = true"
                     class="greenfield_inside"
                     v-if="show_greenfield == true"
                   />
@@ -433,119 +416,115 @@
                       <div class = 'class' >
                         
                       <div class="table" v-if="show_greenfield == true">
-                    <p class="gr">Площадь:</p>
+                    <p class="gr">{{$t('map.area')}}:</p>
                     <span class="cadastr">{{greenfield.square}} ГА</span>
                   </div>
                          <div class="table" v-if="show_greenfield == true">
-                    <p class="gr">Тип участка:</p>
+                    <p class="gr">{{$t('map.type_plot')}}:</p>
                     <span class="cadastr">
-                      <span v-if="greenfield.type == 'greenfield'">Гринфилд</span>
-                      <span v-if="greenfield.type == 'brownfield'">Браунфилд</span>
+                      <span v-if="greenfield.type == 'greenfield'">{{$t('map.greenfield')}}</span>
+                      <span v-if="greenfield.type == 'brownfield'">{{$t('map.brownfield')}}</span>
                     </span>
                   </div>
                         <div class="table" v-if="show_greenfield == true">
-                    <p class="gr">Кадастровый номер:</p>
+                    <p class="gr">{{$t('map.cadastr')}}:</p>
                     <span class="cadastr">{{greenfield.number}}</span>
                   </div>
               
                          <div class="table" >
-                    <p class="gr">Вид разрешенного использования</p>
+                    <p class="gr">{{$t('map.permitted')}}</p>
                     <span
                         class="cadastr"
                         v-if="greenfield.category == '0'"
-                      >Для сельского назначения</span>
+                      >{{$t('map.permit.rural')}}</span>
                       <span
                         class="cadastr"
                         v-if="greenfield.category == '1'"
-                      >Для населенных пунктов</span>
+                      >{{$t('map.permit.locality')}}</span>
                       <span
                         class="cadastr"
                         v-if="greenfield.category == '2'"
-                      >Для промышленности</span>
+                      >{{$t('map.permit.industry')}}</span>
                       <span
                         class="cadastr"
                         v-if="greenfield.category == '3'"
-                      >Для Земли для энергетики</span>
-                      <span class="cadastr" v-if="greenfield.category == '4'">Для транспорта</span>
-                      <span class="cadastr" v-if="greenfield.category == '5'">Для связи</span>
+                      >{{$t('map.permit.energy')}}</span>
+                      <span class="cadastr" v-if="greenfield.category == '4'">{{$t('map.permit.transport')}}</span>
+                      <span class="cadastr" v-if="greenfield.category == '5'">{{$t('map.permit.communication')}}</span>
                       <span
                         class="cadastr"
                         v-if="greenfield.category == '6'"
-                      >Для радиовещания</span>
-                      <span class="cadastr" v-if="greenfield.category == '7'">Для телевидения</span>
-                      <span class="cadastr" v-if="greenfield.category == '8'">Для информатики</span>
+                      >{{$t('map.permit.broadcasting')}}</span>
+                      <span class="cadastr" v-if="greenfield.category == '7'">{{$t('map.permit.television')}}</span>
+                      <span class="cadastr" v-if="greenfield.category == '8'">{{$t('map.permit.informatics')}}</span>
                       <span
                         class="cadastr"
                         v-if="greenfield.category == '9'"
-                      >Для обеспечения космической деятельности</span>
-                      <span class="cadastr" v-if="greenfield.category == '10'">Для обороны</span>
+                      >{{$t('map.permit.space')}}</span>
+                      <span class="cadastr" v-if="greenfield.category == '10'">{{$t('map.permit.defense')}}</span>
                       <span
                         class="cadastr"
                         v-if="greenfield.category == '11'"
-                      >Для безопасности и иного специального назначения</span>
+                      >{{$t('map.permit.security')}}</span>
                       <span
                         class="cadastr"
                         v-if="greenfield.category == '12'"
-                      >Для особо охраняемых территорий и объектов</span>
+                      >{{$t('map.permit.protected')}}</span>
                       <span
                         class="cadastr"
                         v-if="greenfield.category == '13'"
-                      >Для лесного фонда</span>
+                      >{{$t('map.permit.fund')}}</span>
                       <span
                         class="cadastr"
                         v-if="greenfield.category == '14'"
-                      >Для водного фонда</span>
+                      >{{$t('map.permit.water')}}</span>
                   </div>
                             <div class="table" >
-                    <p class="gr">Форма сделки:</p>
+                    <p class="gr">{{$t('map.transaction')}}:</p>
                     <span class="cadastr"> {{greenfield.form.toString()}}</span>
                   </div>
                               <div class="table" v-if="greenfield.water != null && greenfield.water != ''">
-                    <p class="gr">Водоснабжение:</p>
-                    <span class="cadastr"> {{greenfield.water}}</span>
-                  </div>
-                                   <div class="table" v-if="greenfield.water != null && greenfield.water != ''">
-                    <p class="gr">Водоснабжение:</p>
+                    <p class="gr">{{$t('map.water')}}:</p>
                     <span class="cadastr"> {{greenfield.water}}</span>
                   </div>
                                    <div class="table" v-if="greenfield.gas != '' && greenfield.gas != null">
-                    <p class="gr">Газоснабжение:</p>
+                    <p class="gr">{{$t('map.gas')}}:</p>
                     <span class="cadastr"> {{greenfield.gas}}</span>
                   </div>
                   <div class="table" v-if="greenfield.power != '' && greenfield.power != null">
-                    <p class="gr">Электричество:</p>
+                    <p class="gr">{{$t('map.electricity')}}:</p>
                     <span class="cadastr"> {{greenfield.power}}</span>
                   </div>
                             <div class="table" v-if="greenfield.heat!= null && greenfield.heat != ''">
-                    <p class="gr">Теплоснабжение:</p>
+                    <p class="gr">{{$t('map.heat')}}:</p>
                     <span class="cadastr"> {{greenfield.heat}}</span>
                   </div>
              <div class="table"  v-if="greenfield.water_out!= null && greenfield.water_out != ''">
-                    <p class="gr">Водоотведение:</p>
+                    <p class="gr">{{$t('map.water_out')}}:</p>
                     <span class="cadastr"> {{greenfield.water_out}}</span>
                   </div>
     <div class="table"  v-if="greenfield.danger != '' && greenfield.danger!= null">
-                    <p class="gr">Класс опасности:</p>
+                    <p class="gr">{{$t('map.danger')}}:</p>
                     <span class='cadastr' > {{greenfield.danger}}</span>
                   </div>
                  <div class ='description'>   
-                   <p style='margin:0;'>Описание:</p>
+                   <p style='margin:0;'>{{$t('map.description')}}:</p>
                   <p  v-if="show_greenfield == true" v-html="greenfield.description">{{greenfield.description}}</p>
                    <div v-if="greenfield.customs_priveleges != '' && greenfield.customs_priveleges != null">
-                   <p >Таможенные льготы:</p>
+                   <p >{{$t('map.permit.benefits')}}:</p>
                             <span >{{greenfield.customs_priveleges}}</span>  
                             </div>
                            <div v-if="greenfield.nalog != '' && greenfield.nalog != null">
                            <p
                       style='margin:0;'
                       >
-                      Налоговые льготы:</p>
+                      {{$t('map.permit.tax')}}:</p>
                       <span >{{greenfield.nalog}}</span>
                       </div>
                                 <div  v-if="greenfield.territory_priveleges != '' && greenfield.territory_priveleges != null">
                            <p
                       >
-                      Льготная стоимость земли/аренды:</p>
+                     {{$t('map.permit.cost')}}:</p>
                       <span>{{greenfield.territory_priveleges}}</span>
                       </div>
                   </div>
@@ -568,6 +547,7 @@
       flat
       icon="close"
     />
+
         </q-card-section>
 
         <q-card-section class="q-pt-none">
@@ -627,14 +607,18 @@
       </q-card>
     </q-dialog>
     <div class="choice text-h2" v-if="right" >
-              Выберите район
+             {{$t('chose')}}
               <router-view/>
             </div>
                
 </div>
           </div>
         </div>
-          
+                                   <q-dialog
+      v-model="modalImage"
+    >
+    <q-img :src="greenfield.image"/>
+                         </q-dialog>
         </div>
    
   </q-page>
@@ -683,6 +667,7 @@
   height:20vh;
 }
 .greenfield_inside{
+  cursor: pointer;
   width:100%;
   height:100%;
 }
@@ -808,7 +793,7 @@
 }
 .container{
 width:67%;
-    background: #F2F6FA;;
+ background: #F2F6FA;
   display:flex;
   flex-direction: row;
 
@@ -852,14 +837,15 @@ font-size:80%!important;
 </style>
 <script>
 export default {
-    preFetch({ store }) {
-    return store.dispatch("square/getTerritory");
+    preFetch($route) {
+    return $route.store.dispatch("square/getTerritory");
   },
   data(){
     return{
       model:'one',
       button:'all',
       greenfield: {},
+      modalImage:false,
       oez_ppt: [],
       any: [],
       squards:{},
@@ -1042,17 +1028,14 @@ export default {
         }
       }
     },
-    active(event) {
-      if (event.target.innerText == "Особая экономическая зона «Липецк»") {
-
-        for (let i = 0; i < svg.children.length; i++) {
+    oezLipetsk(){
+       for (let i = 0; i < svg.children.length; i++) {
           svg.children[i].classList.remove("active");
-             gryasi.classList.add("active");
-          elec.classList.add("active");
         }
-
-      } else if (event.target.innerText == "Особые экономические зоны Регион. уровня") {
-
+            gryasi.classList.add("active");
+          elec.classList.add("active");
+    },
+    oezRegion(){
           for (let i = 0; i < svg.children.length; i++) {
             svg.children[i].classList.remove("active");
           }
@@ -1064,35 +1047,25 @@ export default {
           ismalkovo.classList.add("active");
           lev.classList.add("active");
           chaplygin.classList.add("active");
-    
-      
- 
-      } else if (event.target.innerText == 'Индустриальные парки') {
-
+    },
+    techopark(){
           for (let i = 0; i < svg.children.length; i++) {
+            svg.children[i].classList.remove("active");
+          }
+          this.$refs.lipetsk.classList.add("active");
+    },
+    all(){
+           for (let i = 0; i < svg.children.length; i++) {
+          svg.children[i].classList.remove("active");
+        }
+    },
+      industryPark(){
+  for (let i = 0; i < svg.children.length; i++) {
             svg.children[i].classList.remove("active");
           }
           krasnoe.classList.add("active");
           elec.classList.add("active");
       
-      } else if (event.target.innerText == 'Технопарки') {
-  
-       
-          for (let i = 0; i < svg.children.length; i++) {
-            svg.children[i].classList.remove("active");
-          }
-          this.$refs.lipetsk.classList.add("active");
-      
-      }
-      else{
-             this.show_industrial = true;
-          this.show_oezru = true;
-          this.show_oez = true;
-          this.show_any = true;
-          for (let i = 0; i < svg.children.length; i++) {
-            svg.children[i].classList.remove("active");
-          }
-      }
     },
   },
   computed: {
@@ -1102,37 +1075,44 @@ export default {
     regionName() {
       let region = "";
       if (this.index == "15") {
-        region = "Усмань";
+        region = this.$t('map.region.usman');
       } else if (this.index == "14") {
-        region = "Хлевное";
-      } else if (this.index == "13") {
-        region = "Тербуны";
+        region = this.$t('map.region.khlevnoe');
+      } 
+      else if(this.index == '17'){
+        region = this.$t('map.region.dolgorukovo');
+      }
+        else if(this.index == '16'){
+        region = this.$t('map.region.dobrinka');
+      }
+      else if (this.index == "13") {
+        region = this.$t('map.region.terbuny');
       } else if (this.index == "12") {
-        region = "Волово";
+        region = this.$t('map.region.volovo');
       } else if (this.index == "11") {
-        region = "Грязи";
+        region = this.$t('map.region.gryazi');
       } else if (this.index == "10") {
-        region = "Липецк";
+        region = this.$t('map.region.lipetsk');
       } else if (this.index == "9") {
-        region = "Задонск";
+        region = this.$t('map.region.zadonsk');
       } else if (this.index == "8") {
-        region = "Елец";
+        region = this.$t('map.region.elets');
       } else if (this.index == "7") {
-        region = "Измалково";
+        region = this.$t('map.region.izmalkovo');
       } else if (this.index == "6") {
-        region = "Доброе";
+        region = this.$t('map.region.dobroe');
       } else if (this.index == "5") {
-        region = "Лебедянь";
+        region = this.$t('map.region.lebedyan');
       } else if (this.index == "4") {
-        region = "Красное";
+        region = this.$t('map.region.krasnoe');
       } else if (this.index == "3") {
-        region = "Становое";
+        region = this.$t('map.region.stanovoe');
       } else if (this.index == "2") {
-        region = "Чаплыгин";
+        region = this.$t('map.region.chaplygin');
       } else if (this.index == "1") {
-        region = "Лев толстой";
+        region = this.$t('map.region.lev_tolstoy');
       } else if (this.index == "0") {
-        region = "Данков";
+        region = this.$t('map.region.dankov');
       }
       return region;
     },
@@ -1148,28 +1128,28 @@ export default {
 
       let name = ''
              if(!this.show_greenfield && this.index =='0'){
-             name = "ОЭЗ РУ «Данков»"
+             name = this.$t('map.oezru_dankov')
       }
       else if(!this.show_greenfield  && this.index == '9'){
-        name = 'ОЭЗ РУ «Задонщина»'
+        name = this.$t('map.oezru_zadonshina')
       }
       else if(!this.show_greenfield  && this.index == '7'){
-        name = 'ОЭЗ РУ «Измалково»'
+        name = this.$t('map.oezru_izmalkovo')
       }
       else if(!this.show_greenfield && this.index == '1'){
-        name = 'ОЭЗ РУ «Астапово»'
+        name = this.$t('map.oezru_astapovo')
       }
       else if (!this.show_greenfield && this.index == '13'){
-        name = 'ОЭЗ РУ «Тербуны»'
+        name = this.$t('map.oezru_terbuny')
       }
         else if (!this.show_greenfield && this.index == '8'){
-        name = 'ОЭЗ РУ «Елец»'
+        name = this.$t('map.oezru_elets')
       }
           else if (!this.show_greenfield && this.index == '14'){
-        name = 'ОЭЗ РУ «Хлевное»'
+        name = this.$t('map.oezru_khlevnoe')
       }
                else if (!this.show_greenfield && this.index == '2'){
-        name = 'ОЭЗ РУ «Чаплыгинская»'
+        name = this.$t('map.oezru_chaplygin')
       }
       return name
     }

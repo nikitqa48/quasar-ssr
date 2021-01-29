@@ -1,113 +1,109 @@
 <template>
+<q-header elevated class="deckstop">
 <div class="wrap_header" >
 
-        <q-toolbar class='deckstop'  >
+        <q-toolbar class='deckstop' v-if="this.$q.platform.is.mobile" >
                
-      <!-- <q-btn align="between" flat class="btn-fixed-width" color="white" label="Главная страница"  no-wrap  no-caps icon= 'img:statics/icons/logo.png'  to="/"/>
-      <q-space />
-    
-
- <div style="display:flex;">
-   <q-item  class="header_button" clickable v-ripple to ='/square' stretch flat >Площадки </q-item>
-      <q-item  class="header_button" clickable v-ripple="{color:'blue-6'}" to ='/state'   >Господдержка </q-item>
-    
-       
-   <q-item  class="header_button" clickable v-ripple to ='/project' stretch flat >Проекты </q-item>
-      <q-item  class="header_button" clickable v-ripple to ='/news' stretch flat >Новости </q-item>
-       <q-item  class="header_button" clickable v-ripple to ='/documents' stretch flat >Документы </q-item>
-         <q-item  class="header_button" clickable v-ripple to ='/contacts' stretch flat >Контакты </q-item>
-        </div> -->
         <q-tabs
         indicator-color="blue-7"
         class='q-tabs my-tabs'
-        active-color='blue
-'
+        active-color='blue'
+        :content-style="{ border: '1px solid red;' }"
         >
-            <!-- <q-route-tab
-  flat class="btn-fixed-width" color="white"   no-wrap  no-caps icon= 'img:statics/icons/logo.png' 
-    label="Главная страница"
-    no-caps
-    to="/example/head"
-    exact
-  /> -->
-  <!-- <q-btn align="between" flat class="btn-fixed-width" color="white" style="width:15%;"
-    no-caps icon= 'img:statics/icons/logo.png'  to="/example/head">
-  <span> Инвестиционный портал Липецкой области </span>
-  </q-btn> -->
-  
+
+
+  <div style="display:flex; width:100%;justify-content:space-between;align-items:center;">
   <router-link to = '/' style="align-self:center;">
-  <button class="btn" > 
-    <div class="img">
-    <img src="icons/full_logo.png">
-    </div>
-     <div style="display:flex;flex-direction:column; padding-left:0.5vw;">
-       <span class="investition"> Инвестиционный портал  </span> <span class="lipetsk">Липецкой области </span></div>
-       </button>
-       <!--  -->
-       
+
+       <div style="width:100%; display:flex;">
+       <img src='icons/logo_button.png' style='width:100%;'>
+       </div>
+
+
+
   </router-link>
-      <q-space/>
+      <!-- <q-space/> -->
+         <span> <span style="font-weight:600">Инвестиционный портал</span> <br>Липецкой области</span>  
+     
         <q-btn flat @click="disableDrawer" round dense icon="menu" v-if="$q.platform.is.mobile" /> 
-
-
- 
+</div>
 
 </q-tabs>
         </q-toolbar>
-       
-      <!-- <div class="mobile">
-        <q-toolbar  class="moble_header bg-grey-10" >
-          <q-btn flat @click="drawer = !drawer" round dense icon="menu" color="white"/>
-          <q-btn flat  dense icon="img:logo.png"  label="Инвест. Липецк" to="/" no-caps color="white"/> 
-        </q-toolbar>
-      <q-menu
-      max-height="100vh"
-      max-width="300px"
-      square
-      no-parent-event
-      v-model="drawer"
-      auto-close
-        :content-style="{ background: 'rgba(31, 37, 55, 0.9)', color:'#FFFFFF', position:'fixed', height:'100%' }"
-        transition-show="slide-right"
-        transition-hide="slide-left"
-      >
- <q-list style="width: 70vw; height:100%;"  >
-            <q-item   clickable v-ripple to ='/square' stretch flat >Площадки </q-item>
-           
-              <q-item   clickable v-ripple="{color:'blue-6'}" to ='/support'   >Господдержка </q-item>
-    
-             <q-item  clickable v-ripple to ='/project' stretch flat >Проекты </q-item>
-           
-            <q-item  clickable v-ripple to ='/news' stretch flat >Новости </q-item>
-                  <q-item   clickable v-ripple to ='/documents' stretch flat >Документы </q-item>
-        
-                            <q-item   clickable v-ripple to ='/contacts' stretch flat >Контакты </q-item>
-          </q-list>
-      </q-menu>
-    
+    <q-toolbar class='deckstop' v-if="this.$q.platform.is.desktop" > 
+     <span> <span style="font-weight:600">{{$t('header.invest')}}</span> <br>{{$t('header.gateway')}}</span>
+      <q-space/>
+                          <q-select
+    v-model="lang"
+    :options="langOptions"
+    :label="$t('language')"
+    dense
+    borderless
+    @click="route"
+    emit-value
+    map-options
+    options-dense
+    style="min-width: 120px; color:white; margin-right:5%;"
+  />
+      <div style='display:flex; flex-direction:column; text-align:center; margin-right:2vw;'>
+  
+        <span style='font-weight:600; color:#727272;'>
+        +7 4742 (51-53-68)
+        </span>
+        <span style="opacity:.8; color:727272;">
+          {{$t('phone')}}
+        </span>
+        </div>
+      <formVue/>
+      </q-toolbar> 
 
-  </div> -->
 </div>
+  </q-header>
 </template>
 <script>
+import formVue from 'components/forms.vue'
 
 export default {
+  props:['drawer'],
+  components:{
+      formVue
+  },
     data(){
       return{
-        draw:false
+        draw:false,
+              lang: this.$i18n.locale,
+      langOptions: [
+        { value: 'ru', label: 'Russian' },
+        { value: 'en', label: 'English' }
+      ],
       }
     },
+          watch: {
+    lang(lang) {
+      this.$i18n.locale = lang
+    }
+  },
     methods:{
-      disableDrawer(){
-        this.draw = !this.draw
-   this.$emit('drawerEvent', this.draw)
+    disableDrawer(){
+      this.draw = this.drawer
+      this.draw = !this.draw
+      this.$emit('drawerEvent', this.draw)
+      },
+      route(){
+        console.log(this.$route.params)
       }
+    },
+    beforeMount(){
+     
     }
 }
 </script>
 <style scoped>
 
   @media screen and (max-width: 900px) {
+    .wrap_header{
+      width:95%!important;
+    }
   .img{
     width:13%!important;
   }
@@ -194,7 +190,7 @@ export default {
 }
 .q-tabs{
   width: 100%;
-  display: flex;
+  display: flex!important;
   align-items: center;
   justify-content: space-between!important;
 }
@@ -238,7 +234,7 @@ body a{
   font-family: 'Montserrat'!important;
 }
 .wrap_header{
-  width:95%;
+  width:100%;
   margin: auto;
 }
 

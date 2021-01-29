@@ -13,13 +13,13 @@
                       </router-link>    
              </div>
                  
-             <h5>{{news.title}}</h5>
+             <h5 v-if="news.translations[$i18n.locale]"  >{{news.translations[$i18n.locale].title}}</h5>
              <div class="news_image">
                  <img :src="news.image">
              </div>
          </div>
-         <div class='bottom' >
-             <span v-html="news.body">{{news.body}}</span>
+         <div class='bottom' v-if="news.translations[$i18n.locale]" >
+             <span v-html="news.translations[$i18n.locale].body">{{news.translations[$i18n.locale].body}}</span>
     </div>
      </div>
      </q-scroll-area>
@@ -123,9 +123,13 @@ import headerVue from "../components/header.vue";
 import Vue from 'vue';
 
 export default {
+     preFetch($route){
+   const url = `https://backendinvest.admlr.lipetsk.ru/support/detail/${$route.currentRoute.params.id}?format=json`
+   return $route.store.dispatch('lastNews/getDetailNews', $route.currentRoute.params.id)
+ },
     data(){
         return {
-          news:{},  
+        //   news:{},  
                 thumbStyle: {
         right: '4px',
         borderRadius: '5px',
@@ -139,7 +143,7 @@ export default {
         headerVue
     },
     mounted() {
-    const url = "https://backendinvest.admlr.lipetsk.ru/news/detail/"+this.$route.params.id+'?format=json';
+    const url = "http://127.0.0.1:8000/news/detail/"+this.$route.params.id+'?format=json';
     fetch(url)
       .then(response => response.json())
       .then(data => (this.news = data));
@@ -147,6 +151,12 @@ export default {
     },
   destroyed(){
     return this.$emit('disableLoading', true)
-  }
+  },
+    computed:{
+    news(){
+      return this.$store.state.lastNews.all_news
+
+    }
+  },
 }
 </script>

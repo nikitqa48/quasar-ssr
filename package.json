@@ -16,6 +16,7 @@
     "hooper": "^0.3.4",
     "quasar": "^1.0.0",
     "vue-fullpage.js": "^0.1.5",
+    "vue-i18n": "^8.22.2",
     "vue-lazy-hydration": "^1.0.0-beta.14"
   },
   "devDependencies": {

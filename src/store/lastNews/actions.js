@@ -13,6 +13,7 @@ export function getAllNews({commit}, page) {
    url = paginationUrl 
   }
   else {
+
     url = `https://backendinvest.admlr.lipetsk.ru/all_news/` 
   }
   return axios.get(url).then(({ data }) => {
@@ -20,5 +21,11 @@ export function getAllNews({commit}, page) {
   })
 }
 
+export function getDetailNews({commit}, id){
+  let url =`https://backendinvest.admlr.lipetsk.ru/news/detail/${id}`
+  return axios.get(url).then(({ data }) => {
+    commit('changeAllNews', data)
+  })
+}
 
 

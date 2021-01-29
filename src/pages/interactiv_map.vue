@@ -393,7 +393,8 @@
                 style="height: 80vh; max-width: 90%;"
                 v-if="show_greenfield == true"
               >
-                  <div class="greenfield_image" ref="grinf" @click="modalImage">
+                  <div class="greenfield_image" ref="grinf" >
+                    asdas
                   <img
                     :src="greenfield.image"
                     class="greenfield_inside"
@@ -601,6 +602,22 @@
                         </div>
                    </q-scroll-area>
                       </div>
+                                        <q-dialog
+      v-model="modalImage"
+    >
+      <q-card style="width: 50%; max-width: 80vw;">
+        <q-card-section class="form_container">
+        <q-card-section class="card">
+          <div class="text-h6"> <b>Подобрать площадку</b></div>
+              <q-btn
+              v-close-popup
+              align="right"
+      padding="none"
+      color="primary"
+      flat
+      icon="close"
+    />
+    
                       <q-dialog
       v-model="medium"
     >

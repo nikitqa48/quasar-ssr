@@ -1,25 +1,56 @@
 import { route } from 'quasar/wrappers'
+import { Platform } from 'quasar'
 
-const routes = [
+
+const routes = (ssrContext) => {
+  const platform = process.env.SERVER ? Platform.parseSSR(ssrContext) : Platform 
+
+  return [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
+    beforeEach:(to,from,next) => {
+      console.log('asdasd')
+    },
     children: [
       { path: '',
         name:'home',
-       component: () => import('pages/homePage.vue'),
-       },
+        component: () =>  {
+          if(platform.is.desktop){
+            return import('pages/homePage.vue')
+          }
+          else{
+            return import('pages/mobile/mobileHomePage.vue')
+          }
+   } 
+      },
       {
         path: '/square',
         name: 'map',
-        component:()=>import('pages/whitemap.vue'),
-        children: [
-          {
-            path: 'square/region/:id',
-            name: 'detail_region',
-            component: () => import('pages/map/detail_map.vue')
+        // component: () => import('pages/' + (platform.is.mobile ? 'whitemap.vue' : 'mainLayout.vue')),
+        component:() => {
+          if(platform.is.desktop){
+            return import ('pages/whitemap.vue')
           }
-        ],
+          else{
+            return import ('pages/mobile/mobile_map.vue')
+          }
+        },
+        // beforeEnter:(to, from, next) => {
+        
+  
+        //   if(platform.is.desktop){
+        //     next()
+            
+        //   }
+        // }
+        // children: [
+        //   {
+        //     path: 'square/region/:id',
+        //     name: 'detail_region',
+        //     component: () => import('pages/map/detail_map.vue')
+        //   }
+        // ],
       },
       {
         path: '/support',
@@ -48,6 +79,11 @@ const routes = [
         name: 'documents',
         component: () => import('pages/documents.vue')
       },
+      // {
+      //   path:'/docs',
+      //   name:'docs',
+      //   component:() => import('pages/docs.vue')
+      // },
       {
         path: '/contacts',
         name: 'contacts',
@@ -76,16 +112,18 @@ const routes = [
         ]
       },
 
-    ]
+    ],
   },
-  {
-    path:'/event',
-    name:'event',
-    component:()=> import('pages/event.vue')
-  },
+  // {
+  //   path:'/event',
+  //   name:'event',
+  //   component:()=> import('pages/event.vue')
+  // },
   // {
   //   path:'/event'
   // },
+
+
   // Always leave this as last one,
   // but you can also remove it
   {
@@ -93,5 +131,5 @@ const routes = [
     component: () => import('pages/Error404.vue')
   }
 ]
-
+}
 export default routes

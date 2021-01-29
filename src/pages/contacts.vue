@@ -268,17 +268,10 @@
  
   </div>
     
+  
     </q-scroll-area>
 </q-page>
                  
-
-              
-
-
-
-
-
-
 
 
 </template>
@@ -633,14 +626,20 @@ import {mapState, mapGetters} from 'vuex'
       computed:{
         getContact(){
           return this.contact = this.$store.state.contacts.team
+        },
+        widget(){
+        
         }
       },
         created(){
     this.contact = this.getContact
     
+    
   },
   mounted(){
+   
     return this.$emit('disableLoading', false)
+   
   },
   destroyed(){
     return this.$emit('disableLoading', true)

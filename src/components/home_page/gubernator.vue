@@ -3,11 +3,10 @@
         <!-- <q-img src='image/ArtomonovIgor.png' class='absolute' style='border:1px solid red; '> </q-img> -->
         <div class = 'container'>
         <div class="text">
-            <p style="padding:1%;font-size: 1.2vw;" class="lipetsk"> «<span style="font-weight:600;">Липецкая область</span> – <span style="opacity:.8;">надёжный и проверенный партнер для инвестора. Нам доверяют, мы это ценим. Могу с уверенностью сказать, что наш <br> опыт в реализации проектов сформировал положительный имидж региона не только на территории России, но и во всем мире.
-<br>Липецкая область - открытый регион для инвестиций»</span></p>
-        <div class="wrap"><p style="font-size: 1vw; padding:1%;">  Глава администрации  <br>Липецкой области, <br>Игорь Георгиевич Артамонов</p> <img src="icons/painting.png" style="width:30%;"> </div>
+            <p style="padding:1%;font-size: 1.2vw;" class="lipetsk"> «<span style="font-weight:600;">{{$t('lipetsk')}}</span> – <span style="opacity:.8;">{{$t('quote')}}</span></p>
+        <div class="wrap"><p style="font-size: 1vw; padding:1%; width:55%;">  {{$t('gubernatorPosition')}} <br>{{$t('artamonov')}}</p> <img src="icons/painting.png" style="width:30%;"> </div>
         </div>
-        <a href="https://xn--80aacoonefzg3am8b1fsb.xn--p1ai/appeal"><div class="button">Обратиться к губернатору 
+        <a href="https://xn--80aacoonefzg3am8b1fsb.xn--p1ai/appeal"><div class="button">{{$t('contactGovernor')}}
         </div> </a>
          <!-- <div class="hmm">
   <img src="icons/mouse.png">

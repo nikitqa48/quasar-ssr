@@ -4,7 +4,7 @@
     <div class="container">
   
       <div class="wrap_container" style="display:flex; flex-direction:row; justify-content:space-between; align-items:flex-end; width:100%;">
-      <h4>Государственная поддержка</h4>
+      <h4>{{$t('support')}}</h4>
       <div class="presentation" style="display:flex;align-items:center; width:30%; justify-content:space-between; border:1px solid #52a4df; padding:1%; color:#5D5E62; ">
       Презентация <br> «поддержка промышленности<br>Липецкой области» 
       <button class="open" @click="open"> Открыть</button>
@@ -12,7 +12,7 @@
 </div>
       <q-form @submit="onSubmit" class="blue_container">
         <div class="form_wrapper">
-          
+         
           <div class="mobile">
       <template v-for="(select, index) in selectList">
               <q-item :key="index"  class='q-item'>
@@ -27,49 +27,46 @@
             </template>
           
           </div>
-            <button class="more" type="submit">Поиск</button>
+            <button class="more" type="submit">{{$t('search')}}</button>
         </div>
       </q-form>
-
       <div class="items">
-
-
         <div class="item" v-for="item in support" v-if="support.length != 0">
           <router-link :to="{name: 'support_detail', params: { id: item.id}}" class="rout">
-            <div class="item_name">{{item.name}}</div>
+                        <div class="item_name" v-if="item.translations[$i18n.locale]">{{item.translations[$i18n.locale].name}}</div>
             <div class="border"></div>
             <div class="item_bottom">
               <div class="wrapper">
-                <span class="grey">Получатели</span>
+                <span class="grey">{{$t('Support.recipient')}}</span>
                 <span class="poluch" v-if="item.recipient == 'small'">МСП</span>
-                <span class="poluch" v-if="item.recipient == 'innovation'">Инновации</span>
-                <span class="poluch" v-if="item.recipient == 'all'">для всех</span>
-                <span class="poluch" v-if="item.recipient == 'municipality'">Муниципалитет</span>
+                <span class="poluch" v-if="item.recipient == 'innovation'">{{$t('Support.innovation')}}</span>
+                <span class="poluch" v-if="item.recipient == 'all'">{{$t('Support.all')}}</span>
+                <span class="poluch" v-if="item.recipient == 'municipality'">{{$t('Support.municipality')}}</span>
                 <span
                   class="poluch"
                   v-if="item.recipient == 'industrial'"
-                >Резиденты индустриальных парков</span>
-                <span class="poluch" v-if="item.recipient == 'developers'">Разработчики ПО</span>
+                >{{$t('Support.resident')}}</span>
+                <span class="poluch" v-if="item.recipient == 'developers'">{{$t('Support.developers')}}</span>
                 <span class="poluch" v-if="item.recipient == 'resident_oez'">Резиденты ОЭЗРУ Липецк</span>
-                <span class="poluch" v-if="item.recipient == 'subject'">Субъект</span>
-                <span class="poluch" v-if="item.recipient == 'legally'">Юридические лица</span>
-                <span class="poluch" v-if="item.recipient == 'cooperatives'">Кооперативы</span>
-                <span class="poluch" v-if="item.recipient == 'not_msp'">Все кроме МСП</span>
+                <span class="poluch" v-if="item.recipient == 'subject'">{{$t('Support.subject')}}</span>
+                <span class="poluch" v-if="item.recipient == 'legally'">{{$t('Support.legal')}}</span>
+                <!-- <span class="poluch" v-if="item.recipient == 'cooperatives'">{{$t('Support.cooperatives')}}</span> -->
+                <span class="poluch" v-if="item.recipient == 'not_msp'">{{$t('Support.msp')}</span>
               </div>
               <div class="wrapper">
-                <span class="grey">Объем поддержки</span>
+                <span class="grey">{{$t('Support.amount')}}</span>
                 <!-- <span class="poluch" v-if="item.implementation == 'agreement'">Соглашение </span>
               <span class="poluch" v-if="item.gchp == 'agreement'">ГЧП </span>
                 <span class="poluch" v-if="item.gchp == 'any'">Любой </span>-->
-                <span class="poluch">{{item.money}}</span>
+                <span class="poluch" v-if="item.translations[$i18n.locale]">{{item.translations[$i18n.locale].money}} </span>
               </div>
               <div class="wrapper">
-                <span class="grey">Вид поддержки</span>
-                <span class="poluch" v-if="item.type == 'direct'">Инвестиции</span>
-                <span class="poluch" v-if="item.type == 'loan_funding'">Заемное финансирование</span>
+                <span class="grey">{{$t('Support.type_support')}}</span>
+                <span class="poluch" v-if="item.type == 'direct'">{{$t('Support.investments')}}</span>
+                <span class="poluch" v-if="item.type == 'loan_funding'">{{$t('Support.debt')}}</span>
 
                 <span class="poluch" v-if="item.type == 'loan'">Налоговые льготы по налогу на займ</span>
-                <span class="poluch" v-if="item.type == 'subsidies'">Субсидии</span>
+                <span class="poluch" v-if="item.type == 'subsidies'">{{$t('Support.subsidies')}}</span>
                 <span
                   class="poluch"
                   v-if="item.type == 'profit'"
@@ -78,9 +75,9 @@
                   class="poluch"
                   v-if="item.type == 'property'"
                 >Налоговые льготы по налогу на имущество</span>
-                <span class="poluch" v-if="item.type == 'grant'">Гранты</span>
+                <span class="poluch" v-if="item.type == 'grant'">{{$t('Support.grants')}}</span>
                 <span class="poluch" v-if="item.type == 'rent'">льготы по аренде</span>
-                <span class="poluch" v-if="item.type == 'garant'">гарантии</span>
+                <span class="poluch" v-if="item.type == 'garant'">{{$t('Support.warranty')}}</span>
                 <span
                   class="poluch"
                   v-if="item.type == 'transport'"
@@ -98,7 +95,7 @@
                 >кредиты под залог создаваемого имущества</span>
               </div>
               <div class="wrapper">
-                <span class="grey">Вид деятельности</span>
+                <span class="grey">{{$t('Support.activity_type')}}</span>
                 <!-- <span class="poluch" v-if="item.implementation == 'agreement'">Соглашение </span>
               <span class="poluch" v-if="item.gchp == 'agreement'">ГЧП </span>
                 <span class="poluch" v-if="item.gchp == 'any'">Любой </span>-->
@@ -106,6 +103,7 @@
               </div>
             </div>
           </router-link>
+          {{select}}
         </div>
 
       </div>
@@ -115,6 +113,7 @@
   </q-page>
 </template>
 <script>
+import i18n from 'src/i18n';
 </script>
 <style scoped>
 .input_filter{
@@ -422,6 +421,7 @@ body a {
         type_project: "",
         support_type: "",
        }
+
 export default {
   preFetch({store}){
     return store.dispatch('support/getSupport')
@@ -430,7 +430,6 @@ export default {
     return {
       options: ["1", "2", "3"],
       page: 1,
-      
       support:{},
                         thumbStyle: {
         right: '4px',
@@ -439,7 +438,7 @@ export default {
         width: '5px',
         opacity: 0.75
       },
-      url: "http://127.0.0.1:8000/support/?format=json",
+      url: "https://backendinvest.admlr.lipetsk.ru/support/?format=json",
       form:{
         industry: '',
         type: "",
@@ -449,7 +448,7 @@ export default {
       },
       shape: "line",
       optns: [
-        { id: "", label: "Все" },
+        { id: "",  label: "Все" },
         { id: "1", label: "Промышленность" },
         { id: "4", label: "Сельское хозяйство" },
         { id: "6", label: "Лесное хозяйство" },
@@ -516,34 +515,54 @@ export default {
         },
         { id: "18", label: "Жилищное хозяйство" },
       ],
-            selectList: [
+
+          selectList: [
   {
-    model: {value:'', label:'Все отрасли'},
-    options: [{
-     value:'1', label:'Промышленность' 
+    model: {
+      value:'', 
+      label:'Все отрасли'
+      },
+      options: [
+      {
+     value:'1', 
+     label:'Промышленность' 
     },
     {
-      value:'4', label:'Сельское хозяйство'
+      value:'4',
+       label:'Сельское хозяйство'
     },
     {
-      value:'6', label:'Лесное хозяйство'
+      value:'6',
+      label:'Лесное хозяйство'
     },
       {
-      value:'7', label:'Строительство'
+      value:'7',
+      label:'Строительство'
     },
     {
-      value:'8', label:'Прочие виды материального произ-ва'
+      value:'8', 
+      label:'Прочие виды материального произ-ва'
     },
     {
-      value:"", label:'Все отрасли'
-    }],
+      value:"", 
+      label:'Все отрасли'
+    }
+    ]
+    ,
     label: 'Вид деятельности'
   },
   {
-    model:{value:'', label:'Все'},
+    model:
+    {
+      value:'',
+      label:'Все'
+     },
+     
     label: 'Вид поддержки',
-    options: [{
-     value:'direct', label:'Прямая финансовая поддержка' 
+    options: [
+      {
+     value:'direct',
+      label:'Прямая финансовая поддержка' 
     },
     {
       value:'loan_funding', label:'Заемная финансовая поддержка'
@@ -588,39 +607,58 @@ export default {
   },
   {
     label: 'Тип проекта',
-    model:{value:'', label:'Все'},
-    options:[{
-      value:'3', label:'Модернизация',
+    model:{
+      value:'', 
+      label:'Все'
+      },
+    options:[
+      {
+      value:'3', 
+      label:'Модернизация',
     },
       {
-        value:'2', label:'Реконструкция'
+        value:'2',
+         label:'Реконструкция'
       },
     {
-      value:'1', label:'Новое строительство'
-    },{
-    value:'', label: 'Все'
-    }],
+      value:'1',
+      label:'Новое строительство'
+    },
+    {
+    value:'', 
+    label: 'Все'
+    }
+    ],
   },
   {
     label: 'Тип получателя поддержки',
-    model:{value:'', label:'Все'},
-        options:[{
-      value:'small', label:'МСП',
+    model:{
+      value:'', 
+      label:'Все'
+      },
+        options:[
+          {
+      value:'small', 
+      label:'МСП',
     },
       {
-        value:'legally', label:'Юр. Лицо'
+        value:'legally',
+         label:'Юр. Лицо'
       },
     {
-      value:'municipality', label:"Муниципалитет"
+      value:'municipality', 
+      label:"Муниципалитет"
     },
     {
     value:'', label: 'Все'
-    }],
+    }
+    ],
   },
 ],
     };
 
   },
+
   methods: {
 
     open(){
@@ -629,6 +667,7 @@ export default {
     onSubmit() {
       let backendurl = "https://backendinvest.admlr.lipetsk.ru/support/?format=json";
       let url = backendurl;
+      console.log(this.selectList[0].options[0])
       if (this.selectList[0].model.value == "" && this.selectList[2].model.value == "") {
         
         url = `${backendurl}&type=${this.selectList[1].model.value}&recipient=${this.selectList[3].model.value}`;
@@ -652,6 +691,17 @@ export default {
     getSupport() {
       return this.support = this.$store.state.support.stateSupport
     },
+    select(){
+      for(let i = 0; i < this.selectList.length;  i++){
+       this.selectList[i].label = this.$i18n.t(`Support.selectLabel[${i}].label`)
+       
+          for (let x = 0; x< this.selectList[i].options.length; x++){
+          this.selectList[i].options[x].label = this.$i18n.t(`Support.selectLabel[${i}].options[${x}].label`)
+          
+        }
+      }    
+      
+    }
   },
   created(){
     this.support = this.getSupport

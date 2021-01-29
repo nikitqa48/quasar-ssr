@@ -35,6 +35,35 @@
                 </div>
                 </div>
         </q-carousel-slide>
+                           <q-carousel-slide name="образование" class="column no-wrap flex-center"  img-src="image/prom-min.png">
+                   <div class="container">
+                <div class="text-h3 text-white text-center text-uppercase" style="font-weight:600;"> Образование </div>
+                <div class="row" style="width:100%; display:flex;">
+                  <div class="settings" style="align-self:center;">
+                  <q-img src="icons/settings.svg" style="width:5vw; opacity:0.5;"/>
+                  </div>
+                  <div class="column text-white" style="margin-left:1%;">
+                    <span class="text"> более  </span>
+                    <span class='number'> 40 </span>
+                    <span class="text"> образовательных организаций </span>
+                  </div>
+                     <div class="column text-white" style="margin-left:1%;">
+                    <span class="text"> более  </span>
+                    <span class='number'> 10 000 </span>
+                    <span class="text"> специалистов выпускается ежегодно </span>
+                  </div>
+                             <div class="column text-white" style="margin-top:4%; margin-left:15%;">
+                    <span class="number" style="font-weight:600;"> 8</span>
+                    <span style="font-size:0.8vw;"> производственно-образовательных кластеров <br>в строительноей, агропромышленной, <br>металлургической, машиностроительной, железнодорожной, <br>жилищно-коммунальной,<br> газовой отраслях, а также в сфере питания </span>
+                  </div>
+                     <div class="column text-white" style="margin-left:1%;">
+
+                    <span class='number' style="margin-top:10%;"> 1 место </span>
+                    <span style="font-size:0.8vw;"> по количеству созданных базовых профессиональных <br>организаций в части поддержки инклюзивного среднего <br>профессионального образования </span>
+                  </div>
+                </div>
+                </div>
+        </q-carousel-slide>
                            <q-carousel-slide name="туризм" class="column no-wrap flex-center"  img-src="image/tourism.png">
                    <div class="container">
                 <div class="text-h3 text-white text-center text-uppercase" style="font-weight:600;"> Туризм </div>

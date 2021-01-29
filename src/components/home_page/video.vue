@@ -1,40 +1,68 @@
 <template>
 <div >
-          <div class="risk">
+      <div class="risk">
         <div class="overlay">
           <div class="risk_container">
-            <h2 class="heading">Липецкая область</h2>
-            <div class="white_heading"></div>
-            
-            <p class="risk_p">
-              Минимальный риск инвестирования В РФ
-              <br />за 15 лет - RAEX rating agency
-               
+            <div class="presentation"> <span>Презентация <br> <b>Липецкой области</b> </span><q-btn class="open" @click="open" label='Открыть' color="white" text-color="black"> </q-btn></div>
+            <div class="content">
+            <h2 class="heading">{{ $t('lipetsk') }}</h2>
+            <div class="white_heading">
+                   <p class="risk_p">
+              {{ $t('risk') }}  
             </p>
+      <form-vue class="form"/>
+            </div>
             
+          
 
 
+      </div>
           </div>
   
         </div>
-        <video loop muted autoplay class="fullscreen-bg__video" src="video/video_background1.webm" type="video/webm" media="(min-width:800)" rel="preload" data-autoplay>
+        <video loop muted autoplay class="fullscreen-bg__video" src="video/lipetsk.mp4" type="video/mp4" media="(min-width:800)" rel="preload" data-autoplay>
          
       
         </video>
+        
       </div>
-      <form-vue class="form"/>
 
-       <div class="presentation"> <span>Презентация <br> <b>Липецкой области</b> </span><button class="open" @click="open"> Открыть</button></div>
+
+      
 </div>
      
 </template>
 <style scoped>
+.presentation{
+  border:1px solid #2CCCD8;
+  position: absolute;
+  align-items: center;
+  color:white;
+  border-radius: 5px;
+  padding:1vw;
+  text-align: center;
+  display: flex;
+  top:0;
+  margin-top: 5vh;
+  left:0;
+}
+.open{
+  margin-left: 2vw;
+}
+.content{
+width:100%;
+text-align:center;
+height: 90%;
+display: flex;
+flex-direction: column;
+justify-content:space-between;
+}
 @media screen and (min-width:320px){
 .risk {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: -1;
+  z-index: 1;
   color:white;
   overflow: hidden;
   position: relative;
@@ -44,9 +72,7 @@
 .fullscreen-bg__video{
   display:none;
 }
-.presentation{
-  display:none;
-}
+
 .overlay {
   background: rgba(0, 0, 0, 0.6);
   position: absolute;
@@ -54,7 +80,6 @@
   left: 0;
   height: 100%;
   width: 100%;
-  z-index: 4;
 }
   .risk_container{  
     height:100%;
@@ -62,7 +87,7 @@
     flex-direction: column;
     align-items: center;
     text-align:center;
-    justify-content: center;
+    justify-content: space-between;
     background: url("/image/mobile_video.png");
     background-size: cover;
     background-repeat: no-repeat;
@@ -72,12 +97,13 @@
   font-weight: 600;
   text-align: center;
   color: white;
-  padding-bottom: 5%;
+  /* margin-bottom: 30%; */
+  /* padding-bottom: 15%; */
   font-size: 15vw!important;
 }
   .risk_p{
     font-size: 4vw!important;
-    width:70%;
+    width:100%;
   }
   .hmm{
   color:white;
@@ -88,7 +114,6 @@
   font-weight: 600;
   text-align: center;
   color: white;
-  padding-bottom: 5%;
   font-size: 15vw!important;
 }
 }
@@ -110,7 +135,9 @@
 }
 @media screen and (min-width:1024px){
  
-   
+   .form{
+     /* margin-bottom:15%; */
+   }
   .heading{
     line-height: 6.09375vw;
     font-weight: 600;
@@ -131,7 +158,6 @@
        display: flex;
     justify-content: center;
     align-items: center;
-    z-index: -1;
     overflow: hidden;
     position: relative;
     height: 100vh;
@@ -139,6 +165,9 @@
   }
   .risk_p{
         line-height: 140%;
+        width:50%;
+        margin:auto;
+        padding-bottom: 2%!important;
     font-size: 2.5vw!important;
     text-align: center;
     color: #fff;
@@ -195,20 +224,7 @@ padding-left: 1vw;
 padding-right: 1vw;
 margin-left: 1.3vw;
 }
-.presentation{
-  border:1px solid #2CCCD8;
-  position: absolute;
-  align-items: center;
-  color:white;
-  border-radius: 5px;
-  padding:1vw;
-  text-align: center;
-  display: flex;
-  top:0;
-  margin-left: 5vw;
-  margin-top: 15vh;
-  left:0;
-}
+
 .hmm{
   color:white;
   margin-bottom: 2%;
@@ -270,10 +286,15 @@ export default {
     components:{
       formVue
     },
+    data(){
+      return{
+      }
+    },
     methods:{
       open(){
         window.open('/files/lipetsk.pdf')
       }
-    }
+    },
+
 }
 </script>

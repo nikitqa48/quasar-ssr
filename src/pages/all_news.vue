@@ -7,7 +7,7 @@
     >
 
      <div class="wrapper">
-         <h4> Новости </h4>
+         <h4> {{$t('news')}} </h4>
          <div class="items">
 
 
@@ -24,12 +24,15 @@
       >
       
         <div class="absolute-bottom text-subtitle2 text-left">
+         
           <div class='text-left'>
           {{date}}
           </div>
+           <div  v-if="item.translations[$i18n.locale]">
            <q-separator dark />
-         {{item.title}}
-         
+           {{item.translations[$i18n.locale].title}}
+            {{item.title}}
+           </div>
         </div>
       </q-img>
     </q-card>
@@ -52,6 +55,7 @@
       @click="getPaginationNews"
     >
     </q-pagination>
+
   </div>
 
     </q-scroll-area>
@@ -240,7 +244,7 @@ export default {
     methods:{
       getPaginationNews(){
         
-      
+        this.$store.dispatch('lastNews/getAllNews', this.page)
         this.$router.push({name:'news', params:{id:this.page}})
         let url = 'https://backendinvest.admlr.lipetsk.ru/all_news/'
         let paginationUrl = ''
@@ -262,11 +266,8 @@ export default {
         },
         date(){
           for(let i = 0; i< this.news.results.length; i++){
-         let string = this.news.results[i].publish.split('T')[0]
-         let string1 = string.split('.')
-        let string2 = string1.reverse()
-        let string3 = string2.join('.')
-        this.news.results[i].publish = string3
+          let string =this.news.results[i].publish.split('T')[0]
+          let string3 = string.split('-').reverse().join('.')
          return string3
           }
         }

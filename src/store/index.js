@@ -7,7 +7,8 @@ import support from './support'
 import contacts from './conctact'
 import project from './project'
 import event from './event'
-
+import drawer from './drawer'
+import docs from './documents'
 Vue.use(Vuex)
 
 /*
@@ -28,6 +29,8 @@ export default function (/* { ssrContext } */) {
       support,
       event,
       contacts,
+      drawer,
+      docs,
       project
     },
 

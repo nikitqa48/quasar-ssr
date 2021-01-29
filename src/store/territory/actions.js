@@ -1,5 +1,6 @@
 import axios from 'axios'
-export function getTerritory ({ commit }) {
+export function getTerritory ({ commit }, value) {
+        console.log(value)
         const url = "https://backendinvest.admlr.lipetsk.ru/greenfield/?format=json"
         return axios.get(url).then(
             ({ data }) => {

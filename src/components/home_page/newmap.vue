@@ -11,7 +11,7 @@
     >
           <q-carousel-slide name="world" class="container column" >
 
-                <h5>ГЕОГРАФИЧЕСКОЕ ПОЛОЖЕНИЕ: БЛИЗОСТЬ К РЫНКАМ </h5>
+                <h5 style="text-transform:uppercase;">{{$t('geographicPosition')}}  </h5>
       <div class='row' style='height:100%;'>
       <div class="image" style="width:100%; height:100%;">
         <div style="width:100%;">
@@ -23,7 +23,7 @@
 
       </q-carousel-slide>
             <q-carousel-slide name="jd" class="container column">
-        <h5>ГЕОГРАФИЧЕСКОЕ ПОЛОЖЕНИЕ: БЛИЗОСТЬ К РЫНКАМ </h5>
+      <h5 style="text-transform:uppercase;">{{$t('geographicPosition')}}  </h5>
       <div class='row'>
       <div class="image">
         <div style="width:100%;">
@@ -45,7 +45,7 @@
       </q-carousel-slide>
       <q-carousel-slide name="auto" class="container column">
 
-        <h5>ГЕОГРАФИЧЕСКОЕ ПОЛОЖЕНИЕ: БЛИЗОСТЬ К РЫНКАМ </h5>
+      <h5 style="text-transform:uppercase;">{{$t('geographicPosition')}}  </h5>
       <div class='row'>
       <div class="image">
         <div style="width:100%;">
@@ -76,7 +76,7 @@
       </div>
       </q-carousel-slide>
       <q-carousel-slide name="fly" class="container column">
-                        <h5>ГЕОГРАФИЧЕСКОЕ ПОЛОЖЕНИЕ: БЛИЗОСТЬ К РЫНКАМ </h5>
+                      <h5 style="text-transform:uppercase;">{{$t('geographicPosition')}}  </h5>
       <div class='row' style='height:100%;'>
         <div style="width:100%;">
       <div class="image" style="width:100%; ">
@@ -109,26 +109,26 @@
             <template v-slot:jd>
               <div class="button">
                 <q-icon left name="directions_railway" />
-                <div class="text-left">ЖД сообщение</div>
+                <div class="text-left">{{$t('jd')}} </div>
               </div>
             </template>
 
             <template v-slot:auto>
               <div class="button">
                 <q-icon left name="directions_car" />
-                <div class="text-left">Авто</div>
+                <div class="text-left">{{$t('auto')}}</div>
               </div>
             </template>
             <template v-slot:world>
               <div class="button">
                 <q-icon left name="public" />
-                <div class="text-left">В мире</div>
+                <div class="text-left">{{$t('world')}}</div>
               </div>
             </template>
             <template v-slot:fly>
               <div class="button">
                 <q-icon left name="flight" />
-                <div class="text-left">Авиа</div>
+                <div class="text-left">{{$t('air')}}</div>
               </div>
             </template>
           </q-btn-toggle>

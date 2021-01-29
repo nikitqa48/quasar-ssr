@@ -8,14 +8,16 @@
             <div class="news_container">
                 <h3 class="news_head">Новости</h3>    
             <div class="itms">
+              
         <div class="aside">
+          
           <div class="wrap_aside">
                 <div class = "item1">
                    <router-link :to="{name: 'detail', params: { id: news[0].id}}" class="rout"> 
                   <div class="image">
                      <div class="dark"></div>
-                       <div class="title">
-                      {{news[0].title}}
+                       <div class="title" v-if="news[0].translations[$i18n.locale].title">
+                      {{news[0].translations[$i18n.locale].title}}
                   </div>
                   <img :src="news[0].image">
                   </div>
@@ -28,9 +30,9 @@
                    <router-link :to="{name: 'detail', params: { id: news[1].id}}" class="rout">  
                   <div class="image2">
                      <div class="dark"></div>
-                       <div class="title">
+                       <div class="title" v-if ="news[1].translations[$i18n.locale].title">
                         
-                      {{news[1].title}}
+                      {{news[1].translations[$i18n.locale].title}}
                   </div>
                     <img :src="news[1].image">
                   </div>
@@ -40,8 +42,8 @@
               <router-link :to="{name: 'detail', params: { id: news[2].id}}" class="rout"> 
                   <div class="image2">
                      <div class="dark"></div>
-                      <div class="title"> 
-                      {{news[2].title}}
+                      <div class="title" v-if="news[2].translations[$i18n.locale]" > 
+                      {{news[2].translations[$i18n.locale].title}}
                   </div>
                     <img :src="news[2].image">
                   </div>
@@ -53,8 +55,8 @@
                   <router-link :to="{name: 'detail', params: { id: news[3].id}}" class="rout"> 
                   <div class="image2">
                      <div class="dark"></div>
-                       <div class="title">
-                      {{news[3].title}}
+                       <div class="title" v-if="news[3].translations[$i18n.locale]">
+                      {{news[3].translations[$i18n.locale].title}}
                   </div>
                     <img :src="news[3].image">
                   </div>
@@ -65,8 +67,8 @@
                         <router-link :to="{name: 'news', params: { id: news[4].id}}" class="rout"> 
                   <div class="image2">
                     <div class="dark"></div>
-                       <div class="title">
-                      {{news[4].title}}
+                       <div class="title" v-if="news[4].translations[$i18n.locale]" >
+                          {{news[4].translations[$i18n.locale].title}}
                   </div>
                     <img :src="news[4].image">
                   </div>
@@ -75,22 +77,19 @@
         
                 </div>
           </div>
+   <Widget/>  
+   
         </div>
-
-
                 <div class="all">
-                  <router-link :to="{name: 'news'}" class="more" id='more'> 
-                   
+                  <router-link :to="{name: 'news'}" class="more" id='more'>           
               Показать все новости
-             
-           
-        
             </router-link>
                 </div>
-
+                
             </div>
      
             </div>
+
         </div>
 </template>
 
@@ -333,6 +332,19 @@ height:5vh;
 
 export default {
 props:['visible'],
+components:{
+  Widget:() =>{
+    return new Promise ((resolve, reject) => {
+      let Widget = document.createElement('script')
+      Widget.onload = () => {
+        resolve(import('components/widjet.vue'))
+      }
+      Widget.async = true
+      Widget.src = 'https://pos.gosuslugi.ru/bin/script.min.js'
+      document.head.appendChild(Widget)
+    })
+  }
+},
   data() {
     return {
     slide: "1",
