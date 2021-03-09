@@ -27,76 +27,74 @@
     />
         </q-card-section>
         <q-card-section class="text-white" style="opacity:.8">
-          Отправьте ваши контакты и наши сотрудники свяжутся с вами в ближайшее время 
+        {{$t('form.send')}}
         </q-card-section>
   <q-card-section class="q-pt-none">
     
          <q-form class='form'>
            <div class="wrap">
               <div class="column">
-           <span class="text-white" style="opacity:.8"><b>Фамилия *</b></span>
+           <span class="text-white" style="opacity:.8"><b>{{$t('form.surname')}} *</b></span>
           
-          <q-input class ='input'  filled v-model="surname" dark lazy-rules placeholder="Введите фамилию"
+          <q-input class ='input'  filled v-model="surname" dark lazy-rules :placeholder="$t('form.surnamePlaceholder')"
         :rules="[ val => val && val.length > 0 || 'Пожалуйста, введите вашу Фамилию']" style="width:100%;" />
         </div>
         <div class="column">
-       <span class="text-white " style="opacity:.8"> <b>Имя *</b> </span>
+       <span class="text-white " style="opacity:.8"> <b>{{$t('form.name')}} *</b> </span>
        
           <q-input class ='input' dark filled v-model="name"
           lazy-rules
         :rules="[ val => val && val.length > 0 || 'Пожалуйста, введите ваше Имя']"
-           placeholder="Введите имя" style="width:100%; opacity:.8" />
+           :placeholder="$t('form.namePlaceholder')" style="width:100%; opacity:.8" />
        </div>
           </div>
                      <div class="wrap">
               <div class="column">
-           <span class="text-white" style="opacity:.8"><b>Отчество</b></span>
+           <span class="text-white" style="opacity:.8"><b>{{$t('form.patronymic')}}</b></span>
           
-          <q-input class ='input'  filled v-model="middle_name" dark  placeholder="Введите Отчество"
+          <q-input class ='input'  filled v-model="middle_name" dark :placeholder="$t('form.patrinymicPlaceholder')"
       style="width:100%; opacity:.8" />
         </div>
         <div class="column">
-            <span class="text-white" style="opacity:.8"> <b>Телефон</b></span>
-          <q-input class ='input' type="number" filled v-model="phone" placeholder="Введите телефон" style="width:100%; opacity:.8" dark />
+            <span class="text-white" style="opacity:.8"> <b>{{$t('form.phone')}}</b></span>
+          <q-input class ='input' type="number" filled v-model="phone" :placeholder="$t('form.phonePlaceholder')" style="width:100%; opacity:.8" dark />
           </div>
           </div>
           <div class="wrap">
                  <div class="column">
-           <span class="text-white" style="opacity:.8"><b>Организация </b></span>
+           <span class="text-white" style="opacity:.8"><b>{{$t('form.organisation')}} </b></span>
           
-          <q-input class ='input'  filled v-model="organisation" dark  placeholder="Введите название"
+          <q-input class ='input'  filled v-model="organisation" dark  :placeholder="$t('form.organisationPlaceholder')"
       style="width:100%; opacity:.8" />
         </div>
           <div class="column">
-          <span class="text-white" style="opacity:.8"> <b>Почта * </b> </span>
+          <span class="text-white" style="opacity:.8"> <b>Email * </b> </span>
           <q-input class ='input'   dark lazy-rules
         :rules="[ val => val && val.length > 0 || 'Пожалуйста, введите вашу почту']"
-         filled v-model="email" type='email' placeholder="Введите email*" style="width:100%; opacity:.8" />
+         filled v-model="email" type='email' :placeholder="$t('form.emailPlaceholder')" style="width:100%; opacity:.8" />
           </div>
           </div>
           <div class="wrap_comment">
             <div class="column">
-              <span class="text-white" style="opacity:.8"> <b>Комментарий </b> </span>
+              <span class="text-white" style="opacity:.8"> <b>{{$t('form.comment')}}</b> </span>
              <q-input
              dark 
              style="width:100%; margin-top:2%;"
       v-model="text"
       filled
-      placeholder="Введите комментарий"
+     :placeholder="$t('form.commentPlaceholder')"
       type="textarea"
       
     />
             </div>
             <div class="column" style="justify-content:flex-end;">
-    <span style="opacity:.8; color:white; font-size:0.8vw;"> Поля помеченные * обязательны для заполнения
-    <br><br>Нажимая на кнопку «Отправить» Вы даёте согласие на обработку своих персональных данных в соответствии со статьей 9 Федерального закона от 27 июля 2006 г. N 152-ФЗ «О персональных данных»
-    </span>
+    <span style="opacity:.8; color:white; font-size:0.8vw;" v-html="$t('form.description')"></span>
             </div>
           </div>
           
          </q-form>
                 <q-card-actions align="left" class="text-white">
-          <q-btn label="Отправить" rounded type ='submit'  no-caps color="cyan-6" @click="onSubmit" style="width:20%; margin-top:3%;" />
+          <q-btn :label="$t('form.sendMessage')" rounded type ='submit'  no-caps color="cyan-6" @click="onSubmit" style="width:20%; margin-top:3%;" />
         </q-card-actions>
  
         </q-card-section>

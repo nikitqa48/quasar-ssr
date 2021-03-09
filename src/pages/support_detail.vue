@@ -5,7 +5,7 @@
    
         <div class="back">
      <router-link :to="{name: 'support', }" class="rout">
-               <q-btn color="primary" flat icon="keyboard_backspace"  label="Вернуться назад" no-caps />
+               <q-btn color="primary" flat icon="keyboard_backspace"  :label="$t('back')" no-caps />
                 </router-link>
         </div>
      <div v-if="support.translations[$i18n.locale]" style='display:flex;flex-direction:column;'>
@@ -63,7 +63,7 @@
         <div class="item" v-if="support.industry != '' ">
           <div class="wrapper">
             <span class="text">{{$t('Support.activity_type')}}:</span>
-            <span class="vid" v-if="support.industry!=undefined">{{support.industry.toString()}}</span>
+            <span class="vid" v-if="support.industry!=undefined">{{example}}{{support.industry.join(', ')}} </span>
           </div>
         </div>
         <div class="item" v-if="support.implementation != ''">
@@ -152,7 +152,7 @@
             <span class="vid" v-if="support.territory == 'techno'">{{$t('techno')}}</span>
             <span class="vid" v-if="support.territory == 'oez'">{{$t('Support.oez_ppt')}}</span>
             <span class="vid" v-if="support.territory == 'oezru'">ОЭЗРУ</span>
-            <span class="vid" v-if="support.territory == 'all'">Любая</span>
+            <span class="vid" v-if="support.territory == 'all'">{{$t('Support.other')}}</span>
             <span class="vid" v-if="support.territory == 'cluster'">Участник кластера</span>
           </div>
         </div>
@@ -250,15 +250,43 @@ export default {
 // },
   data() {
     return {
-
+      support:{}
     };
   },
   computed:{
-    support(){
-      return this.$store.state.support.detailSupport
+     example(){
+
+        for(let x=0; x<this.support.industry.length; x++){
+        if(this.support.industry[x] == 'промышленность'){
+          this.support.industry[x] = this.$i18n.t('Support.industry')
+        }
+        else if(this.support.industry[x] == 'Industry'){
+          this.support.industry[x] = this.$i18n.t('Support.industry')
+        }
+        else if (this.support.industry[x] == 'сельское хозяйство'){
+          this.support.industry[x] = this.$i18n.t('Region.agriculture')
+        }
+          else if (this.support.industry[x] == 'Agriculture'){
+          this.support.industry[x] = this.$i18n.t('Region.agriculture')
+        }
+           else if (this.support.industry[x] == 'любой'){
+          this.support.industry[x] = this.$i18n.t('Support.other')
+        }
+               else if (this.support.industry[x] == 'other'){
+          this.support.industry[x] = this.$i18n.t('Support.other')
+        }
+   
+          }
+  
+    },
+    supportDetail(){
+      return this.support = this.$store.state.support.detailSupport
 
     }
   },
+  created(){
+    this.support = this.supportDetail
+  }
 
   // mounted() {
   //   const url =

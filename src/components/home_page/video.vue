@@ -3,7 +3,7 @@
       <div class="risk">
         <div class="overlay">
           <div class="risk_container">
-            <div class="presentation"> <span>Презентация <br> <b>Липецкой области</b> </span><q-btn class="open" @click="open" label='Открыть' color="white" text-color="black"> </q-btn></div>
+            <div class="presentation"> <span v-html="$t('presentation')"></span><q-btn class="open" @click="open" :label="$t('open')" color="white" text-color="black"> </q-btn></div>
             <div class="content">
             <h2 class="heading">{{ $t('lipetsk') }}</h2>
             <div class="white_heading">
@@ -20,7 +20,7 @@
           </div>
   
         </div>
-        <video loop muted autoplay class="fullscreen-bg__video" src="video/lipetsk.mp4" type="video/mp4" media="(min-width:800)" rel="preload" data-autoplay>
+        <video loop muted autoplay class="fullscreen-bg__video" :src="$t('video_src')" type="video/mp4" media="(min-width:800)" rel="preload" data-autoplay>
          
       
         </video>

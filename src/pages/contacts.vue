@@ -9,7 +9,7 @@
 
      
     <div class="container">
-        <h4> Контакты </h4>
+        <h4> {{$t('contactsDrawer')}} </h4>
         <div class="tab">
         <q-tabs
           v-model="tab"
@@ -21,16 +21,16 @@
           align="center"
           
         >
-          <q-tab name="Руководство"   no-caps >  <span class='tab'> Руководство </span> </q-tab>
-          <q-tab name="Агентство"    no-caps > <span class="tab"> Агентство </span> </q-tab>
+          <q-tab name="Руководство"   no-caps >  <span class='tab'> {{$t('leadership')}} </span> </q-tab>
+          <q-tab name="Агентство"    no-caps > <span class="tab"> {{$t('agency')}} </span> </q-tab>
  
         </q-tabs>
         </div>
         <q-tab-panels v-model="tab" >
           <q-tab-panel name="Руководство" >
-                     <div class="items_wrap" v-for="item in contact.leader">
+                     <div class="items_wrap" v-for="item in contact.leader" v-if="item.translations[$i18n.locale]">
    <div class="wrap">
-    <span class = 'text'> {{item.position}}</span>
+    <span class = 'text'> {{item.translations[$i18n.locale].position}}</span>
     <div class="border"> </div>
     <div class="parent">
     <div class="image">
@@ -45,15 +45,15 @@
     <div class="mobile">
      <div class="inside_parent">
         <span class="fio">
-            Ф.И.О
+           {{$t('fio')}}
         </span>
         <span class="name">
-           {{item.name}}
+           {{item.translations[$i18n.locale].name}}
         </span>
     </div>
          <div class="inside_parent">
         <span class="fio">
-            Телефон
+            {{$t('form.phone')}}
         </span>
         <span class="name">
             {{item.phone}}
@@ -82,9 +82,9 @@
           </q-tab-panel>
 
           <q-tab-panel name="Агентство"  class="text-black">
-                              <div class="items_wrap" v-for="item in contact.agent">
+                              <div class="items_wrap" v-for="item in contact.agent" v-if="item.translations[$i18n.locale]">
    <div class="wrap">
-    <span class = 'text'> {{item.position}}</span>
+    <span class = 'text'> {{item.translations[$i18n.locale].position}}</span>
     <div class="border"> </div>
     
     <div class="parent">
@@ -96,15 +96,15 @@
     <div class="mobile">
      <div class="inside_parent">
         <span class="fio">
-            Ф.И.О
+         {{$t('fio')}}
         </span>
         <span class="name">
-           {{item.name}}
+           {{item.translations[$i18n.locale].name}}
         </span>
     </div>
          <div class="inside_parent">
         <span class="fio">
-            Телефон
+            {{$t('form.phone')}}
         </span>
         <span class="name">
             {{item.phone}}

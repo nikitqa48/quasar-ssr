@@ -5,9 +5,9 @@
   
       <div class="wrap_container" style="display:flex; flex-direction:row; justify-content:space-between; align-items:flex-end; width:100%;">
       <h4>{{$t('support')}}</h4>
-      <div class="presentation" style="display:flex;align-items:center; width:30%; justify-content:space-between; border:1px solid #52a4df; padding:1%; color:#5D5E62; ">
-      Презентация <br> «поддержка промышленности<br>Липецкой области» 
-      <button class="open" @click="open"> Открыть</button>
+      <div class="presentation" style="display:flex;align-items:center; width:30%; justify-content:space-between; border:1px solid #52a4df; padding:1%; color:#5D5E62;">
+      {{$t('form.presentation')}} <br> {{$t('form.presentationName')}}<br>{{$t('form.lipetsk')}} 
+      <button class="open" @click="open"> {{$t('open')}}</button>
       </div>
 </div>
       <q-form @submit="onSubmit" class="blue_container">
@@ -38,7 +38,7 @@
             <div class="item_bottom">
               <div class="wrapper">
                 <span class="grey">{{$t('Support.recipient')}}</span>
-                <span class="poluch" v-if="item.recipient == 'small'">МСП</span>
+                <span class="poluch" v-if="item.recipient == 'small'">{{$t('Support.real_msp')}}</span>
                 <span class="poluch" v-if="item.recipient == 'innovation'">{{$t('Support.innovation')}}</span>
                 <span class="poluch" v-if="item.recipient == 'all'">{{$t('Support.all')}}</span>
                 <span class="poluch" v-if="item.recipient == 'municipality'">{{$t('Support.municipality')}}</span>
@@ -99,7 +99,7 @@
                 <!-- <span class="poluch" v-if="item.implementation == 'agreement'">Соглашение </span>
               <span class="poluch" v-if="item.gchp == 'agreement'">ГЧП </span>
                 <span class="poluch" v-if="item.gchp == 'any'">Любой </span>-->
-                <span class="poluch" v-if="item.industry != undefined">{{item.industry.join(', ')}}</span>
+                <span class="poluch" v-if="item.industry != undefined" >{{example}} {{item.industry.join(', ')}} </span>
               </div>
             </div>
           </router-link>
@@ -114,6 +114,7 @@
 </template>
 <script>
 import i18n from 'src/i18n';
+import func from 'app/vue-temp/vue-editor-bridge';
 </script>
 <style scoped>
 .input_filter{
@@ -431,6 +432,7 @@ export default {
       options: ["1", "2", "3"],
       page: 1,
       support:{},
+
                         thumbStyle: {
         right: '4px',
         borderRadius: '5px',
@@ -520,7 +522,7 @@ export default {
   {
     model: {
       value:'', 
-      label:'Все отрасли'
+      label:'all'
       },
       options: [
       {
@@ -555,7 +557,7 @@ export default {
     model:
     {
       value:'',
-      label:'Все'
+      label:'All fields'
      },
      
     label: 'Вид поддержки',
@@ -609,7 +611,7 @@ export default {
     label: 'Тип проекта',
     model:{
       value:'', 
-      label:'Все'
+      label:'All fields'
       },
     options:[
       {
@@ -626,7 +628,7 @@ export default {
     },
     {
     value:'', 
-    label: 'Все'
+     label:'All fields'
     }
     ],
   },
@@ -634,7 +636,7 @@ export default {
     label: 'Тип получателя поддержки',
     model:{
       value:'', 
-      label:'Все'
+      label:'All fields'
       },
         options:[
           {
@@ -650,7 +652,7 @@ export default {
       label:"Муниципалитет"
     },
     {
-    value:'', label: 'Все'
+    value:'', label:'All fields'
     }
     ],
   },
@@ -664,10 +666,10 @@ export default {
     open(){
       window.open('/files/podderzhka.pdf')
     },
+
     onSubmit() {
       let backendurl = "https://backendinvest.admlr.lipetsk.ru/support/?format=json";
       let url = backendurl;
-      console.log(this.selectList[0].options[0])
       if (this.selectList[0].model.value == "" && this.selectList[2].model.value == "") {
         
         url = `${backendurl}&type=${this.selectList[1].model.value}&recipient=${this.selectList[3].model.value}`;
@@ -691,6 +693,35 @@ export default {
     getSupport() {
       return this.support = this.$store.state.support.stateSupport
     },
+      example(){
+          for (let i = 0; i< this.support.length; i++){
+              for(let x=0; x<this.support[i].industry.length; x++){
+        if(this.support[i].industry[x] == 'промышленность'){
+          this.support[i].industry[x] = this.$i18n.t('Support.industry')
+        }
+        else if(this.support[i].industry[x] == 'Industry'){
+          this.support[i].industry[x] = this.$i18n.t('Support.industry')
+        }
+        else if (this.support[i].industry[x] == 'сельское хозяйство'){
+          this.support[i].industry[x] = this.$i18n.t('Region.agriculture')
+        }
+          else if (this.support[i].industry[x] == 'Agriculture'){
+          this.support[i].industry[x] = this.$i18n.t('Region.agriculture')
+        }
+           else if (this.support[i].industry[x] == 'любой'){
+          this.support[i].industry[x] = this.$i18n.t('Support.other')
+        }
+               else if (this.support[i].industry[x] == 'other'){
+          this.support[i].industry[x] = this.$i18n.t('Support.other')
+        }
+      }
+          }
+  
+    },
+    all(){
+      console.log(this.$i18n.t('all'))
+      return this.$i18n.t('all')
+    },
     select(){
       for(let i = 0; i < this.selectList.length;  i++){
        this.selectList[i].label = this.$i18n.t(`Support.selectLabel[${i}].label`)
@@ -705,6 +736,16 @@ export default {
   },
   created(){
     this.support = this.getSupport
+        
+      for(let i = 0; i < this.selectList.length;  i++){
+       this.selectList[i].label = this.$i18n.t(`Support.selectLabel[${i}].label`)
+       
+          for (let x = 0; x< this.selectList[i].options.length; x++){
+          this.selectList[i].options[x].label = this.$i18n.t(`Support.selectLabel[${i}].options[${x}].label`)
+          
+        }
+      }    
+      
   }
 };
 </script>

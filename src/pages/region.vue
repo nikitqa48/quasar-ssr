@@ -1,7 +1,7 @@
 <template>
             <q-page class="background">
         <div class="container">
-                <div class="text-h4" style="margin-top:1vh; color:white;"> О регионе </div>
+                <div class="text-h4" style="margin-top:1vh; color:white;"> {{$t('Region.about')}} </div>
             <q-tabs
           v-model="tab"
           dense
@@ -13,10 +13,10 @@
           align="left"
           
         >
-          <q-tab name="Наши достижения"   no-caps >  <span class='tab'>Наши достижения </span> </q-tab>
+          <q-tab name="Наши достижения"   no-caps >  <span class='tab'>{{$t('Region.achive')}}</span> </q-tab>
           <!-- <q-tab name="производство"    no-caps > <span class="tab"> Промышленность </span> </q-tab> -->
-           <q-tab name="Образование"    no-caps > <span class="tab"> Образование </span> </q-tab> 
-            <q-tab name="Сельское хозяйство"    no-caps > <span class="tab"> Сельское хозяйство </span> </q-tab> ,
+           <q-tab name="Образование"    no-caps > <span class="tab"> {{$t('Region.education')}} </span> </q-tab> 
+            <q-tab name="Сельское хозяйство"    no-caps > <span class="tab"> {{$t('Region.agriculture')}} </span> </q-tab> ,
           <!-- <q-tab name="Туризм"    no-caps > <span class="tab"> Туризм</span> </q-tab>  -->
         </q-tabs>
         
@@ -31,7 +31,7 @@
                       <div class="border">
                       <span class="number"> 180 </span>
                       <span class="text"> 
-                       Действующих сельскохозяйственных организаций 
+                       {{$t('Region.operation')}} 
                       </span>
                       </div>
                       
@@ -43,7 +43,7 @@
                   <div class="numbers">
                       <div class="border">
                       <span class="number"> 27 236 </span>
-                      <span class="text"> Человек заняты Растениеводством, <br>животноводством, охотой и предоставлением<br> услуг в этих областях </span>
+                      <span class="text" v-html="$t('Region.crop')"/> 
                       </div>
                    </div>
               </div>
@@ -53,8 +53,8 @@
                   <div class="numbers">
                       <div class="border">
                       <span class="number"> 321 </span>
-               <span class="text" style="font-size:1vw; "> 
-                         Крупные, средние и малые предприятия за январь-декабрь 2019г. 
+               <span class="text" style="font-size:1vw; " v-html="$t('Region.business')"> 
+                         
                       </span>
                       </div>
                     
@@ -65,7 +65,7 @@
                   <div class="numbers">
                       <div class="border">
                       <span class="number">16 730 </span>
-                      <span class="text" > Человек работают в сфере <br>производства пищевых продуктов </span>
+                      <span class="text" v-html="$t('Region.food')"> </span>
                     </div>
                  
                    </div>
@@ -77,8 +77,7 @@
                   <div class="numbers">
                       <div class="border">
                       <span class="number"> 1 418 </span>
-                  <span class="text" style="width:50%;"> 
-                      Индивидуальных предпринемателей в сфере «Растениеводство и животноводство, охота и предоставление соответствующих услуг в этих областях»
+                  <span class="text" style="width:50%;" v-html="$t('Region.private')"> 
                       </span>
                       </div>
                    
@@ -88,7 +87,7 @@
                   <div class="numbers">
                       <div class="border">
                       <span class="number"> 127 </span>
-                   <span class="text" > Крестьянских (фермерских)хозяйств на территории Липецкой области.</span>
+                   <span class="text" v-html="$t('Region.peasant')"> </span>
                       </div>
                    </div>
               </div>
@@ -100,8 +99,8 @@
                   <div class="numbers">
                       <div class="border">
                       <span class="number"> 11 </span>
-                      <span class="text"> 
-                      образовательных организаций высшего образования
+                      <span class="text" v-html="$t('Region.ourEducation')"> 
+                          
                       </span>
                       </div>
                       
@@ -113,7 +112,7 @@
                   <div class="numbers">
                       <div class="border">
                       <span class="number"> 5 687 </span>
-                      <span class="text"> специалистов, обучавшихся по программам среднего профессионального образования за 2019г.</span>
+                      <span class="text" v-html="$t('Region.specialist')"> </span>
                       </div>
                    </div>
               </div>
@@ -123,8 +122,8 @@
                   <div class="numbers">
                       <div class="border">
                       <span class="number"> 30 </span>
-               <span class="text" style="font-size:1vw; "> 
-                         профессиональных образовательных организаций
+               <span class="text" style="font-size:1vw; " v-html="$t('Region.technical')"> 
+                       
                       </span>
                       </div>
                     
@@ -135,7 +134,7 @@
                   <div class="numbers">
                       <div class="border">
                       <span class="number">4 692 </span>
-                      <span class="text" > студентов обучавшихся по программам высшего образования за 2019г. </span>
+                      <span class="text" v-html="$t('Region.students')">  </span>
                     </div>
                  
                    </div>
@@ -147,14 +146,14 @@
                   <div class="numbers">
                       <div class="border">
                       <span class="number"> 42 </span>
-                  <span class="text" style="width:100%;"> 
-                     Профессиям региональная система среднего профессионального образования обеспечивает подготовку кадров
+                  <span class="text" style="width:100%;" v-html="$t('Region.profession')"> 
+                    
                       </span>
                       </div>
                    
                    </div>
               </div>
-          <div class="item" style='margin-left:9%;'>
+          <!-- <div class="item" style='margin-left:9%;'>
                   <div class="numbers">
                       <div class="border">
                       <span class="number"> 1</span>
@@ -162,7 +161,7 @@
                         образования базовых профессиональных образовательных организаций в части поддержки инклюзивного среднего профессионального образования.</span>
                       </div>
                    </div>
-              </div>
+              </div> -->
                                     </div>
                </q-tab-panel>
         <q-tab-panel name="Наши достижения" class="panel" style="display:flex; flex-direction:row;">
@@ -191,8 +190,8 @@
                 </div>
          </div>
             <div class="video ">
-                <p>Смотрите видео о преимуществах Липецкой области: </p>
-                <video  style='width:75%; outline:none; border-radius:25px;' :src="$t('video')" type="video/mp4" media="(min-width:800)"  controls poster="image/preview.png"> </video>
+                <p>{{$t('Region.watch')}}: </p>
+                <video  style='width:75%; outline:none; border-radius:25px;' :src="$t('video')" type="video/mp4" media="(min-width:800)"  controls > </video>
                 </div>
                </q-tab-panel>  
             </q-tab-panels>
@@ -339,12 +338,13 @@ export default {
     display:flex;
     flex-direction: column;
     margin-left: 1vw;
+    width: 100%;
 }
 .from{
     color: #28A5FF;
 }
 .text{
-    margin-left: 4%;
+    padding-left: 4%;
     margin-top: 1vh;
     font-size: 1vw;
     font-weight: 200;
@@ -358,6 +358,7 @@ export default {
     line-height: 95%;
     color: white;
     letter-spacing: 0.002vw;
+    /* padding-right: 2%; */
     font-size: 5.5vw;
 }
 .sub{

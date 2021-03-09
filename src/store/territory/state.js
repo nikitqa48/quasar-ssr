@@ -4,7 +4,8 @@ export default function () {
         oez:[],
         oez_ru:[],
         industrial:[],
-        any:[]
+        any:[],
+        techno:[]
     }
   }
 }

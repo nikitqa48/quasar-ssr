@@ -157,7 +157,7 @@
       </div>
       <div class='right_map'>
         <div class='right_container'>
-                   <div class="right_wrapper">
+                   <div class="right_wrapper" >
                       <span class="list" v-if="right == false && show_greenfield == false">{{regionName}}</span>
             <div class="input_list" v-if="right == false && show_greenfield == false">
               <div class="class">
@@ -209,8 +209,12 @@
                     <button class="more" type="submit">Поиск</button>
                   </q-form> -->
                   <div class="items_greenfield" v-if="show_greenfield == false">
-                    <div v-if="show_oez">
-                      <p class="square_name__territory">{{regionType}}</p>
+                    <div v-if="show_oez" >
+                      <div class="row justify-between items-center pres">
+                      <p class="square_name__territory">{{regionType.name}}</p>
+                      <q-btn v-if="regionType.presentation" :label="regionType.label" no-caps @click="regionType.open" />
+                      
+                      </div>
                       <div class="green">
                         <div
                           class="greenfield_border"
@@ -257,8 +261,12 @@
                     </div>
                   </div>
                   <div v-if="show_oezru">
-                    
-                 <p class="square_name__territory">{{oezruType}}</p>
+                  <div class="row justify-between items-center pres" > 
+                 <p class="square_name__territory">{{oezruType.name}}</p>
+                 <div class="presentation" v-if='oezruType.presentation' >
+                  <q-btn v-if="regionType.presentation" :label="oezruType.label" no-caps @click="oezruType.open" />
+                 </div>
+                 </div>
                <div class="green">
                         <div
                           class="greenfield_border"
@@ -345,6 +353,52 @@
                         
                       </div>
                       </div>
+                                                           <div  v-if="show_techno">
+                                                             <div class="row justify-between" v-if="!show_greenfield  && territory.any.length != 0 && index == 10">
+                            <p class="square_name__territory" > {{this.$t('techno')}}</p>
+                            <!-- <div class="presentation"> asdasd</div> -->
+                            </div>
+                                          <div class="green">
+                        <div
+                          class="greenfield_border"
+                          v-for="item in green.techno"
+                          v-if="item.region == index+1"
+                          @click="ShowGreenfield(item)"
+                        >
+                          <div class="square">{{$t('map.plot')}} №{{item.number_territory}}</div>
+                          <div class="border"></div>
+                    <div class="square_number">
+                     <div class="wrap_number">
+                        <div class="number_row">
+                           <q-icon name='mdi-map' style='opacity:.5'/>
+                              <span>{{$t('map.area')}}:</span>
+                          </div>
+                          <div class="inside_square">{{item.square}} ГА</div>
+                       </div>
+                             <div class="wrap_number">
+                        <div class="number_row">
+                          <q-icon name='mdi-map' style='opacity:.5'/>
+                               <span>{{$t('map.type_plot')}}:</span>
+                          </div>
+                          <div class="inside_square">
+                            <span v-if="item.type == 'greenfield'">{{$t('map.greenfield')}}</span>
+                              <span v-if="item.type == 'brownfield'">{{$t('map.brownfield')}}</span></div>
+                       </div>
+                             <div class="wrap_number">
+                        <div class="number_row">
+                          <q-icon name='mdi-map' style='opacity:.5'/>
+                                <span>{{$t('map.form')}}:</span>
+                          </div>
+                          <div class="inside_square">
+                            <span class="usefull_inside" v-if="item.desired == 'goverment'">{{$t('map.state')}}</span>
+                             <span class="usefull_inside" v-if="item.desired == 'private'">{{$t('map.private')}}</span>
+                              </div>
+                       </div>
+                      </div>
+                        </div>
+                        
+                      </div> 
+                        </div>
                       <div  v-if="show_any">
                             <p class="square_name__territory" v-if="!show_greenfield  && territory.any.length != 0"> {{this.$t('map.other')}}</p>
                                           <div class="green">
@@ -388,6 +442,7 @@
                         
                       </div> 
                         </div>
+ 
                 </q-scroll-area>
      
             <div class="q-scroll" >
@@ -629,6 +684,11 @@
   letter-spacing: 10%;
   font-size: 150%;
 }
+.pres{
+
+  width: 96%;
+  margin-bottom: 1%;
+}
 .table{
   display:flex;
   margin-top: 2%;
@@ -771,6 +831,7 @@
 .square_name__territory{
   font-size:150%;
   opacity:.9;
+  margin:0;
   font-weight:600;
 }
 .left_map{
@@ -857,6 +918,7 @@ export default {
         opacity: 0.75
       },
       show_any: true,
+      show_techno:true,
       organisation: "",
       phone: "",
       comment: "",
@@ -1053,6 +1115,7 @@ export default {
             svg.children[i].classList.remove("active");
           }
           this.$refs.lipetsk.classList.add("active");
+          lipetsk.classList.add('active')
     },
     all(){
            for (let i = 0; i < svg.children.length; i++) {
@@ -1074,6 +1137,7 @@ export default {
     },
     regionName() {
       let region = "";
+      
       if (this.index == "15") {
         region = this.$t('map.region.usman');
       } else if (this.index == "14") {
@@ -1114,42 +1178,58 @@ export default {
       } else if (this.index == "0") {
         region = this.$t('map.region.dankov');
       }
-      return region;
+      return region
     },
     regionType() {
-      let name = "";
+      let name = {};
+   
       if (
         (this.show_greenfield == false && this.index == "8") ||this.index == "11") {
-        name = "ОЭЗ «Липецк»";
+        name.name = this.$t('map.oezru_lipetsk');
+        name.presentation = true
+        name.label = "Презентация ОЭЗ ППТ «Липецк»"
+        name.open = function(){
+           window.open('/files/oez_lipetsk.pdf')
+        }
+        
       }
       return name;
     },
     oezruType(){
 
-      let name = ''
+      let name = {
+        name:'',
+        
+      }
              if(!this.show_greenfield && this.index =='0'){
-             name = this.$t('map.oezru_dankov')
+             name.name = this.$t('map.oezru_dankov')
+             
       }
       else if(!this.show_greenfield  && this.index == '9'){
-        name = this.$t('map.oezru_zadonshina')
+        name.name = this.$t('map.oezru_zadonshina')
       }
       else if(!this.show_greenfield  && this.index == '7'){
-        name = this.$t('map.oezru_izmalkovo')
+         name.name = this.$t('map.oezru_izmalkovo')
       }
       else if(!this.show_greenfield && this.index == '1'){
-        name = this.$t('map.oezru_astapovo')
+         name.name = this.$t('map.oezru_astapovo')
       }
       else if (!this.show_greenfield && this.index == '13'){
-        name = this.$t('map.oezru_terbuny')
+         name.name = this.$t('map.oezru_terbuny')
       }
         else if (!this.show_greenfield && this.index == '8'){
-        name = this.$t('map.oezru_elets')
+         name.name = this.$t('map.oezru_elets')
+         name.presentation = true
+         name.label = 'Презентация ОЭЗ РУ «Елец»'
+          name.open = function(){
+           window.open('/files/Elets.pdf')
+        }
       }
           else if (!this.show_greenfield && this.index == '14'){
-        name = this.$t('map.oezru_khlevnoe')
+         name.name = this.$t('map.oezru_khlevnoe')
       }
                else if (!this.show_greenfield && this.index == '2'){
-        name = this.$t('map.oezru_chaplygin')
+         name.name = this.$t('map.oezru_chaplygin')
       }
       return name
     }

@@ -10,7 +10,7 @@ const routes = (ssrContext) => {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     beforeEach:(to,from,next) => {
-      console.log('asdasd')
+      console.log('1')
     },
     children: [
       { path: '',
@@ -80,9 +80,15 @@ const routes = (ssrContext) => {
         component: () => import('pages/documents.vue')
       },
       // {
-      //   path:'/docs',
-      //   name:'docs',
-      //   component:() => import('pages/docs.vue')
+        // path:'/docs/:slug?',
+        // name:'doc',
+        // component:() => import('layouts/docs.vue'),
+        // children:[{
+        //   name:'doc',
+        //   path:'/docs/:id',
+        //   component:() => import('pages/section.vue')
+        // },
+        // ]
       // },
       {
         path: '/contacts',
@@ -128,6 +134,7 @@ const routes = (ssrContext) => {
   // but you can also remove it
   {
     path: '*',
+    name: 'Error',
     component: () => import('pages/Error404.vue')
   }
 ]

@@ -1,7 +1,7 @@
 <template>
   <div class="background">
     <div class="container">
-      <h3  style="margin:auto; color:#727272;">Нам доверяют</h3>
+      <h3  style="margin:auto; color:#727272;">{{$t('trust')}}</h3>
       <div class="items">
         <div class="row">
           <div class="item">

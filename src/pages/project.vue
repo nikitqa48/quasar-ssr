@@ -7,7 +7,7 @@
      
         <div class="container">
             <div class="text-h4 q-mb-md">
-                Реализуемые проекты Липецкой области
+              {{$t('project.implem')}}
             </div>
             <div class="filter">
             <q-expansion-item
@@ -22,7 +22,7 @@
     <q-form @submit="getProjectItems" class="q-gutter-md">
       <div class="q-mt-xl">
         <div class='mobile' style="display:flex; justify-content:space-between; ">
-        <q-input dark outlined v-model="number" label="Сумма инвестиций (млн руб)" class = 'input_filter' stack-label  type="number"   />
+        <q-input dark outlined v-model="number" :label="$t('project.summ')" class = 'input_filter' stack-label  type="number"   />
        <q-select standout="bg-primary text-white"   v-model="industry"  :label="$t('project.industry')"  :options= 'options'  dark  outlined
        option-value="id" 
         class = 'input_filter'/> 
@@ -31,7 +31,7 @@
       </div>
 
       <div class="btn">
-        <q-btn label="Поиск" type="submit" color="primary" class="search" />
+        <q-btn :label="$t('search')" type="submit" color="primary" class="search" />
       </div>
     </q-form>
         </div>
@@ -122,11 +122,11 @@
           <div class="right_content" >
             
        <p class="text-h5"> {{item.translations[$i18n.locale].name}}</p>
-              <p> <span style="opacity: .6;"> {{$t('project.industry')}}:</span> {{item.industry}} </p>
+              <p> <span style="opacity: .6;"> {{$t('project.industry')}}:</span> {{example}}{{item.industry}} </p>
               <p> <span style="opacity: .6;">{{$t('project.description')}}: </span>{{item.translations[$i18n.locale].body}} </p>
               <p> <span style="opacity: .6;">{{$t('project.status')}}: </span>  {{item.translations[$i18n.locale].now}}</p>
-              <p> <span style="opacity: .6;"> {{$t('project.realization')}}: </span>  с {{item.start}} по {{item.finish}}г.</p>
-              <p> <span style="opacity: .6;">{{$t('project.summ')}}: </span>{{item.sum}} млн.руб.</p>
+              <p> <span style="opacity: .6;"> {{$t('project.realization')}}: </span>   {{item.start}} - {{item.finish}}г.</p>
+              <p> <span style="opacity: .6;">{{$t('project.summ')}}: </span>{{item.sum}} {{$t('mln')}}</p>
               <q-btn flat class="invest" @click="form(item)" v-if="item.help == true">{{$t('project.invest')}} </q-btn>
           </div>
       </div>
@@ -314,7 +314,7 @@ export default {
     data(){
         return{
             industry:{
-              label:'все',
+              label:'all',
               id:''
             },
                     thumbStyle: {
@@ -360,7 +360,32 @@ export default {
   computed:{
       getProject(){
         return this.project = this.$store.state.project.items
-      }
+      },
+       example(){
+         
+          for (let i = 0; i< this.project.length; i++){
+
+        if(this.project[i].industry == 'промышленность'){
+          this.project[i].industry = this.$i18n.t('Support.industry')
+        }
+        else if(this.project[i].industry == 'Industry'){
+          this.project[i].industry = this.$i18n.t('Support.industry')
+        }
+        else if (this.project[i].industry == 'сельское хозяйство'){
+          this.project[i].industry = this.$i18n.t('Region.agriculture')
+        }
+          else if (this.project[i].industry == 'Agriculture'){
+          this.project[i].industry = this.$i18n.t('Region.agriculture')
+        }
+           else if (this.project[i].industry == 'любой'){
+          this.project[i].industry = this.$i18n.t('Support.other')
+        }
+               else if (this.project[i].industry == 'other'){
+          this.project[i].industry = this.$i18n.t('Support.other')
+        }
+          }
+  
+    },
   },
     mounted(){
     return this.$emit('disableLoading', false)

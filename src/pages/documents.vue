@@ -29,6 +29,8 @@
               <q-tab name="g" label=" Противодействие коррупции" />
               <q-tab name="h" label="Защита персональных данных" />
               <q-tab name="j" label="Национальный рейтинг" />
+              <q-tab name="k" label="Нормативная база в сфере ГЧП" />
+              <q-tab name="l" label="Внешнеэкономическая деятельность" />
             </q-tabs>
 
             <q-tab-panels
@@ -420,6 +422,12 @@
                     >
                     <a href="https://backendinvest.admlr.lipetsk.ru/document/87">
                       <img src="image/file.svg" /> Распоряжение администрации Липецкой области от 26.11.2020 №788-р о составе наблюдательного совета ОЭЗ</a
+                    >
+                      <a href="https://backendinvest.admlr.lipetsk.ru/document/105">
+                      <img src="image/file.svg" />Приказ о получателях 2020 ОЭЗ</a
+                    >
+                        <a href="https://backendinvest.admlr.lipetsk.ru/document/106">
+                      <img src="image/file.svg" />Приказ о распределении</a
                     >
                     <!-- <a href="http://127.0.0.1:8000/document/3">
                       <img src="image/file.svg" />Приказ № 39-ОД от 20 апреля
@@ -1038,7 +1046,7 @@
                     <a
                       href="https://backendinvest.admlr.lipetsk.ru/document/49"
                     >
-                      <img src="image/file.svg" /> Инвестиционное послание 2020
+                      <img src="image/file.svg" /> Инвестиционное послание 2021
                     </a>
                   </div>
                 </q-expansion-item>
@@ -1071,10 +1079,25 @@
                       <img src="image/file.svg" /> Протокол Совета №41 от
                       08.04.2019
                     </a>
+                                  <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/102"
+                    >
+                      <img src="image/file.svg" /> Протокол Совета №42 от
+                      25.7.2019
+                    </a>
+            <a href="https://backendinvest.admlr.lipetsk.ru/document/103"
+                    >
+                      <img src="image/file.svg" /> Протокол Совета №40 
+                    </a>
                       <a
                       href="https://backendinvest.admlr.lipetsk.ru/document/56"
                     >
                       <img src="image/file.svg" /> Протокол №43 от 16.09.2019
+                    </a>
+                            <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/104"
+                    >
+                      <img src="image/file.svg" /> Протокол №44 от 17.10.2019
                     </a>
                          <a
                       href="https://backendinvest.admlr.lipetsk.ru/document/60"
@@ -1116,9 +1139,19 @@
                       <img src="image/file.svg" /> Протокол от 24.09.2020 № 51
                     </a>
                        <a
-                      href="https://backendinvest.admlr.lipetsk.ru/document/91"
+                      href="https://backendinvest.admlr.lipetsk.ru/document/118"
                     >
-                      <img src="image/file.svg" /> Протокол Совета №52 от 11.12.2020г.
+                      <img src="image/file.svg" /> Протокол Совета №53 
+                    </a>
+                          <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/119"
+                    >
+                      <img src="image/file.svg" /> Информация для экспертов
+                    </a>
+                           <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/90"
+                    >
+                      <img src="image/file.svg" /> План работы Совета на 2021 год
                     </a>
                     <a
                       href="https://backendinvest.admlr.lipetsk.ru/document/88"
@@ -1145,7 +1178,7 @@
                       href="https://backendinvest.admlr.lipetsk.ru/document/50"
                     >
                       <img src="image/file.svg" /> Инвестиционный меморандум
-                      2020
+                      2021
                     </a></div>
                 </q-expansion-item>
                 <q-expansion-item
@@ -1164,7 +1197,7 @@
                             <a
                       href="https://backendinvest.admlr.lipetsk.ru/document/51"
                     >
-                      <img src="image/file.svg" /> Инфраструктурный План 2020-2022
+                      <img src="image/file.svg" /> Инфраструктурный План 2021-2023
                       </a>
                   </div>
                 </q-expansion-item>
@@ -1272,11 +1305,138 @@
                 >
                     <div class="rightside_tabpanel">
           <a href='http://investinlipetsk.ru/contacts'> http://investinlipetsk.com/contacts
- </a>
 
+ </a>
+           <a href = "https://backendinvest.admlr.lipetsk.ru/document/100"> Итоги 2020
+ </a>
+      <a href = "https://backendinvest.admlr.lipetsk.ru/document/101"> Устав
+ </a>
                   </div>
             </q-expansion-item>
               </q-tab-panel>
+               <q-tab-panel name="k">
+                 
+                 <div class="text-h4 q-mb-md"> Законодательство</div>
+                                                <q-expansion-item
+                  dark
+                  expand-separator
+                  label="Федеральное законодательство"
+                  header-class="bg-blue-grey-8 text-white"
+                  style="
+                    border: 1px solid rgba(31, 37, 55, 0.7);
+                    border-radius: 4px;
+                    margin-top:2%;
+                  "
+                >
+                <div class="rightside_tabpanel">
+                                   <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/107"
+                    >
+                      <img src="image/file.svg" /> Федеральный закон от 13.07.2015 N 224-ФЗ "О государственно-частном партнерстве, муниципально-частном партнерстве в Российской Федерации и внесении изменений в отдельные законодательные акты Российской Федерации"
+                      </a>
+                                        <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/108"
+                    >
+                      <img src="image/file.svg" />
+        Федеральный закон от 21.07.2005 г. № 115-ФЗ «О концессионных соглашениях»
+                </a>
+                                                   <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/109"
+                    >
+                      <img src="image/file.svg" />
+        Федеральный закон от 30.12.1995 г. № 225-ФЗ «О соглашениях о разделе продукции»
+                </a>
+                                                   <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/110"
+                    >
+                      <img src="image/file.svg" />
+        Федеральный закон от 05.04.2013 N 44-ФЗ "О контрактной системе в сфере закупок товаров, работ, услуг для обеспечения государственных и муниципальных нужд"
+                </a>
+                                                           <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/111"
+                    >
+                      <img src="image/file.svg" />
+      Федеральный закон от 17.05.2007 г. № 82-ФЗ «О банке развития»
+                </a>
+                                                                    <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/112"
+                    >
+                      <img src="image/file.svg" />
+      	Постановление Правительства Российской Федерации от 01.03.2008 г. № 134 «Об утверждении Правил формирования и использования бюджетных ассигнований Инвестиционного фонда Российской Федерации»
+                </a>
+                 <p>
+                   С полным перечнем нормативно-правовых актов, регулирующих взаимоотношения государства и бизнеса можете ознакомиться, пройдя по данной ссылке:</p> <a href ="http://www.pppi.ru/law"> http://www.pppi.ru/law</a>
+                </div>
+              </q-expansion-item>
+                                                      <q-expansion-item
+                  dark
+                  expand-separator
+                  label="Региональное законодательство"
+                  header-class="bg-blue-grey-8 text-white"
+                  style="
+                    border: 1px solid rgba(31, 37, 55, 0.7);
+                    border-radius: 4px;
+                    margin-top:2%;
+                  "
+                >
+                       <div class="rightside_tabpanel">
+                         <p>
+                           Утратил силу (Закон Липецкой области " О признании утратившим силу..."№530-ОЗ от 27.04.2016)
+                           </p>
+                                                                                     <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/113"
+                    >
+                      <img src="image/file.svg" />
+  	Закон Липецкой области от 05.04.2013 N 142-ОЗ "О государственно-частном партнерстве в Липецкой области"
+                </a>                                                                          
+          
+                <a href="http://docs.cntd.ru/document/872623695">
+                ПОСТАНОВЛЕНИЕ  администрации Липецкой области от 29.10.2014 N 467 "Об утверждении Порядка принятия решений о заключении государственных контрактов на поставку товаров, выполнение работ, оказание услуг для обеспечения нужд Липецкой области, соглашений о государственно-частном партнерстве и концессионных соглашений на срок, превышающий срок действия утвержденных лимитов бюджетных обязательств"
+                </a>
+                        <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/114"
+                    >
+                      <img src="image/file.svg" />
+  	РАСПОРЯЖЕНИЕ от 10 октября 2016 г. N 499-р "Об утверждении порядков межведомственного взаимодействия и координации деятельности исполнительных органов государственной власти Липецкой области при подготовке и запуске проектов на основе ГЧП и концессионных соглашений"
+                </a>   
+                                <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/115"
+                    >
+                      <img src="image/file.svg" />
+  	РАСПОРЯЖЕНИЕ от 23 декабря 2016 г. № 634-р "Об утверждении порядков контроля за исполнением соглашений о государственно-частном партнерстве и концессионных соглашений, мониторинга их реализации и ведения реестра соглашений о ГЧП"
+                </a> 
+                                           <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/116"
+                    >
+                      <img src="image/file.svg" />
+  	РАСПОРЯЖЕНИЕ от 14 июля 2017 г. № 278-р "О наделении ОАО "Корпорация Развития Липецкой области" отдельными правами и обязанностями публичного партнера (концедента)
+                </a>  
+                                                         <a
+                      href="https://backendinvest.admlr.lipetsk.ru/document/117"
+                    >
+                      <img src="image/file.svg" />
+  	Регламент применения аутсорсинга в работе исполнительных органов государственной власти Липецкой области, управления, контроля и мониторинга эффективности исполнения переданных на аутсорсинг видов деятельности
+                </a>                                                                  
+                       </div>
+</q-expansion-item>
+                                                 <q-expansion-item
+                  dark
+                  expand-separator
+                  label="Отраслевое законодательство"
+                  header-class="bg-blue-grey-8 text-white"
+                  style="
+                    border: 1px solid rgba(31, 37, 55, 0.7);
+                    border-radius: 4px;
+                    margin-top:2%;
+                  "
+                >
+                <div class="rightside_tabpanel">
+                <b>ЖКХ </b>
+                <p>В этом разделе сайта подобраны самые актуальные документы из области законотворческой деятельности в сфере ЖКХ:</p>
+                <a href ="http://gkhrazvitie.ru/"> http://gkhrazvitie.ru/ </a>
+                </div>
+                </q-expansion-item>
+               </q-tab-panel>
             </q-tab-panels>
           </div>
         </div>

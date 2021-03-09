@@ -9,9 +9,10 @@
     class="left_menu"
     indicator-color="transparent">
           <div class="column ul">
-        <q-tab :name="item.name" :label="item.name"  v-for="(item, index) in docs.section" :key="index"/>
+        <q-route-tab :to="{name:'doc', params:{slug:item.slug}}" :label="item.name"  v-for="(item, index) in docs.section" :key="index" :name="item.slug"/>
           </div>
        </q-tabs>
+
    <q-tab-panels
      v-model="tab"
      animated
@@ -21,41 +22,65 @@
      transition-prev="jump-up"
      transition-next="jump-up"
     >
-    <q-tab-panel :name="section.name" v-for="(section, ix) in docs.section" :key="ix" class="content">
-      <span v-html="section.text"></span>
-         <q-expansion-item
-                  dark
-                  expand-separator
-                  v-for="(item,index) in docs.subsection"
-                  :label="item.name"
-                  v-if="item.section.name == section.name"
-                  :key="index"
-                  class="subsection"
-                  header-class="bg-blue-grey-8 text-white"
-                >
-               <div v-for="(file, ix) in docs.files" :key="ix"> 
-                 <a v-if="file.subsection.name == item.name" :href="file.file" class="file_string"> <img src="image/file.svg" style="padding-right:1vh;"/>{{file.name}}</a>
-               </div>
-                 </q-expansion-item>  
-           </q-tab-panel>
-      </q-tab-panels>
+    <q-tab-panel  v-for="(section, ix) in docs.section" :key="ix" class="content" :name="section.slug">
+           <section-vue  :section="section" :docs="docs"/>
+         </q-tab-panel>
+      </q-tab-panels> 
       </div>
   </q-page>
 </template>
 <script>
-
+import { route } from 'quasar/wrappers';
+import sectionVue from 'pages/section.vue';
 export default {
+  components:{
+    sectionVue
+  },
    preFetch($route){
-   return $route.store.dispatch('docs/getDocs')
+      function getAccess(){
+        return new Promise((resolve, reject) => { 
+        const get = $route.store.dispatch('docs/getDocs')
+        resolve(get)
+      })
+      }
+      const promice = getAccess().then(()=>{
+        return new Promise((resolve,reject) => {
+          const access = $route.store.dispatch('docs/getAccess', $route.currentRoute.params.slug)
+          resolve(access)
+        })
+      })
+      const promice2 = promice.then(()=>{
+        return new Promise((resolve,reject)=>{
+          if ($route.store.state.docs.access){
+            // $route.redirect({path:'404/'})
+             resolve()
+          }
+        })
+      })
+      return promice2
+    
+  
+     
  },
   data(){
     return{
-      tab:'',
+      tab:this.$route.params.slug,
       docs:{}
     }
   },
     mounted() {
     return this.$emit("disableLoading", false);
+  },
+  beforeMount(){
+    this.docs = this.documents
+    
+    if (this.$route.params.slug == undefined){
+      this.$router.push({name:'doc', params:{slug:this.$store.state.docs.data.section[0].slug}})
+      this.tab = this.$store.state.docs.data.section[0]
+    }
+  },
+  created(){
+    console.log(this.tab)
   },
   destroyed() {
     return this.$emit("disableLoading", true);
@@ -65,10 +90,6 @@ export default {
       return this.$store.state.docs.data
     }
   },
-     created(){
-    this.docs = this.documents
-    this.tab = this.$store.state.docs.data.section[0].name
-   }
 }
 
 </script>

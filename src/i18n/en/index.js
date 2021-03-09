@@ -32,6 +32,10 @@ export default {
     support:'State support',
     projectDrawer:'Projects',
     documentsDrawer:'Documents',
+    presentation:'Presentation<br> <b>Lipetsk region</b>',
+    open:'Open',
+    trust:'Trust us',
+    video_src:'video/lipetsk_eng(first).mp4',
     newsDrawer:'News',
     contactsDrawer:'Contacts',
     interactiveMap:'Interactive sites map',
@@ -42,13 +46,35 @@ export default {
     all:'all',
     techno:'Technoparks',
     projectFilter:'Projects filter',
+    form:{
+      send:'Send your contacts and our staff will contact you shortly',
+      surname:'Surname',
+      surnamePlaceholder:'Please enter your last name',
+      name:"Name",
+      namePlaceholder:'Please enter your name',
+      patronymic:'Middle name',
+      patrinymicPlaceholder:'Please enter your middle name',
+      phone:'Phone',
+      phonePlaceholder:"Please enter your phone",
+      organisation:'Organisation',
+      organisationPlaceholder:'Enter the title',
+      comment:'Comment',
+      emailPlaceholder:'Enter your email',
+      description:'Fields marked with * are required <br> <br> By clicking on the "Send" button you consent to the processing of your personal data in accordance with Article 9 of the Federal Law of July 27, 2006 N 152-FZ "On Personal Data"',
+      commentPlaceholder:'Enter your comment',
+      sendMessage:'Send',
+      presentation:'Presentation',
+      presentationName:'Industry support',
+      lipetsk:'Lipetsk region'
+    },
     project:{
         industry:'Industry branch',
         description:'description',
         status:'Project current status',
         realization:'Project implementation',
-        summ:'Investment scale',
-        invest:'Become investor'
+        summ:'Investment scale(mln. rub)',
+        invest:'Become investor',
+        implem:'Implemented projects in Lipetsk region'
     },
     documents:{
         menu:{
@@ -67,6 +93,7 @@ export default {
             }
           }
       },
+      mln:'mln.rub.',
       Support:{
         subsidies:'Subsidies',
         type_support:'Type of support',
@@ -75,7 +102,8 @@ export default {
         tax:'Loan tax credits',
         implementation:'Method of project implementation',
         agreement:'Agreement',
-        any:'Other',
+        other:'Other',
+        issued:'The measure of support is issued',
         goals:'Goals / recipients of state support',
         condition:'The main conditions for the provision of state measures. support for investors (entrepreneurs): rate, timing, amount',
         organ:'Curriculum organ',
@@ -97,6 +125,7 @@ export default {
         real_msp:'Small and Medium Enterprise',
         sez_industrial:'SEZ industrial park',
         sez_lipetsk:'Regional SEZ Lipetsk',
+        industry:'Industry',
         selectLabel:[ 
           {
             label:'Business Field',
@@ -122,7 +151,7 @@ export default {
             ],
           },
           {
-            label:'Вид поддержки',
+            label:'Type of support',
             options:[
               {
                 label:'Прямая финансовая поддержка'
@@ -170,6 +199,10 @@ export default {
           },
           {
             label:'Type of project',
+            model:{
+              value:'', 
+              label:'All fields'
+              },
             options:[
               {
                 label:'Renovation'
@@ -221,6 +254,9 @@ export default {
       news:'News',
       language:'Change language',
       phone:'Phone',
+      fio:'Full name',
+      leadership:'leadership',
+      agency:'agency',
       header:{
         invest:'Investment',
         gateway:'Gateway',
@@ -233,6 +269,7 @@ export default {
         oezru_zadonshina:'Regional SEZ «Zadonschina»',
         oezru_astapovo:'Regional SEZ «Astapovo»',
         oezru_terbuny:'Regional SEZ «Terbuny»',
+        oezru_lipetsk:'Regional SEZ «Lipetsk»',
         oezru_elets:'Regional SEZ «Elets»',
         oezru_khlevnoe:'Regional SEZ «Khlevnoe»',
         oezru_chaplygin:'Regional SEZ «Chaplyginskaya»',
@@ -301,6 +338,24 @@ export default {
         link:'image/lipetsk_map(eng).svg',
         note:'List of sites',
         all:'All'
+      },
+      Region:{
+        about:'Region',
+        achive:'Our achievements',
+        business:'large, medium-sized and small businesses in January-February 2019',
+        education:'Education',
+        agriculture:'Agriculture',
+        operation:'operating agricultural organizations',
+        crop:'employees in “Crop production, <br>livestock farming, hunting and corresponding services” ',
+        food:'employees in food production ',
+        private:'private entrepreneurs in “Crop production and livestock farming, hunting and corresponding services',
+        peasant:'peasant farm enterprises in the Lipetsk region ',
+        ourEducation:'higher education institutes ',
+        technical:'technical schools ',
+        specialist:'specialists completed secondary-levelprofessional programs in 2019',
+        students:'students completed highereducational programs in 2019 ',
+        profession:'Regional system of technical schools provides personnel training for professional occupations',
+        watch:'Watch a video about the advantages of the Lipetsk region'
       },
       back:'Back'
     
