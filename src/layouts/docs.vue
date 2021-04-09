@@ -12,7 +12,6 @@
         <q-route-tab :to="{name:'doc', params:{slug:item.slug}}" :label="item.name"  v-for="(item, index) in docs.section" :key="index" :name="item.slug"/>
           </div>
        </q-tabs>
-
    <q-tab-panels
      v-model="tab"
      animated
@@ -80,7 +79,6 @@ export default {
     }
   },
   created(){
-    console.log(this.tab)
   },
   destroyed() {
     return this.$emit("disableLoading", true);
@@ -133,10 +131,13 @@ export default {
   display: flex;
   flex-direction: column;
   text-transform: none;
-  height: 27vh;
+  height: 40%;
 }
 .ul{
 background: #f0f0f0;
+display: flex;
+flex-direction: column;
+height: 100%;
 }
 .q-tabs__content{
   display:flex;

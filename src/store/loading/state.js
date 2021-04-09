@@ -1,5 +1,5 @@
 export default function () {
   return {
-    loading:true
+    loading:false
   }
 }

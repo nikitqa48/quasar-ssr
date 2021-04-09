@@ -314,7 +314,7 @@ export default {
     data(){
         return{
             industry:{
-              label:'all',
+              label:'',
               id:''
             },
                     thumbStyle: {
@@ -332,20 +332,34 @@ export default {
             organisation:'',
             comment:'',
             year:2010,
-            number:'',
-            options:[{ id: '',label:'Все' },
+            number:5000,
+            options:[
+              { id: '',label:'Все' },
             { id:'1', label:'Промышленность'},
             { id:'4',label: 'Сельское хозяйство'},
-            {id:'6', label: 'Лесное хозяйство'}, {id:'7', label:'Строительство'},
-            {id:'8', label:'Прочие виды деятельности сферы материального производства'}, {id:'9', label:'Обслуживание сельского хозяйства'},
-            {id:'10', label:'Транспорт'}, {id:'11', label:'Связь'}, {id:'12', label:'Торговля и общественное питание'},
-            {id:'13', label:'Материально-техническое снабжение и сбыт'}, {id:'14', label:'Заготовки'},
-            {id:'15', label:'Информационно-вычислительное обслуживание'}, {id:'16', label:'Операции с недвижимым имуществом'},
-            {id:'17', label:'Геология и разведка недр, геодезическая и гидрометеологическая службы'}, {id:'18', label:'Жилищное хозяйство'},
-            {id:'19', label:'Коммунальное хозяйство'}, {id:'20', label:'Непроизводственные виды бытового обслуживания населения'},
-            {id:'21', label:'Здравоохранение, физическая культура и соц.обеспечение'}, {id:'22', label:'Народное образование'},
-            {id:'23', label:'Культура и искусство'}, {id:'24', label:'Наука и научное обслуживание'}, {id:'25', label:'Финансы, кредит, страхование, пенсионное обеспечение'},
-            {id:'26', label:'Управление'}, {id:'27', label:'Общественные объединения'}]
+            {id:'6', label: 'Лесное хозяйство'},
+             {id:'7', label:'Строительство'},
+            {id:'8', label:'Прочие виды деятельности сферы материального производства'}, 
+            {id:'9', label:'Обслуживание сельского хозяйства'},
+            {id:'10', label:'Транспорт'}, 
+            {id:'11', label:'Связь'},
+             {id:'12', label:'Торговля и общественное питание'},
+            {id:'13', label:'Материально-техническое снабжение и сбыт'}, 
+            {id:'14', label:'Заготовки'},
+            {id:'15', label:'Информационно-вычислительное обслуживание'}, 
+            {id:'16', label:'Операции с недвижимым имуществом'},
+            {id:'17', label:'Геология и разведка недр, геодезическая и гидрометеологическая службы'},
+             {id:'18', label:'Жилищное хозяйство'},
+            {id:'19', label:'Коммунальное хозяйство'},
+             {id:'20', label:'Непроизводственные виды бытового обслуживания населения'},
+            {id:'21', label:'Здравоохранение, физическая культура и соц.обеспечение'},
+             {id:'22', label:'Народное образование'},
+            {id:'23', label:'Культура и искусство'},
+             {id:'24', label:'Наука и научное обслуживание'}, 
+             {id:'25', label:'Финансы, кредит, страхование, пенсионное обеспечение'},
+            {id:'26', label:'Управление'}, 
+            {id:'27', label:'Общественные объединения'}
+            ]
       ,
       years:['2010','2011','2012','2013', '2014', 
       '2015','2016','2017','2018','2019','2020','2021',
@@ -361,31 +375,31 @@ export default {
       getProject(){
         return this.project = this.$store.state.project.items
       },
-       example(){
+    //    example(){
          
-          for (let i = 0; i< this.project.length; i++){
+    //       for (let i = 0; i< this.project.length; i++){
 
-        if(this.project[i].industry == 'промышленность'){
-          this.project[i].industry = this.$i18n.t('Support.industry')
-        }
-        else if(this.project[i].industry == 'Industry'){
-          this.project[i].industry = this.$i18n.t('Support.industry')
-        }
-        else if (this.project[i].industry == 'сельское хозяйство'){
-          this.project[i].industry = this.$i18n.t('Region.agriculture')
-        }
-          else if (this.project[i].industry == 'Agriculture'){
-          this.project[i].industry = this.$i18n.t('Region.agriculture')
-        }
-           else if (this.project[i].industry == 'любой'){
-          this.project[i].industry = this.$i18n.t('Support.other')
-        }
-               else if (this.project[i].industry == 'other'){
-          this.project[i].industry = this.$i18n.t('Support.other')
-        }
-          }
+    //     if(this.project[i].industry == 'промышленность'){
+    //       this.project[i].industry = this.$i18n.t('Support.industry')
+    //     }
+    //     else if(this.project[i].industry == 'Industry'){
+    //       this.project[i].industry = this.$i18n.t('Support.industry')
+    //     }
+    //     else if (this.project[i].industry == 'сельское хозяйство'){
+    //       this.project[i].industry = this.$i18n.t('Region.agriculture')
+    //     }
+    //       else if (this.project[i].industry == 'Agriculture'){
+    //       this.project[i].industry = this.$i18n.t('Region.agriculture')
+    //     }
+    //        else if (this.project[i].industry == 'любой'){
+    //       this.project[i].industry = this.$i18n.t('Support.other')
+    //     }
+    //            else if (this.project[i].industry == 'other'){
+    //       this.project[i].industry = this.$i18n.t('Support.other')
+    //     }
+    //       }
   
-    },
+    // },
   },
     mounted(){
     return this.$emit('disableLoading', false)
@@ -433,6 +447,9 @@ export default {
         }
       else if (this.industry == '' && this.number != ''){
         url = `https://backendinvest.admlr.lipetsk.ru/searchyear${this.year}`
+      }
+      else if (this.number == ''){
+        url = `https://backendinvest.admlr.lipetsk.ru/project/${this.industry.id}/${this.year}`
       }
       else {
         url = `https://backendinvest.admlr.lipetsk.ru/project/${this.number}/${this.industry.id}/${this.year}`

@@ -17,18 +17,24 @@
     <!-- <div class="section">
       <news-vue class="news"/>
     </div> -->
+
    </full-page>
    </q-no-ssr>
   </q-page>
 </template>
 
 <script>
-import VideoVue from 'components/mobilehome_page/mobilevideo.vue'
-import ArtamonovVue from 'components/mobilehome_page/artamonov.vue'
+import VideoVue from 'components/mobile/landing/mobilevideo.vue'
+import ArtamonovVue from 'components/mobile/landing/artamonov.vue'
 import logoVue from 'components/home_page/logo.vue'
-import newsVue from 'components/mobilehome_page/mobileNews.vue'
-import historyVue from 'components/mobilehome_page/history.vue'
+import newsVue from 'components/mobile/landing/mobileNews.vue'
+import historyVue from 'components/mobile/landing/history.vue'
 export default {
+      preFetch ({store}) {
+      let news = store.dispatch('lastNews/getNews')
+      let count = store.dispatch('support/CheckConnect')
+      return news, count
+  },
     components:{
       VideoVue,
       ArtamonovVue,
@@ -46,7 +52,7 @@ export default {
         responsiveWidth: 0,
         fitToSection:true,
         // scrollOverflow: true,
-        normalScrollElements: '.xz',
+        normalScrollElements: '.news',
         dots:true,
         // anchors: ['video', 'about-us', 'contact', 'novosti'],
         lockAnchors:true,
@@ -76,10 +82,8 @@ export default {
 </script>
 <style scoped>
 .news{
-  position: relative;
   width: 50%;
   min-height:120vh;
-  border:1px solid red;
   overflow:scroll;
 }
 </style>

@@ -8,9 +8,8 @@ const routes = (ssrContext) => {
   return [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('src/layouts/MainLayout.vue'),
     beforeEach:(to,from,next) => {
-      console.log('1')
     },
     children: [
       { path: '',
@@ -74,22 +73,23 @@ const routes = (ssrContext) => {
         name: 'region',
         component: () => import('pages/region.vue')
       },
-      {
-        path: '/documents',
-        name: 'documents',
-        component: () => import('pages/documents.vue')
-      },
       // {
-        // path:'/docs/:slug?',
-        // name:'doc',
-        // component:() => import('layouts/docs.vue'),
-        // children:[{
-        //   name:'doc',
-        //   path:'/docs/:id',
-        //   component:() => import('pages/section.vue')
-        // },
+        // path: '/documents',
+        // name: 'documents',
+        // component: () => import('pages/documents.vue'),
+        // children:[
+        // {
+        //   path:':tab',
+        //   component:() => import('pages/documentsroute.vue')
+        // }
         // ]
       // },
+      {
+        path:'/documents/:slug?',
+        name:'doc',
+        component:() => import('layouts/docs.vue'),
+
+      },
       {
         path: '/contacts',
         name: 'contacts',

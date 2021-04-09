@@ -1,6 +1,6 @@
 import axios from 'axios'
 export function getDocs ({ commit }, route) {
-    const url = 'http://127.0.0.1:3030/file/'
+    const url = 'https://backendinvest.admlr.lipetsk.ru/file/'
         return axios.get(url).then(
             ({ data }) => {
      

@@ -1,137 +1,275 @@
 <template>
   <q-page class="support_wrap">
- 
     <div class="container">
-  
-      <div class="wrap_container" style="display:flex; flex-direction:row; justify-content:space-between; align-items:flex-end; width:100%;">
-      <h4>{{$t('support')}}</h4>
-      <div class="presentation" style="display:flex;align-items:center; width:30%; justify-content:space-between; border:1px solid #52a4df; padding:1%; color:#5D5E62;">
-      {{$t('form.presentation')}} <br> {{$t('form.presentationName')}}<br>{{$t('form.lipetsk')}} 
-      <button class="open" @click="open"> {{$t('open')}}</button>
+      <div
+        class="wrap_container"
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-end;
+          width: 100%;
+        "
+      >
+        <h4>{{ $t("support") }}</h4>
+        <div
+          class="presentation"
+          style="
+            display: flex;
+            align-items: center;
+            width: 30%;
+            justify-content: space-between;
+            border: 1px solid #52a4df;
+            padding: 1%;
+            color: #5d5e62;
+          "
+        >
+          {{ $t("form.presentation") }} <br />
+          {{ $t("form.presentationName") }}<br />{{ $t("form.lipetsk") }}
+          <button class="open" @click="open">{{ $t("open") }}</button>
+        </div>
       </div>
-</div>
       <q-form @submit="onSubmit" class="blue_container">
         <div class="form_wrapper">
-         
           <div class="mobile">
-      <template v-for="(select, index) in selectList">
-              <q-item :key="index"  class='q-item'>
-                  <q-item-section>
+            <template v-for="(select, index) in selectList">
+              <q-item :key="index" class="q-item">
+                <q-item-section>
                   {{ select.label }}
                 </q-item-section>
-                  <q-select standout="bg-primary text-white"   outlined v-model="select.model"  
-                    :options='select.options' class ='input_filter'
-                    :option-value="select.value"
-                    /> 
+                <q-select
+                  standout="bg-primary text-white"
+                  outlined
+                  v-model="select.model"
+                  :options="select.options"
+                  class="input_filter"
+                  :option-value="select.value"
+                />
               </q-item>
             </template>
-          
           </div>
-            <button class="more" type="submit">{{$t('search')}}</button>
+
+          <div
+            class="row fit flex justify-between nowrap"
+            style="margin-top: 1vh"
+          >
+            <div class="row nowrap">
+              <forms-vue  :getcount='getcount'/>
+              <q-btn
+                color="primary"
+                :label="$t('reestr')"
+                no-caps
+                style="margin-left: 2vw"
+              >
+                <q-menu>
+                  <q-list
+                    class="fit"
+                    style="width: 90%; padding-left: 1%; padding-right: 1%"
+                  >
+                    <q-item clickable v-close-popup>
+                      <q-item-section
+                        ><a
+                          href="https://xn--80apfbifgb5k.xn--80aacoonefzg3am8b1fsb.xn--p1ai/report/support/"
+                          style="color: black"
+                        >
+                          Сведения о показании поддержки субъектам Липецкой
+                          области</a
+                        ></q-item-section
+                      >
+                    </q-item>
+                    <q-item clickable v-close-popup>
+                      <q-item-section
+                        ><a
+                          href="https://xn--80apfbifgb5k.xn--80aacoonefzg3am8b1fsb.xn--p1ai/reestrpp/"
+                          style="color: black"
+                        >
+                          Реестр получатей поддержки малого и среднего
+                          предпринимательства
+                        </a></q-item-section
+                      >
+                    </q-item>
+                    <q-item clickable v-close-popup>
+                      <q-item-section
+                        ><a
+                          href="https://ush48.ru/support/grants/"
+                          style="color: black"
+                        >
+                          Перечень получателей субсидий в области сельского
+                          хозяйства</a
+                        ></q-item-section
+                      >
+                    </q-item>
+                    <q-item clickable v-close-popup>
+                      <q-item-section
+                        ><a
+                          href="https://backendinvest.admlr.lipetsk.ru/document/120"
+                          style="color: black"
+                        >
+                          Перечень получателей налоговых льгот по 59 ОЗ</a
+                        ></q-item-section
+                      >
+                    </q-item>
+                    <q-item clickable v-close-popup>
+                      <q-item-section
+                        ><a
+                          href="http://frplo.ru/index.php/proekty"
+                          style="color: black"
+                        >
+                          Перечень проектов получивших финансирование фрп</a
+                        ></q-item-section
+                      >
+                    </q-item>
+                  </q-list>
+                </q-menu>
+              </q-btn>
+            </div>
+            <button class="more" type="submit">{{ $t("search") }}</button>
+          </div>
         </div>
       </q-form>
       <div class="items">
         <div class="item" v-for="item in support" v-if="support.length != 0">
-          <router-link :to="{name: 'support_detail', params: { id: item.id}}" class="rout">
-                        <div class="item_name" v-if="item.translations[$i18n.locale]">{{item.translations[$i18n.locale].name}}</div>
+          <router-link
+            :to="{ name: 'support_detail', params: { id: item.id } }"
+            class="rout"
+          >
+            <div class="item_name" v-if="item.translations[$i18n.locale]">
+              {{ item.translations[$i18n.locale].name }}
+            </div>
             <div class="border"></div>
             <div class="item_bottom">
               <div class="wrapper">
-                <span class="grey">{{$t('Support.recipient')}}</span>
-                <span class="poluch" v-if="item.recipient == 'small'">{{$t('Support.real_msp')}}</span>
-                <span class="poluch" v-if="item.recipient == 'innovation'">{{$t('Support.innovation')}}</span>
-                <span class="poluch" v-if="item.recipient == 'all'">{{$t('Support.all')}}</span>
-                <span class="poluch" v-if="item.recipient == 'municipality'">{{$t('Support.municipality')}}</span>
-                <span
-                  class="poluch"
-                  v-if="item.recipient == 'industrial'"
-                >{{$t('Support.resident')}}</span>
-                <span class="poluch" v-if="item.recipient == 'developers'">{{$t('Support.developers')}}</span>
-                <span class="poluch" v-if="item.recipient == 'resident_oez'">Резиденты ОЭЗРУ Липецк</span>
-                <span class="poluch" v-if="item.recipient == 'subject'">{{$t('Support.subject')}}</span>
-                <span class="poluch" v-if="item.recipient == 'legally'">{{$t('Support.legal')}}</span>
+                <span class="grey">{{ $t("Support.recipient") }}</span>
+                <span class="poluch" v-if="item.recipient == 'small'">{{
+                  $t("Support.real_msp")
+                }}</span>
+                <span class="poluch" v-if="item.recipient == 'innovation'">{{
+                  $t("Support.innovation")
+                }}</span>
+                <span class="poluch" v-if="item.recipient == 'all'">{{
+                  $t("Support.all")
+                }}</span>
+                <span class="poluch" v-if="item.recipient == 'municipality'">{{
+                  $t("Support.municipality")
+                }}</span>
+                <span class="poluch" v-if="item.recipient == 'industrial'">{{
+                  $t("Support.resident")
+                }}</span>
+                <span class="poluch" v-if="item.recipient == 'developers'">{{
+                  $t("Support.developers")
+                }}</span>
+                <span class="poluch" v-if="item.recipient == 'resident_oez'"
+                  >Резиденты ОЭЗРУ Липецк</span
+                >
+                <span class="poluch" v-if="item.recipient == 'subject'">{{
+                  $t("Support.subject")
+                }}</span>
+                <span class="poluch" v-if="item.recipient == 'legally'">{{
+                  $t("Support.legal")
+                }}</span>
                 <!-- <span class="poluch" v-if="item.recipient == 'cooperatives'">{{$t('Support.cooperatives')}}</span> -->
-                <span class="poluch" v-if="item.recipient == 'not_msp'">{{$t('Support.msp')}</span>
+                <span class="poluch" v-if="item.recipient == 'not_msp'"
+                  >{{$t('Support.msp')}</span
+                >
               </div>
               <div class="wrapper">
-                <span class="grey">{{$t('Support.amount')}}</span>
+                <span class="grey">{{ $t("Support.amount") }}</span>
                 <!-- <span class="poluch" v-if="item.implementation == 'agreement'">Соглашение </span>
               <span class="poluch" v-if="item.gchp == 'agreement'">ГЧП </span>
                 <span class="poluch" v-if="item.gchp == 'any'">Любой </span>-->
-                <span class="poluch" v-if="item.translations[$i18n.locale]">{{item.translations[$i18n.locale].money}} </span>
+                <span class="poluch" v-if="item.translations[$i18n.locale]"
+                  >{{ item.translations[$i18n.locale].money }}
+                </span>
               </div>
-              <div class="wrapper">
-                <span class="grey">{{$t('Support.type_support')}}</span>
-                <span class="poluch" v-if="item.type == 'direct'">{{$t('Support.investments')}}</span>
-                <span class="poluch" v-if="item.type == 'loan_funding'">{{$t('Support.debt')}}</span>
 
-                <span class="poluch" v-if="item.type == 'loan'">Налоговые льготы по налогу на займ</span>
-                <span class="poluch" v-if="item.type == 'subsidies'">{{$t('Support.subsidies')}}</span>
-                <span
-                  class="poluch"
-                  v-if="item.type == 'profit'"
-                >Налоговые льготы по налогу на прибыль</span>
-                <span
-                  class="poluch"
-                  v-if="item.type == 'property'"
-                >Налоговые льготы по налогу на имущество</span>
-                <span class="poluch" v-if="item.type == 'grant'">{{$t('Support.grants')}}</span>
-                <span class="poluch" v-if="item.type == 'rent'">льготы по аренде</span>
-                <span class="poluch" v-if="item.type == 'garant'">{{$t('Support.warranty')}}</span>
-                <span
-                  class="poluch"
-                  v-if="item.type == 'transport'"
-                >Налоговые льготы по транспортному налогу</span>
-                <span
-                  class="poluch"
-                  v-if="item.type == 'earth'"
-                >налоговые льготы по земельному налогу</span>
-                <span class="poluch" v-if="item.type == 'nds'">налоговые льготы по уплате НДС</span>
-                <span class="poluch" v-if="item.type == 'customs'">таможенные льготы</span>
-                <span class="poluch" v-if="item.type == 'infrastructure'">Субсидии на инфраструктуру</span>
-                <span
-                  class="poluch"
-                  v-if="item.type == 'loan_profit'"
-                >кредиты под залог создаваемого имущества</span>
+              <div class="wrapper">
+                <span class="grey">{{ $t("Support.type_support") }}</span>
+                <span class="poluch" v-if="item.type == 'direct'">{{
+                  $t("Support.investments")
+                }}</span>
+                <span class="poluch" v-if="item.type == 'loan_funding'">{{
+                  $t("Support.debt")
+                }}</span>
+
+                <span class="poluch" v-if="item.type == 'loan'"
+                  >Налоговые льготы по налогу на займ</span
+                >
+                <span class="poluch" v-if="item.type == 'subsidies'">{{
+                  $t("Support.subsidies")
+                }}</span>
+                <span class="poluch" v-if="item.type == 'profit'"
+                  >Налоговые льготы по налогу на прибыль</span
+                >
+                <span class="poluch" v-if="item.type == 'property'"
+                  >Налоговые льготы по налогу на имущество</span
+                >
+                <span class="poluch" v-if="item.type == 'grant'">{{
+                  $t("Support.grants")
+                }}</span>
+                <span class="poluch" v-if="item.type == 'rent'"
+                  >льготы по аренде</span
+                >
+                <span class="poluch" v-if="item.type == 'garant'">{{
+                  $t("Support.warranty")
+                }}</span>
+                <span class="poluch" v-if="item.type == 'transport'"
+                  >Налоговые льготы по транспортному налогу</span
+                >
+                <span class="poluch" v-if="item.type == 'earth'"
+                  >налоговые льготы по земельному налогу</span
+                >
+                <span class="poluch" v-if="item.type == 'nds'"
+                  >налоговые льготы по уплате НДС</span
+                >
+                <span class="poluch" v-if="item.type == 'customs'"
+                  >таможенные льготы</span
+                >
+                <span class="poluch" v-if="item.type == 'infrastructure'"
+                  >Субсидии на инфраструктуру</span
+                >
+                <span class="poluch" v-if="item.type == 'loan_profit'"
+                  >кредиты под залог создаваемого имущества</span
+                >
               </div>
               <div class="wrapper">
-                <span class="grey">{{$t('Support.activity_type')}}</span>
+                <span class="grey">{{ $t("Support.activity_type") }}</span>
                 <!-- <span class="poluch" v-if="item.implementation == 'agreement'">Соглашение </span>
               <span class="poluch" v-if="item.gchp == 'agreement'">ГЧП </span>
                 <span class="poluch" v-if="item.gchp == 'any'">Любой </span>-->
-                <span class="poluch" v-if="item.industry != undefined" >{{example}} {{item.industry.join(', ')}} </span>
+                <span class="poluch" v-if="item.industry != undefined"
+                  >{{ item.industry.join(", ") }}
+                </span>
               </div>
             </div>
           </router-link>
-          {{select}}
+          {{ select }}
         </div>
-
       </div>
-
     </div>
-   
   </q-page>
 </template>
 <script>
-import i18n from 'src/i18n';
-import func from 'app/vue-temp/vue-editor-bridge';
+import i18n from "src/i18n";
+import func from "app/vue-temp/vue-editor-bridge";
 </script>
 <style scoped>
-.input_filter{
-  width:20vw;
-  padding:0;
-  margin:0;
- 
+.nowrap {
+  flex-wrap: nowrap !important;
 }
-.q-item{
-  display:flex;
-  flex-direction:column;
-  padding:0;
+.input_filter {
+  width: 20vw;
+  padding: 0;
+  margin: 0;
 }
-.open{
-  border:none;
+.q-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.open {
+  border: none;
   background: #52a4df;
-  color:white;
+  color: white;
   padding-left: 2%;
   padding-right: 2%;
   outline: none;
@@ -139,8 +277,8 @@ import func from 'app/vue-temp/vue-editor-bridge';
   border-radius: 5px;
 }
 @media screen and (max-width: 800px) {
-  .input_filter{
-    width:100%!important;
+  .input_filter {
+    width: 100% !important;
   }
   .mobile {
     width: 95%;
@@ -148,8 +286,8 @@ import func from 'app/vue-temp/vue-editor-bridge';
     flex-direction: column;
     margin: auto;
   }
-  .presentation{
-    display:none!important;
+  .presentation {
+    display: none !important;
   }
   .grey {
     font-size: 3vw !important;
@@ -218,7 +356,7 @@ import func from 'app/vue-temp/vue-editor-bridge';
 }
 .mobile {
   width: 100%;
-  justify-content:space-between;
+  justify-content: space-between;
   display: flex;
 }
 body a {
@@ -244,7 +382,7 @@ body a {
 }
 
 .grey {
-  color: #F6F6F6;
+  color: #f6f6f6;
   margin: 2vh;
   font-size: 0.8vw;
 }
@@ -272,14 +410,13 @@ body a {
   border: none;
   outline: none;
   cursor: pointer;
-  background: #52a4df;
+  background: #3e8fd1;
   align-self: flex-end;
   color: white;
   font-size: 0.8vw;
   /* border-radius: 5px; */
-  margin-top:1%;
   margin-left: 10%;
-  height: 3.5vh;
+  height: 5vh;
   width: 20vw;
 }
 .item {
@@ -299,9 +436,9 @@ body a {
 }
 .form_wrapper {
   /* background: rgba(35, 46, 75, 0.7); */
-  margin-top:3vh;
+  margin-top: 3vh;
   padding-bottom: 2vh;
-  color:#727272;
+  color: #727272;
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -396,7 +533,7 @@ body a {
 }
 .container h4 {
   font-size: 1.8vw;
-  color:#727272;
+  color: #727272;
   font-weight: 600;
 }
 .container li {
@@ -414,35 +551,46 @@ body a {
 }
 </style>
 <script>
-
-     const form = {
-        industry: '',
-        type: "",
-        recipient: "",
-        type_project: "",
-        support_type: "",
-       }
+import formsVue from "../components/liniya.vue";
+const form = {
+  industry: "",
+  type: "",
+  recipient: "",
+  type_project: "",
+  support_type: "",
+};
 
 export default {
-  preFetch({store}){
-    return store.dispatch('support/getSupport')
+  preFetch($route) {
+    function getAccess() {
+      return new Promise((resolve, reject) => {
+        const get = $route.store.dispatch("support/getSupport");
+        resolve(get);
+      });
+    }
+    const promice = getAccess().then(() => {
+      return new Promise((resolve, reject) => {
+        const count = $route.store.dispatch("support/CheckConnect");
+        resolve(count);
+      });
+    });
+    return promice;
   },
   data() {
     return {
       options: ["1", "2", "3"],
       page: 1,
-      support:{},
-
-                        thumbStyle: {
-        right: '4px',
-        borderRadius: '5px',
-        backgroundColor: '#027be3',
-        width: '5px',
-        opacity: 0.75
+      support: {},
+      thumbStyle: {
+        right: "4px",
+        borderRadius: "5px",
+        backgroundColor: "#027be3",
+        width: "5px",
+        opacity: 0.75,
       },
       url: "https://backendinvest.admlr.lipetsk.ru/support/?format=json",
-      form:{
-        industry: '',
+      form: {
+        industry: "",
         type: "",
         recipient: "",
         type_project: "",
@@ -450,7 +598,7 @@ export default {
       },
       shape: "line",
       optns: [
-        { id: "",  label: "Все" },
+        { id: "", label: "Все" },
         { id: "1", label: "Промышленность" },
         { id: "4", label: "Сельское хозяйство" },
         { id: "6", label: "Лесное хозяйство" },
@@ -496,15 +644,9 @@ export default {
         { id: "", label: "Все виды поддержки" },
         { id: "direct", label: "Прямая финансовая поддержка" },
         { id: "loan_funding", label: "Заемная финансовая поддержка" },
-        { id: "profit", label: "Льготы по налогу на прибыль" },
-        { id: "transport", label: "Льготы по транспортному налогу" },
-        { id: "property", label: "Льготы по налогу на имущество" },
         { id: "subsidies", label: "Субсидии" },
         { id: "grant", label: "Гранты" },
-        { id: "rent", label: "Льготы по аренде" },
         { id: "garant", label: "Гарантии" },
-        { id: "earth", label: "Льготы по земельному налогу" },
-        { id: "nds", label: "Льготы по уплате НДС" },
         { id: "infrastructure", label: "Субсидии на инфраструктуру" },
         {
           id: "loan_profit",
@@ -518,234 +660,200 @@ export default {
         { id: "18", label: "Жилищное хозяйство" },
       ],
 
-          selectList: [
-  {
-    model: {
-      value:'', 
-      label:'all'
-      },
-      options: [
-      {
-     value:'1', 
-     label:'Промышленность' 
-    },
-    {
-      value:'4',
-       label:'Сельское хозяйство'
-    },
-    {
-      value:'6',
-      label:'Лесное хозяйство'
-    },
-      {
-      value:'7',
-      label:'Строительство'
-    },
-    {
-      value:'8', 
-      label:'Прочие виды материального произ-ва'
-    },
-    {
-      value:"", 
-      label:'Все отрасли'
-    }
-    ]
-    ,
-    label: 'Вид деятельности'
-  },
-  {
-    model:
-    {
-      value:'',
-      label:'All fields'
-     },
-     
-    label: 'Вид поддержки',
-    options: [
-      {
-     value:'direct',
-      label:'Прямая финансовая поддержка' 
-    },
-    {
-      value:'loan_funding', label:'Заемная финансовая поддержка'
-    },
-    {
-      value:'profit', label:'Льготы по налогу на прибыль'
-    },
-      {
-      value:'transport', label:'Льготы по транспортному налогу'
-    },
-    {
-      value:'property', label:'Льготы по налогу на имущество'
-    },
-    {
-      value:"subsidies", label:'Субсидии'
-    },
-       {
-      value:"grant", label:'Гранты'
-    },
-           {
-      value:"rent", label:'Льготы по аренде'
-    },
-           {
-      value:"garant", label:'Гарантии'
-    },
-           {
-      value:"earth", label:'Льготы по земельному налогу'
-    },
-               {
-      value:"nds", label:'Льготы по уплате НДС'
-    },
-                   {
-      value:"customs", label:'Льготы по уплате НДС'
-    },
+      selectList: [
         {
-      value:"infrastructure", label:'Субсидии на инфраструктуру'
-    },
-           {
-      value:"", label:'Все виды поддержки'
-    },
-    ]
-  },
-  {
-    label: 'Тип проекта',
-    model:{
-      value:'', 
-      label:'All fields'
-      },
-    options:[
-      {
-      value:'3', 
-      label:'Модернизация',
-    },
-      {
-        value:'2',
-         label:'Реконструкция'
-      },
-    {
-      value:'1',
-      label:'Новое строительство'
-    },
-    {
-    value:'', 
-     label:'All fields'
-    }
-    ],
-  },
-  {
-    label: 'Тип получателя поддержки',
-    model:{
-      value:'', 
-      label:'All fields'
-      },
-        options:[
-          {
-      value:'small', 
-      label:'МСП',
-    },
-      {
-        value:'legally',
-         label:'Юр. Лицо'
-      },
-    {
-      value:'municipality', 
-      label:"Муниципалитет"
-    },
-    {
-    value:'', label:'All fields'
-    }
-    ],
-  },
-],
+          model: {
+            value: "",
+            label: "",
+          },
+          options: [
+            {
+              value: "1",
+              label: "Промышленность",
+            },
+            {
+              value: "4",
+              label: "Сельское хозяйство",
+            },
+            {
+              value: "6",
+              label: "Лесное хозяйство",
+            },
+            {
+              value: "7",
+              label: "Строительство",
+            },
+            {
+              value: "8",
+              label: "Прочие виды материального произ-ва",
+            },
+            {
+              value: "",
+              label: "Все отрасли",
+            },
+          ],
+          label: "Вид деятельности",
+        },
+        {
+          model: {
+            value: "",
+            label: "",
+          },
+
+          label: "Вид поддержки",
+          options: [
+            {
+              value: "direct",
+              label: "",
+            },
+            {
+              value: "loan_funding",
+              label: "Заемная финансовая поддержка",
+            },
+            {
+              value: "subsidies",
+              label: "Субсидии",
+            },
+            {
+              value: "grant",
+              label: "Гранты",
+            },
+
+            {
+              value: "garant",
+              label: "Гарантии",
+            },
+
+            {
+              value: "infrastructure",
+              label: "Субсидии на инфраструктуру",
+            },
+            {
+              value: "",
+              label: "Все виды поддержки",
+            },
+          ],
+        },
+        {
+          label: "Тип проекта",
+          model: {
+            value: "",
+            label: "",
+          },
+          options: [
+            {
+              value: "3",
+              label: "Модернизация",
+            },
+            {
+              value: "2",
+              label: "Реконструкция",
+            },
+            {
+              value: "1",
+              label: "Новое строительство",
+            },
+            {
+              value: "",
+              label: "",
+            },
+          ],
+        },
+        {
+          label: "Тип получателя поддержки",
+          model: {
+            value: "",
+            label: "",
+          },
+          options: [
+            {
+              value: "small",
+              label: "МСП",
+            },
+            {
+              value: "legally",
+              label: "Юр. Лицо",
+            },
+            {
+              value: "municipality",
+              label: "Муниципалитет",
+            },
+            {
+              value: "",
+              label: "",
+            },
+          ],
+        },
+      ],
     };
-
   },
-
+  components: {
+    formsVue,
+  },
   methods: {
-
-    open(){
-      window.open('/files/podderzhka.pdf')
+    open() {
+      window.open("/files/podderzhka.pdf");
     },
 
     onSubmit() {
-      let backendurl = "https://backendinvest.admlr.lipetsk.ru/support/?format=json";
+      let backendurl =
+        "https://backendinvest.admlr.lipetsk.ru/support/?format=json";
       let url = backendurl;
-      if (this.selectList[0].model.value == "" && this.selectList[2].model.value == "") {
-        
+
+      if (
+        this.selectList[0].model.value == "" &&
+        this.selectList[2].model.value == ""
+      ) {
         url = `${backendurl}&type=${this.selectList[1].model.value}&recipient=${this.selectList[3].model.value}`;
-      } 
-      else if (this.selectList[2].model.value == "") {
+      } else if (this.selectList[2].model.value == "") {
         url = `${backendurl}&type=${this.selectList[1].model.value}&recipient=${this.selectList[3].model.value}&industry=${this.selectList[0].model.value}`;
-      } 
-      else if (this.form.industry.valueOf() == "") {
+      } else if (this.form.industry.valueOf() == "") {
         url = `${backendurl}&type=${this.selectList[1].model.value}&type_project=${this.selectList[2].model.value}&recipient=${this.selectList[3].model.value}`;
       }
-       fetch(url)
+      fetch(url)
         .then((response) => response.json())
         .then((data) => {
-      this.support = data})
+          this.support = data;
+        });
     },
-
   },
-
 
   computed: {
     getSupport() {
-      return this.support = this.$store.state.support.stateSupport
+      return (this.support = this.$store.state.support.stateSupport);
     },
-      example(){
-          for (let i = 0; i< this.support.length; i++){
-              for(let x=0; x<this.support[i].industry.length; x++){
-        if(this.support[i].industry[x] == 'промышленность'){
-          this.support[i].industry[x] = this.$i18n.t('Support.industry')
-        }
-        else if(this.support[i].industry[x] == 'Industry'){
-          this.support[i].industry[x] = this.$i18n.t('Support.industry')
-        }
-        else if (this.support[i].industry[x] == 'сельское хозяйство'){
-          this.support[i].industry[x] = this.$i18n.t('Region.agriculture')
-        }
-          else if (this.support[i].industry[x] == 'Agriculture'){
-          this.support[i].industry[x] = this.$i18n.t('Region.agriculture')
-        }
-           else if (this.support[i].industry[x] == 'любой'){
-          this.support[i].industry[x] = this.$i18n.t('Support.other')
-        }
-               else if (this.support[i].industry[x] == 'other'){
-          this.support[i].industry[x] = this.$i18n.t('Support.other')
+    all() {
+      return this.$i18n.t("all");
+    },
+    getcount() {
+      return this.$store.state.support.check
+    },
+    select() {
+      for (let i = 0; i < this.selectList.length; i++) {
+        this.selectList[i].label = this.$i18n.t(
+          `Support.selectLabel[${i}].label`
+        );
+        for (let x = 0; x < this.selectList[i].options.length; x++) {
+          this.selectList[i].options[x].label = this.$i18n.t(
+            `Support.selectLabel[${i}].options[${x}].label`
+          );
         }
       }
-          }
-  
     },
-    all(){
-      console.log(this.$i18n.t('all'))
-      return this.$i18n.t('all')
-    },
-    select(){
-      for(let i = 0; i < this.selectList.length;  i++){
-       this.selectList[i].label = this.$i18n.t(`Support.selectLabel[${i}].label`)
-       
-          for (let x = 0; x< this.selectList[i].options.length; x++){
-          this.selectList[i].options[x].label = this.$i18n.t(`Support.selectLabel[${i}].options[${x}].label`)
-          
-        }
-      }    
-      
+  },
+  created() {
+    
+    this.support = this.getSupport;
+    for (let i = 0; i < this.selectList.length; i++) {
+      this.selectList[i].label = this.$i18n.t(
+        `Support.selectLabel[${i}].label`
+      );
+      for (let x = 0; x < this.selectList[i].options.length; x++) {
+        this.selectList[i].options[x].label = this.$i18n.t(
+          `Support.selectLabel[${i}].options[${x}].label`
+        );
+      }
     }
   },
-  created(){
-    this.support = this.getSupport
-        
-      for(let i = 0; i < this.selectList.length;  i++){
-       this.selectList[i].label = this.$i18n.t(`Support.selectLabel[${i}].label`)
-       
-          for (let x = 0; x< this.selectList[i].options.length; x++){
-          this.selectList[i].options[x].label = this.$i18n.t(`Support.selectLabel[${i}].options[${x}].label`)
-          
-        }
-      }    
-      
-  }
 };
 </script>

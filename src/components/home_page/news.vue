@@ -78,7 +78,7 @@
                 </div>
           </div>
    <Widget/>  
-   
+   <widget2/>
         </div>
                 <div class="all">
                   <router-link :to="{name: 'news'}" class="more" id='more'>           
@@ -328,7 +328,7 @@ height:5vh;
 
 </style>
 <script>
-
+import widget2 from 'components/widget2.vue'
 
 export default {
 props:['visible'],
@@ -343,7 +343,8 @@ components:{
       Widget.src = 'https://pos.gosuslugi.ru/bin/script.min.js'
       document.head.appendChild(Widget)
     })
-  }
+  },
+  widget2
 },
   data() {
     return {

@@ -7,3 +7,9 @@ export function changeDetailSupport (state, data){
         detailSupport:data
     }
 }
+export function changeCheck (state, data) {
+    state.check = data
+    return {
+        check:data
+    }
+}

@@ -56,7 +56,7 @@
       style="width:100%; opacity:.8" />
         </div>
         <div class="column">
-            <span class="text-white" style="opacity:.8"> <b>{{$t('form.phone')}}</b></span>
+            <span class="text-white" style="opacity:.8"> <b>{{$t('form.phone')}} *</b></span>
           <q-input class ='input' type="number" filled v-model="phone" :placeholder="$t('form.phonePlaceholder')" style="width:100%; opacity:.8" dark />
           </div>
           </div>
@@ -93,8 +93,8 @@
           </div>
           
          </q-form>
-                <q-card-actions align="left" class="text-white">
-          <q-btn :label="$t('form.sendMessage')" rounded type ='submit'  no-caps color="cyan-6" @click="onSubmit" style="width:20%; margin-top:3%;" />
+                <q-card-actions align="left" class="text-white ">
+          <q-btn :label="$t('form.sendMessage')" rounded type ='submit'  no-caps color="primary" @click="onSubmit" style="width:20%; margin-top:3%;" />
         </q-card-actions>
  
         </q-card-section>

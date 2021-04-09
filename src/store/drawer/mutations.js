@@ -1,5 +1,5 @@
 
-export function someMutation (state, value) {
-  this.drawer = value
+export function changeDrawerValue (state, value) {
+  state.drawer = value
 }
 

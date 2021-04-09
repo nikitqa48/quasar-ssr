@@ -1,0 +1,21 @@
+<template>
+  <div>
+
+    <iframe
+      id="widgetPosId"
+      src="https://pos.gosuslugi.ru/og/widgets/view?type=[10,30,40]&fontFamily=Arial&maxPage=5&maxElement=2&updateFrequency=5000&level=20&region_id=42&startTitleColor=000000&startTextColor=666666&startTextBtnColor=FFFFFF&startBtnBgColor=0063B0&widgetBorderColor=e3e8ee&logoColor=ffffff&phoneHeaderColor=0B40B3&fillSvgHeadColor=ffffff&backgroundColor=ffffff&typeBgColor=F2F8FC&selectColor=2c8ecc&hoverSelectColor=116ca6&itemColor=354052&hoverItemColor=2c8ecc&backgroundItemColor=f9f9fa&paginationColor=000000&backgroundPaginationColor=2862AC&hoverPaginationColor=2862AC&deviderColor=e3e8ee&logoFs=16&selectFs=25&itemFs=15&paginationFs=14&widgetBorderFs=1&startTitleFs=38&startTextFs=18&startTextBtnFs=16"
+      width="320"
+      height="382"
+      style="border: 0"
+    ></iframe>
+  </div>
+</template>
+
+<script>
+export default {
+  // name: 'ComponentName',
+  data() {
+    return {};
+  },
+};
+</script>

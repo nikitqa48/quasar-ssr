@@ -5,7 +5,19 @@ export default function () {
         oez_ru:[],
         industrial:[],
         any:[],
-        techno:[]
+        techno:[],
+    },
+    zone:{},
+    listPlot:{
+      value:false,
+      name:''
+    },
+    listValue:false,
+    filter:true,
+    detailPlot:{
+      value:false,
+      plot:{}
     }
+
   }
 }

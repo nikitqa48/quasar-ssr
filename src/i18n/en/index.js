@@ -1,5 +1,8 @@
 export default {
     lipetsk: 'Lipetsk region',
+    contact_line:'Contact line for support measures',
+    climate:'Favorable <br>investment <br>climate',
+    reestr:'Register of organizations that received government support measures',
     risk: 'Minimum risk for investment in Russia for 15 years - RAEX rating agency',
     contact:'Contact us',
     contactButton:'Contact us',
@@ -150,50 +153,51 @@ export default {
               }
             ],
           },
+
           {
             label:'Type of support',
             options:[
               {
-                label:'Прямая финансовая поддержка'
+                label:'Direct financial support'
               },
               {
-                label:'Заемная финансовая поддержка'
+                label:'Borrowed financial support'
               },
               {
-                label:'Льготы по налогу на прибыль'
+                label:'Income tax incentives'
               },
               {
                 label:'Льготы по транспортному налогу'
               },
               {
-                label:'Льготы по налогу на имущество'
+                label:'Transport tax incentives'
               },
               {
-                label:'Субсидии'
+                label:'Subsidies'
               },
               {
-                label:'Гранты'
+                label:'Grants'
               },
               {
-                label:'Льготы по аренде'
+                label:'Rental incentives'
               },
               {
-                label:'Гарантии'
+                label:'Warranty'
               },
               {
-                label:'Льготы по земельному налогу'
+                label:'Land tax incentives'
               },
               {
-                label:'Льготы по уплате НДС'
+                label:'VAT incentives'
               },
               {
-                label:'Таможенные льготы'
+                label:'Customs benefits'
               },
               {
-                label:'Субсидии на инфраструктуру'
+                label:'Infrastructure subsidies'
               },
               {
-                label:'Все виды поддержки'
+                label:'All kinds of support'
               }
             ]
           },
@@ -278,7 +282,7 @@ export default {
         area:'Total area',
         type_plot:'Type of plot',
         form:'Form of ownership',
-        state:'State',
+        goverment:'State',
         private:'Private',
         greenfield:'Greenfield',
         brownfield:'Brownfield',
@@ -294,46 +298,47 @@ export default {
         industrial:'Industrial parks',
         permitted:'Type of permitted use',
         permit:{
-          rual:'Lands for rural use',
-          locality:'Lands For localities',
-          industry:'Lands for industry',
-          energy:"Lands for energy",
-          transport:"Lands for transport",
-          communication:'Lands for communication',
-          broadcasting:'Lands for broadcasting',
-          television:'Lands for television',
-          informatic:'Lands for informatics',
+          0:'Lands for rural use',
+          1:'Lands For localities',
+          2:'Lands for industry',
+          3:"Lands for energy",
+          4:"Lands for transport",
+          5:'Lands for communication',
+          6:'Lands for broadcasting',
+          7:'Lands for television',
+          8:'Lands for informatics',
           oez_ppt:'SEZ PPT Lipetsk',
           issued:'The measure of support is issued',
           space:'Lands for space activities',
-          defense:'Lands for defense',
-          security:'Lands for security and other special purposes',
-          protected:'Lands of specially protected territories and objects',
-          fund:'Forest fund lands',
-          water:'Water fund lands',
+          10:'Lands for defense',
+          11:'Lands for security and other special purposes',
+          12:'Lands of specially protected territories and objects',
+          13:'Forest fund lands',
+          14:'Water fund lands',
           benefits:'Customs benefits',
           tax:'Tax incentives',
           cost:'The concessional cost of land/lease:'
         },
         region:{
-          dankov:'Dankov',
-          usman:'Usman',
-          khlevnoe:'Khlevnoe',
-          dolgorukovo:'Dolgorukovo',
-          dobrinka:'Dobrinka',
-          terbuny:'Terbuny',
-          volovo:'Volovo',
-          lebedyan:'Lebedyan',
-          gryazi:'Gryazi',
-          zadonsk:'Zadonsk',
-          elets:'Elets',
-          izmalkovo:'Izmalkovo',
-          dobroe:'Dobroe',
-          krasnoe:'Krasnoe',
-          stanovoe:'Stanovoe',
-          chaplygin:'Chaplygin',
-          lev_tolstoy:'Lev-Tolstoy',
-          lipetsk:'Lipetsk'
+          1:'Dankov',
+          16:'Usman',
+          14:'Khlevnoe',
+          18:'Dolgorukovo',
+          17:'Dobrinka',
+          14:'Terbuny',
+          13:'Volovo',
+          6:'Lebedyan',
+          12:'Gryazi',
+          15:'Khlevnoe',
+          10:'Zadonsk',
+          9:'Elets',
+          8:'Izmalkovo',
+          7:'Dobroe',
+          5:'Krasnoe',
+          4:'Stanovoe',
+          3:'Chaplygin',
+          2:'Lev-Tolstoy',
+          11:'Lipetsk'
         },
         link:'image/lipetsk_map(eng).svg',
         note:'List of sites',

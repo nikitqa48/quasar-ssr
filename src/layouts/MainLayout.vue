@@ -7,7 +7,7 @@
         v-if="$q.platform.is.desktop"
         v-model="drawer"
         show-if-above
-        :mini-width="100"
+
         :mini="miniState"
         @mouseover="miniState = false"
         @mouseout="miniState = true"
@@ -18,19 +18,20 @@
         content-class="bg-blue-grey-10 text-white flex logo"
       >
     <router-link to='/' style="margin:2vh auto 00;">
-      <div style="width:3vw; height:6vh; ">
+      <div style="width:2.8vw; height:6vh; ">
         <q-img src='icons/logo-svg.svg' style="width:100%;"/>
     </div>
     </router-link>
         <q-scroll-area class="items">
+    
         <template v-for="(menuItem, index) in menuList"  >
          
               <q-item :key="index" clickable :active="menuItem.label === 'Outbox'" v-ripple :to='menuItem.to' style="margin-top:2vh;">
                 <q-item-section avatar >
                   <q-icon :name="menuItem.icon" />
                 </q-item-section>
-                <q-item-section>
-                  {{ menuItem.label }}
+                <q-item-section v-html="menuItem.label">
+                
                 </q-item-section>
               </q-item>
               <q-separator :key="'sep' + index"  v-if="menuItem.separator" />
@@ -39,8 +40,6 @@
         </q-scroll-area>
         </div>
       </q-drawer>
-
-
 <q-drawer
         v-model="landscape"
         v-if="$q.platform.is.mobile"
@@ -88,7 +87,7 @@
                 <q-item-section avatar>
                   <q-icon :name="menuItem.icon" />
                 </q-item-section>
-                <q-item-section>
+                <q-item-section v-html="menuItem.label">
                   {{ menuItem.label }}
                 </q-item-section>
               </q-item>
@@ -121,6 +120,7 @@ const menuList = [
     separator: false,
     to:'/region',
   },
+
   {
     icon: 'mdi-map',
     label: 'Площадки',
@@ -133,6 +133,7 @@ const menuList = [
     separator: false,
     to:'/support'
   },
+  
   {
     icon: 'mdi-folder-open',
     label: 'Проекты',
@@ -164,24 +165,28 @@ const menuList = [
     label: 'Контакты',
     separator: false,
     to:'/contacts'
-  }
+  },
+      {
+    icon: 'mdi-file',
+    iconColor: 'primary',
+    label: 'Благоприятный инвестклимат',
+    separator: false,
+    to:{name:'doc', params:{ slug: 'nacionalnyj-rejting'}}
+  },
+
 ]
 import regionHeaderVue from '../components/region_header.vue'
 import headerVue from "../components/header.vue";
 import store from 'vuex'
 import formsVue from "components/forms";
+import { CheckConnect } from 'src/store/support/actions';
 let data = false
 export default {
     preFetch ({store}) {
       let news = store.dispatch('lastNews/getNews')
-      let loading = store.state.loading.loading
-      return news
-    // return new Promise(resolve => {
-    //   store.dispatch('lastNews/getNews')
-    //   resolve()
-    // }).then(() => {
-    //   Loading.hide()
-    // })
+      let count = store.dispatch('support/CheckConnect')
+      return news, count
+
   },
     components:{
         formsVue,
@@ -207,7 +212,6 @@ export default {
     },
     mounted(){
       this.width = window.innerWidth
-
       this.height = window.innerHeight
       if(window.innerWidth>window.innerHeight){
         this.height=this.width
@@ -243,13 +247,14 @@ export default {
           this.visible= value
         },
         changeLabel(){
-        menuList[0].label = this.$t('regionDrawer')
+         menuList[0].label = this.$t('regionDrawer')
          menuList[1].label = this.$t('squareDrawer')
          menuList[2].label = this.$t('supportDrawer')
          menuList[3].label = this.$t('projectDrawer')
          menuList[4].label = this.$t('newsDrawer')
          menuList[5].label = this.$t('documentsDrawer')
          menuList[6].label = this.$t('contactsDrawer')
+         menuList[7].label = this.$t('climate')
         },
         drawerEvent(value){
          this.drawer = value
@@ -262,6 +267,7 @@ export default {
           return this.$store.state.loading.load
         }
       },
+      
      label(){
        if(this.$i18n.locale == 'ru'){
       this.changeLabel()
@@ -272,7 +278,7 @@ export default {
      }
   },
     created(){
-        
+       return this.$store.state.support.count
     }
 
 }
@@ -282,8 +288,7 @@ export default {
   align-self: center;
   display: flex;
   justify-content: center;
-  height:50%;
-  margin-bottom:10vh;
+  height:65%;
   width:100%;
 }
 .layout{
